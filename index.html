@@ -1,128 +1,125 @@
 <!DOCTYPE html>
 <html lang="en" data-theme="light">
 <head>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Portfolio of Parag Mollick, a Mechanical Engineering student at BUET specializing in thermo-fluid systems, CAD modeling, and CFD analysis.">
 <title>Portfolio - Parag Mollick</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;800&family=Source+Sans+3:wght@300;400;500&display=swap" rel="stylesheet">
 <style>
   .hidden { display: none !important; }
   .cert-card.hidden { display: none !important; }
-*{margin:0;padding:0;box-sizing:border-box}
+  *{margin:0;padding:0;box-sizing:border-box}
 
-[data-theme="light"]{
-  --c1:#2563eb;--c2:#475569;--c3:#0f172a;
-  --bg:#f8fafc;--bg-alt:#f1f5f9;--card:#ffffff;
-  --text:#1e293b;--muted:#64748b;
-  --border:#e2e8f0;--nav-bg:rgba(248,250,252,0.92);
-  --clink-bg:#f1f5f9;--shadow:rgba(0,0,0,.04);
-  --btn-outline-border:#cbd5e1;
-  --skill-bar-bg:#e2e8f0;
-  --grid-line: rgba(0,0,0,0.04);
-}
-[data-theme="dark"]{
-  --c1:#3b82f6;--c2:#94a3b8;--c3:#e2e8f0;
-  --bg:#0f172a;--bg-alt:#1e293b;--card:#1e293b;
-  --text:#f8fafc;--muted:#94a3b8;
-  --border:#334155;--nav-bg:rgba(15,23,42,0.92);
-  --clink-bg:#1e293b;--shadow:rgba(0,0,0,.3);
-  --btn-outline-border:#475569;
-  --skill-bar-bg:#334155;
-  --grid-line: rgba(255,255,255,0.03);
-}
+  [data-theme="light"]{
+    --c1:#2563eb;--c2:#475569;--c3:#0f172a;
+    --bg:#f8fafc;--bg-alt:#f1f5f9;--card:#ffffff;
+    --text:#1e293b;--muted:#64748b;
+    --border:#e2e8f0;--nav-bg:rgba(248,250,252,0.92);
+    --clink-bg:#f1f5f9;--shadow:rgba(0,0,0,.04);
+    --btn-outline-border:#cbd5e1;
+    --skill-bar-bg:#e2e8f0;
+    --grid-line: rgba(0,0,0,0.04);
+  }
+  [data-theme="dark"]{
+    --c1:#3b82f6;--c2:#94a3b8;--c3:#e2e8f0;
+    --bg:#0f172a;--bg-alt:#1e293b;--card:#1e293b;
+    --text:#f8fafc;--muted:#94a3b8;
+    --border:#334155;--nav-bg:rgba(15,23,42,0.92);
+    --clink-bg:#1e293b;--shadow:rgba(0,0,0,.3);
+    --btn-outline-border:#475569;
+    --skill-bar-bg:#334155;
+    --grid-line: rgba(255,255,255,0.03);
+  }
 
-body{
-  background-color: var(--bg);
-  background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
-  background-size: 35px 35px;
-  color: var(--text);
-  font-family:'Source Sans 3',sans-serif;
-  min-height:100vh;
-  overflow-x:hidden;
-  transition:background .3s,color .3s;
-}
+  body{
+    background-color: var(--bg);
+    background-image: linear-gradient(var(--grid-line) 1px, transparent 1px), linear-gradient(90deg, var(--grid-line) 1px, transparent 1px);
+    background-size: 35px 35px;
+    color: var(--text);
+    font-family:'Source Sans 3',sans-serif;
+    min-height:100vh;
+    overflow-x:hidden;
+    transition:background .3s,color .3s;
+  }
 
-h1,h2,h3,.logo{font-family:'Playfair Display',serif}
+  h1,h2,h3,.logo{font-family:'Playfair Display',serif}
 
-nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--nav-bg);backdrop-filter:blur(8px);z-index:100;transition:background .3s,border-color .3s}
-.logo{font-size:1.3rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
-.nav-right{display:flex;align-items:center;gap:1.8rem}
-.nav-links{display:flex;gap:1.8rem}
-.nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.04em;transition:color .2s;cursor:pointer}
-.nav-links a:hover{color:var(--text)}
+  nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--nav-bg);backdrop-filter:blur(8px);z-index:100;transition:background .3s,border-color .3s}
+  .logo{font-size:1.3rem;font-weight:800;background:linear-gradient(90deg,var(--c1),var(--c2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+  .nav-right{display:flex;align-items:center;gap:1.8rem}
+  .nav-links{display:flex;gap:1.8rem}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:.85rem;letter-spacing:.04em;transition:color .2s;cursor:pointer}
+  .nav-links a:hover{color:var(--text)}
 
-.theme-toggle{background:var(--card);border:1px solid var(--border);border-radius:2rem;padding:.3rem;display:flex;gap:.2rem;cursor:pointer;transition:all .2s}
-.theme-btn{padding:.3rem .8rem;border-radius:1.5rem;border:none;background:transparent;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--muted)}
-.theme-btn.active{background:var(--c2);color:#fff}
+  .theme-toggle{background:var(--card);border:1px solid var(--border);border-radius:2rem;padding:.3rem;display:flex;gap:.2rem;cursor:pointer;transition:all .2s}
+  .theme-btn{padding:.3rem .8rem;border-radius:1.5rem;border:none;background:transparent;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--muted)}
+  .theme-btn.active{background:var(--c2);color:#fff}
 
-section{padding:5rem 2.5rem}
+  section{padding:5rem 2.5rem}
 
-.hero{min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden}
-.hero-inner{display:flex;align-items:center;justify-content:space-between;gap:3rem;width:100%}
-.hero-text{flex:1;display:flex;flex-direction:column}
-.hero-tag{display:inline-block;background:var(--c3);color:#fff;font-size:.75rem;font-weight:700;padding:.3rem .9rem;border-radius:2rem;letter-spacing:.08em;margin-bottom:1.5rem;width:fit-content}
-.hero h1{font-size:clamp(2.8rem,8vw,6rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem}
-.hero h1 span{color:var(--c1)}
-.hero p{font-size:1.05rem;color:var(--muted);max-width:480px;line-height:1.8;margin-bottom:2.5rem}
-.btn-row{display:flex;gap:1rem;flex-wrap:wrap}
-.btn{padding:.8rem 2rem;border-radius:2rem;font-family:'Playfair Display',serif;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:transform .15s,opacity .15s}
-.btn:hover{transform:translateY(-2px);opacity:.88}
-.btn-primary{background:var(--c1);color:#fff}
-.btn-outline{background:var(--card);border:1.5px solid var(--btn-outline-border);color:var(--text)}
-.hero-blob{position:absolute;right:-80px;top:10%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.08) 0%,transparent 70%);pointer-events:none}
-.hero-blob2{position:absolute;right:120px;top:25%;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(71,85,105,.06) 0%,transparent 70%);pointer-events:none}
+  .hero{min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden}
+  .hero-inner{display:flex;align-items:center;justify-content:space-between;gap:3rem;width:100%}
+  .hero-text{flex:1;display:flex;flex-direction:column}
+  .hero-tag{display:inline-block;background:var(--c3);color:#fff;font-size:.75rem;font-weight:700;padding:.3rem .9rem;border-radius:2rem;letter-spacing:.08em;margin-bottom:1.5rem;width:fit-content}
+  .hero h1{font-size:clamp(2.8rem,8vw,6rem);font-weight:800;line-height:1.05;margin-bottom:1.5rem}
+  .hero h1 span{color:var(--c1)}
+  .hero p{font-size:1.05rem;color:var(--muted);max-width:480px;line-height:1.8;margin-bottom:2.5rem}
+  .btn-row{display:flex;gap:1rem;flex-wrap:wrap}
+  .btn{padding:.8rem 2rem;border-radius:2rem;font-family:'Playfair Display',serif;font-weight:700;font-size:.9rem;cursor:pointer;border:none;transition:transform .15s,opacity .15s; text-decoration: none; display: inline-block;}
+  .btn:hover{transform:translateY(-2px);opacity:.88}
+  .btn-primary{background:var(--c1);color:#fff}
+  .btn-outline{background:var(--card);border:1.5px solid var(--btn-outline-border);color:var(--text)}
+  
+  .hero-blob{position:absolute;right:-80px;top:10%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.08) 0%,transparent 70%);pointer-events:none}
+  .hero-blob2{position:absolute;right:120px;top:25%;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(71,85,105,.06) 0%,transparent 70%);pointer-events:none}
 
-.section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;color:var(--c2);text-transform:uppercase;margin-bottom:.6rem}
-.section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:3rem}
+  .section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;color:var(--c2);text-transform:uppercase;margin-bottom:.6rem}
+  .section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:3rem}
 
-.skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem}
-.skill-card{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1.2rem 1rem;text-align:center;transition:border-color .2s,transform .2s,background .3s;cursor:default;box-shadow:0 1px 4px var(--shadow)}
-.skill-card:hover{border-color:var(--c1);transform:translateY(-4px)}
-.skill-icon{font-size:1.8rem;margin-bottom:.5rem;display:flex;justify-content:center;align-items:center;min-height:50px;}
-.skill-name{font-size:.82rem;font-weight:500;color:var(--muted)}
-.skill-bar{height:3px;background:var(--skill-bar-bg);border-radius:2px;margin-top:.6rem;overflow:hidden}
-.skill-fill{height:100%;border-radius:2px;transition:width .6s ease}
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem}
+  .skill-card{background:var(--card);border:1px solid var(--border);border-radius:1rem;padding:1.2rem 1rem;text-align:center;transition:border-color .2s,transform .2s,background .3s;cursor:default;box-shadow:0 1px 4px var(--shadow)}
+  .skill-card:hover{border-color:var(--c1);transform:translateY(-4px)}
+  .skill-icon{font-size:1.8rem;margin-bottom:.5rem;display:flex;justify-content:center;align-items:center;min-height:50px;}
+  .skill-name{font-size:.82rem;font-weight:500;color:var(--muted)}
+  .skill-bar{height:3px;background:var(--skill-bar-bg);border-radius:2px;margin-top:.6rem;overflow:hidden}
+  .skill-fill{height:100%;border-radius:2px;transition:width .6s ease}
 
-.projects-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem}
-.project-card{background:var(--card);border:1px solid var(--border);border-radius:1.2rem;overflow:hidden;transition:border-color .2s,transform .2s,background .3s;cursor:pointer;box-shadow:0 1px 4px var(--shadow)}
-.project-card:hover{border-color:var(--c1);transform:translateY(-5px)}
-.proj-thumb{height:140px;display:flex;align-items:center;justify-content:center;font-size:3rem}
-.proj-body{padding:1.2rem}
-.proj-tag{display:inline-block;font-size:.7rem;font-weight:700;padding:.25rem .7rem;border-radius:1rem;margin-bottom:.7rem;letter-spacing:.06em}
-.proj-title{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;margin-bottom:.5rem}
-.proj-desc{font-size:.82rem;color:var(--muted);line-height:1.6}
+  /* Projects & Action Buttons Styling */
+  .project-actions {margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;}
+  .project-pdf-link {text-decoration: none; color: var(--c1); font-weight: bold; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px;}
 
-.about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center}
-.about-avatar{width:100%;aspect-ratio:1;border-radius:1.5rem;background:linear-gradient(135deg,var(--c2),var(--c1));display:flex;align-items:center;justify-content:center;font-size:5rem;max-width:260px}
-.about-text p{color:var(--muted);line-height:1.85;margin-bottom:1rem}
-.stats-row{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap}
-.stat{text-align:left}
-.stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--c1)}
-.stat-label{font-size:.8rem;color:var(--muted)}
+  .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center}
+  .about-avatar{width:100%;aspect-ratio:1;border-radius:1.5rem;background:linear-gradient(135deg,var(--c2),var(--c1));display:flex;align-items:center;justify-content:center;font-size:5rem;max-width:260px}
+  .about-text p{color:var(--muted);line-height:1.85;margin-bottom:1rem}
+  .stats-row{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap}
+  .stat{text-align:left}
+  .stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--c1)}
+  .stat-label{font-size:.8rem;color:var(--muted)}
 
-.contact-box{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;box-shadow:0 1px 4px var(--shadow);transition:background .3s}
-.contact-left h2{font-size:2rem;font-weight:800;margin-bottom:.5rem}
-.contact-left p{color:var(--muted);font-size:.9rem}
-.contact-links{display:flex;gap:1rem;flex-wrap:wrap}
-.clink{background:var(--clink-bg);border:1px solid var(--border);color:var(--text);padding:.6rem 1.2rem;border-radius:2rem;text-decoration:none;font-size:.82rem;font-weight:500;display:flex;align-items:center;gap:.4rem;transition:background .2s,border-color .2s,color .2s;cursor:pointer}
-.clink:hover{background:var(--c1);border-color:var(--c1);color:#fff}
+  .contact-box{background:var(--card);border:1px solid var(--border);border-radius:1.5rem;padding:2.5rem;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:2rem;box-shadow:0 1px 4px var(--shadow);transition:background .3s}
+  .contact-left h2{font-size:2rem;font-weight:800;margin-bottom:.5rem}
+  .contact-left p{color:var(--muted);font-size:.9rem}
+  .contact-links{display:flex;gap:1rem;flex-wrap:wrap}
+  .clink{background:var(--clink-bg);border:1px solid var(--border);color:var(--text);padding:.6rem 1.2rem;border-radius:2rem;text-decoration:none;font-size:.82rem;font-weight:500;display:flex;align-items:center;gap:.4rem;transition:background .2s,border-color .2s,color .2s;cursor:pointer}
+  .clink:hover{background:var(--c1);border-color:var(--c1);color:#fff}
 
-.alt-section{background:var(--bg-alt);transition:background .3s}
+  .alt-section{background:var(--bg-alt);transition:background .3s}
 
-footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem;transition:border-color .3s}
+  footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:var(--muted);font-size:.8rem;transition:border-color .3s}
 
-.hero-photo-wrap{position:relative;flex-shrink:0}
-.hero-photo-ring{width:280px;height:280px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 8px 40px rgba(37,99,235,.15)}
-.hero-photo-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;font-size:5rem}
-.hero-photo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%}
-.hero-photo-label{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:2rem;padding:.3rem .9rem;font-size:.72rem;font-weight:600;color:var(--muted);white-space:nowrap;box-shadow:0 2px 8px var(--shadow)}
+  .hero-photo-wrap{position:relative;flex-shrink:0}
+  .hero-photo-ring{width:280px;height:280px;border-radius:50%;padding:4px;background:linear-gradient(135deg,var(--c1),var(--c2));box-shadow:0 8px 40px rgba(37,99,235,.15)}
+  .hero-photo-inner{width:100%;height:100%;border-radius:50%;overflow:hidden;background:var(--bg-alt);display:flex;align-items:center;justify-content:center;font-size:5rem}
+  .hero-photo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+  .hero-photo-label{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:2rem;padding:.3rem .9rem;font-size:.72rem;font-weight:600;color:var(--muted);white-space:nowrap;box-shadow:0 2px 8px var(--shadow)}
 
-@media(max-width:768px){
-  .hero-inner{flex-direction:column-reverse;text-align:center}
-  .hero-photo-ring{width:180px;height:180px}
-  .btn-row{justify-content:center}
-}
+  @media(max-width:768px){
+    .hero-inner{flex-direction:column-reverse;text-align:center}
+    .hero-photo-ring{width:180px;height:180px}
+    .btn-row{justify-content:center}
+  }
 </style>
 </head>
 <body>
@@ -153,10 +150,10 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:v
     <div class="hero-text">
       <img src="buet_logo.png" alt="BUET Watermark" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; max-width: 80%; opacity: 0.06; z-index: 0; pointer-events: none;">
       <h1 style="font-size: 4rem; line-height: 1.2; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">
-  Hi, I'm <span style="color: var(--c1);">Parag Mollick</span><br>
-  Mechanical Engineering<br>
-  Student
-</h1>
+        Hi, I'm <span style="color: var(--c1);">Parag Mollick</span><br>
+        Mechanical Engineering<br>
+        Student
+      </h1>
       <p>A passionate 4th-year student of Mechanical Engineering at Bangladesh University of Engineering and Technology (BUET).</p>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="scroll2('projects')">View Projects</button>
@@ -178,7 +175,9 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:v
   <div class="section-label">A Bit About Me</div>
   <h2 class="section-title">Who am I?</h2>
   <div class="about-grid">
-    <div class="about-avatar">⚙️</div>
+    <div class="about-avatar" style="overflow: hidden; padding: 0; background: none; box-shadow: none;">
+  <img src="image_3b9770.png" alt="Parag Mollick" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem;">
+</div>
     <div class="about-text">
       <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka. His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise, demonstrated through the detailed design of complex mechanical components such as a Spiral Jaw Clutch driven disk in last heat transfer project.</p>
       <div class="stats-row">
@@ -204,47 +203,47 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:v
     
     <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Primary School Certificate</h3>
-      <a href="https://drive.google.com/file/d/1rpDmosA_8SsQUtV1a0BnleE9OrRGzpim/view?usp=sharing" target="_blank" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/1rpDmosA_8SsQUtV1a0BnleE9OrRGzpim/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
 
     <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Junior School Certificate</h3>
-      <a href="https://drive.google.com/file/d/1rpDmosA_8SsQUtV1a0BnleE9OrRGzpim/view?usp=sharing" target="_blank" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/1rpDmosA_8SsQUtV1a0BnleE9OrRGzpim/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
 
     <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Secondary School Certificate</h3>
-      <a href="https://drive.google.com/file/d/13QvMc28Z0dCKuwbbHnY1rHFIyf1h5C9f/view?usp=sharing" target="_blank" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/13QvMc28Z0dCKuwbbHnY1rHFIyf1h5C9f/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
 
     <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Higher Secondary School Certificate</h3>
-      <a href="https://drive.google.com/file/d/13QvMc28Z0dCKuwbbHnY1rHFIyf1h5C9f/view?usp=sharing" target="_blank" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/13QvMc28Z0dCKuwbbHnY1rHFIyf1h5C9f/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
 
     <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">SolidWorks Professional</h3>
-      <a href="https://drive.google.com/file/d/1zbHnkeR9z3hxlTiNjreWGcJlab9PUUYH/view?usp=sharing" target="_blank" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/1zbHnkeR9z3hxlTiNjreWGcJlab9PUUYH/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
 
     <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Ansys Simulation Expert</h3>
-      <a href="https://drive.google.com/file/d/1p1ZaMO1KHfSnksBVis5LtJw4NZhBu__h/view?usp=sharing" target="_blank" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/1p1ZaMO1KHfSnksBVis5LtJw4NZhBu__h/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
 
     <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">MATLAB Onramp</h3>
-      <a href="https://drive.google.com/file/d/10UNUVldFavvWTuX3fFqI-RqwdTrtOQ3Z/view?usp=sharing" target="_blank" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/10UNUVldFavvWTuX3fFqI-RqwdTrtOQ3Z/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
 
     <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">MATLAB Signal Processing Onramp</h3>
-      <a href="https://drive.google.com/file/d/1CD4HGjX8Pf97TzKXc0hAASGu1CDZDukI/view?usp=sharing" target="_blank" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/1CD4HGjX8Pf97TzKXc0hAASGu1CDZDukI/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
 
     <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Solving Nonlinear Equations with MATLAB</h3>
-      <a href="https://drive.google.com/file/d/14Sq0s1hd-iqRkSDkfWOV0Vs8tUMUL_Wd/view?usp=sharing" target="_blank" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <a href="https://drive.google.com/file/d/14Sq0s1hd-iqRkSDkfWOV0Vs8tUMUL_Wd/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
   </div>
 
@@ -258,42 +257,40 @@ footer{text-align:center;padding:2rem;border-top:1px solid var(--border);color:v
   <h2 class="section-title">Projects</h2>
   <div class="project-card" style="padding: 1.5rem; background: var(--card); border: 1px solid var(--border); border-radius: 1.2rem;">
   
-  <img src="image_58c5ae.jpg" alt="AeroMark Project" style="width:100%; height:auto; border-radius: 0.8rem; margin-bottom: 1rem;">
+    <img src="image_58c5ae.jpg" alt="AeroMark Project" style="width:100%; height:auto; border-radius: 0.8rem; margin-bottom: 1rem;">
 
-  <h3 class="proj-title" style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom: 0.5rem;">AeroMark ME 366 Project</h3>
+    <h3 class="proj-title" style="font-family:'Playfair Display',serif; font-size:1.4rem; margin-bottom: 0.5rem;">AeroMark ME 366 Project</h3>
 
-  <p class="proj-desc" id="proj-text" style="color:var(--muted); font-size:0.9rem;">
-    AeroMark is an FPV drone-based wildlife management system designed to remotely tranquilize and safely immobilize wild animals for research and conservation, rescue, and veterinary support.
-    <span id="more-text" class="hidden"> 
-    The drone carries a lightweight electromagnetic coil gun and a stabilized camera for accurate targeting. The coil gun works by boosting a 12V supply to high voltage, charging capacitors, and discharging them through a solenoid to generate a magnetic field that launches a metal dart.
-The system reduces direct human-animal interaction, improves researcher safety, and enables efficient field operations such as animal tagging, monitoring, and health assessment. The drone has a flight time of approximately 10 minutes, a range of 1 km, and manual control with an FPV camera system.
-Future developments include AI-assisted targeting, sensor upgrades, automatic dosing, swarm operations, and advanced data logging. Current limitations include limited range and accuracy, dependence on weather conditions, the need for skilled operators, and potential GPS signal issues in dense environments.
-   </span>
-  </p>
-  
-  <button onclick="toggleText()" id="read-btn" style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0;">Read More</button>
+    <p class="proj-desc" id="proj-text" style="color:var(--muted); font-size:0.9rem;">
+      AeroMark is an FPV drone-based wildlife management system designed to remotely tranquilize and safely immobilize wild animals for research and conservation, rescue, and veterinary support.
+      <span id="more-text" class="hidden"> 
+      The drone carries a lightweight electromagnetic coil gun and a stabilized camera for accurate targeting. The coil gun works by boosting a 12V supply to high voltage, charging capacitors, and discharging them through a solenoid to generate a magnetic field that launches a metal dart.
+      The system reduces direct human-animal interaction, improves researcher safety, and enables efficient field operations such as animal tagging, monitoring, and health assessment. The drone has a flight time of approximately 10 minutes, a range of 1 km, and manual control with an FPV camera system.
+      Future developments include AI-assisted targeting, sensor upgrades, automatic dosing, swarm operations, and advanced data logging. Current limitations include limited range and accuracy, dependence on weather conditions, the need for skilled operators, and potential GPS signal issues in dense environments.
+      </span>
+    </p>
+    
+    <button onclick="toggleText()" id="read-btn" style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0; margin-bottom: 1.5rem;">Read More</button>
 
-  <div style="margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;"> 
-  
-  <a href="https://drive.google.com/file/d/1AKdLJZxef2YgFVL8lTBsy63l3Yh0WU3v/view?usp=drive_link" target="_blank" class="btn btn-outline" style="text-decoration: none;">View Image 🖼️</a>
-  
-  <a href="https://drive.google.com/file/d/1zjSlOQDUi3YJhgUZAvT2U-gya0Uf0L0m/view?usp=drive_link" target="_blank" class="btn btn-primary" style="text-decoration: none;">View Video 🎥</a>
+    <div class="project-actions"> 
+      <a href="https://drive.google.com/file/d/1AKdLJZxef2YgFVL8lTBsy63l3Yh0WU3v/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn btn-outline">View Image </a>
+      <a href="https://drive.google.com/file/d/1zjSlOQDUi3YJhgUZAvT2U-gya0Uf0L0m/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="btn btn-primary">View Video </a>
+    </div>
 
-</div>
-  <div class="project-card" style="background: var(--card); border: 1px solid var(--border); padding: 1.5rem; border-radius: 1rem; transition: 0.3s;">
-  <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem;">Design and Optimization of Spiral Jaw Clutch</h3>
-  <a href="https://drive.google.com/file/d/1gINuKnRBcTa1VoLBJLWyrkwcatcB3swL/view?usp=drive_link" target="_blank" style="text-decoration: none; color: var(--c1); font-weight: bold; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px;">
-    View Project PDF 📄 ↗
-  </a>
-</div>
+    <div class="project-card" style="background: var(--card); border: 1px solid var(--border); padding: 1.5rem; border-radius: 1rem; transition: 0.3s; margin-bottom: 1rem;">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem;">Design and Optimization of Spiral Jaw Clutch</h3>
+      <a href="https://drive.google.com/file/d/1gINuKnRBcTa1VoLBJLWyrkwcatcB3swL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="project-pdf-link">
+        View Project PDF 📄 ↗
+      </a>
+    </div>
 
-<div class="project-card" style="background: var(--card); border: 1px solid var(--border); padding: 1.5rem; border-radius: 1rem; transition: 0.3s;">
-  <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem;">Radiator-Type Rear door Heat Exchanger Equipment</h3>
-  <a href="https://drive.google.com/file/d/1Xqh4m2CPmdsplN-0eMz1Fm1DgrDAu_cS/view?usp=drive_link" target="_blank" style="text-decoration: none; color: var(--c1); font-weight: bold; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px;">
-    View Project PDF 📄 ↗
-  </a>
-</div>
-</div>
+    <div class="project-card" style="background: var(--card); border: 1px solid var(--border); padding: 1.5rem; border-radius: 1rem; transition: 0.3s;">
+      <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem;">Radiator-Type Rear door Heat Exchanger Equipment</h3>
+      <a href="https://drive.google.com/file/d/1Xqh4m2CPmdsplN-0eMz1Fm1DgrDAu_cS/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="project-pdf-link">
+        View Project PDF 📄 ↗
+      </a>
+    </div>
+  </div>
 </section>
 
 <section id="experience" class="alt-section">
@@ -324,7 +321,7 @@ Future developments include AI-assisted targeting, sensor upgrades, automatic do
 
 <section id="awards" class="alt-section">
   <div class="section-label">Academic Honors</div>
-  <h2 class="section-title" style="margin-bottom: 2rem;">Awards & Scholarships</h2>
+  <h2 class="section-title" style="margin-bottom: 2rem;">Awards and Scholarships</h2>
   
   <div style="display: flex; justify-content: center; flex-wrap: wrap; gap: 1.5rem;">
     
@@ -372,28 +369,29 @@ Future developments include AI-assisted targeting, sensor upgrades, automatic do
     </div>
     <div class="contact-links">
       <a class="clink" href="tel:+8801626058887">
-  <i class="fas fa-phone"></i> +8801626058887
-</a>
+        <i class="fas fa-phone"></i> +8801626058887
+      </a>
 
-  <a class="clink" href="javascript:void(0)" onclick="navigator.clipboard.writeText('paragmollick.mechanical@gmail.com'); alert('Email copied to clipboard!');">
-  <i class="fas fa-copy"></i> paragmollick.mechanical@gmail.com
-</a>
+      <a class="clink" href="javascript:void(0)" onclick="navigator.clipboard.writeText('paragmollick.mechanical@gmail.com'); alert('Email copied to clipboard!');">
+        <i class="fas fa-copy"></i> paragmollick.mechanical@gmail.com
+      </a>
 
-  <a class="clink" href="https://web.facebook.com/paragmollick.mecha.buet" target="_blank">
-    <i class="fab fa-facebook"></i> facebook
-  </a>
+      <a class="clink" href="https://web.facebook.com/paragmollick.mecha.buet" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-facebook"></i> facebook
+      </a>
 
-    <a class="clink" href="https://www.instagram.com/paragmollick/" target="_blank">
-    <i class="fab fa-instagram"></i> instagram
-  </a>
+      <a class="clink" href="https://www.instagram.com/paragmollick/" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-instagram"></i> instagram
+      </a>
 
-<a class="clink" href="https://wa.me/+8801626058887" target="_blank">
-  <i class="fab fa-whatsapp" style="font-size: 1.2em;"></i> WhatsApp
-</a>
-<a class="clink" href="https://linkedin.com/in/yourprofile" target="_blank">
-    <i class="fab fa-linkedin"></i> LinkedIn
-  </a>
-</div>
+      <a class="clink" href="https://wa.me/+8801626058887" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-whatsapp" style="font-size: 1.2em;"></i> WhatsApp
+      </a>
+
+      <a class="clink" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+        <i class="fab fa-linkedin"></i> LinkedIn
+      </a>
+    </div>
   </div>
 </section>
 
@@ -410,17 +408,10 @@ function setTheme(mode) {
 const saved = localStorage.getItem('theme') || 'light';
 setTheme(saved);
 
-const skills = 
-[
-  { name: 'SolidWorks', icon: '<img src="solidworks.png" style="width: 90px; height: 35px; object-fit: contain;">', pct: 90, color: '#e3241b' },
-  { name: 'AutoCAD', icon: '<img src="autocad.png" style="width: 35px; height: 35px; object-fit: contain;">', pct: 85, color: '#0070bb' },
-  { name: 'Ansys', icon: '<img src="ansys.png" style="width: 100px; height:35px; object-fit: contain;">', pct: 80, color: '#f7b000' },
-];
-
-const projects = [
-  { thumb: '🛒', bg: '#0d1a14', tag: 'React · Stripe', tagBg: 'rgba(0,168,130,.2)', tagColor: 'var(--c3)', title: 'E-Shop Next', desc: 'A modern e-commerce platform with cart and checkout.' },
-  { thumb: '📝', bg: '#1a0d1a', tag: 'Vanilla JS',    tagBg: 'rgba(123,47,190,.2)', tagColor: 'var(--c2)', title: 'TaskMaster', desc: 'Minimalist drag-and-drop board to track daily tasks and goals.' },
-  { thumb: '💬', bg: '#1a0d0d', tag: 'Socket.io · Node',  tagBg: 'rgba(255,87,51,.2)',  tagColor: '#ff8066', title: 'ChatSphere', desc: 'Real-time group chat app with rooms and message history.' },
+const skills = [
+  { name: 'SolidWorks', icon: '<img src="solidworks.png" alt="SolidWorks" style="width: 90px; height: 35px; object-fit: contain;">', pct: 90, color: '#e3241b' },
+  { name: 'AutoCAD', icon: '<img src="autocad.png" alt="AutoCAD" style="width: 35px; height: 35px; object-fit: contain;">', pct: 85, color: '#0070bb' },
+  { name: 'Ansys', icon: '<img src="ansys.png" alt="Ansys" style="width: 100px; height:35px; object-fit: contain;">', pct: 80, color: '#f7b000' },
 ];
 
 const sg = document.getElementById('skills-grid');
@@ -431,19 +422,6 @@ skills.forEach(s => {
       <div class="skill-name">${s.name}</div>
       <div class="skill-bar">
         <div class="skill-fill" data-w="${s.pct}" style="width:0%;background:${s.color}"></div>
-      </div>
-    </div>`;
-});
-
-const pg = document.getElementById('projects-grid');
-projects.forEach(p => {
-  pg.innerHTML += `
-    <div class="project-card">
-      <div class="proj-thumb" style="background:${p.bg}">${p.thumb}</div>
-      <div class="proj-body">
-        <span class="proj-tag" style="background:${p.tagBg};color:${p.tagColor}">${p.tag}</span>
-        <div class="proj-title">${p.title}</div>
-        <div class="proj-desc">${p.desc}</div>
       </div>
     </div>`;
 });
@@ -465,48 +443,44 @@ const obs = new IntersectionObserver((entries) => {
 setTimeout(() => {
   document.querySelectorAll('.skill-fill').forEach(el => obs.observe(el));
 }, 100);
-</script>
 
-<script>
-  function toggleText() {
-    const moreText = document.getElementById("more-text");
-    const btnText = document.getElementById("read-btn");
-    if (moreText.classList.contains("hidden")) {
-      moreText.classList.remove("hidden");
-      btnText.innerText = "Read Less";
-    } else {
-      moreText.classList.add("hidden");
-      btnText.innerText = "Read More";
-    }
+function toggleText() {
+  const moreText = document.getElementById("more-text");
+  const btnText = document.getElementById("read-btn");
+  if (moreText.classList.contains("hidden")) {
+    moreText.classList.remove("hidden");
+    btnText.innerText = "Read Less";
+  } else {
+    moreText.classList.add("hidden");
+    btnText.innerText = "Read More";
   }
- 
-  function toggleCerts() {
-    const btn = document.getElementById('see-more-btn');
-    const allCerts = document.querySelectorAll('.cert-card');
-    
-    if (btn.innerText === 'See More') {
-      allCerts.forEach(cert => cert.classList.remove('hidden'));
-      btn.innerText = 'See Less';
-    } else {
-      allCerts.forEach((cert, index) => {
-        if (index >= 5) cert.classList.add('hidden');
-      });
-      btn.innerText = 'See More';
-    }
+}
+
+function toggleCerts() {
+  const btn = document.getElementById('see-more-btn');
+  const allCerts = document.querySelectorAll('.cert-card');
+  
+  if (btn.innerText === 'See More') {
+    allCerts.forEach(cert => cert.classList.remove('hidden'));
+    btn.innerText = 'See Less';
+  } else {
+    allCerts.forEach((cert, index) => {
+      if (index >= 4) cert.classList.add('hidden'); // Show 4 certificates by default
+    });
+    btn.innerText = 'See More';
   }
+}
+
 function toggleAwards() {
   const btn = document.getElementById('see-more-awards-btn');
   const allAwards = document.querySelectorAll('.award-card');
 
-  // ৪ নম্বর কার্ডটি (index 3) হাইড করা আছে কি না চেক করবে
   const isHidden = allAwards[3].classList.contains('hidden');
 
   if (isHidden) {
-    // যদি লুকানো থাকে, তবে সব কার্ড থেকে hidden ক্লাস সরিয়ে দেখাও
     allAwards.forEach(award => award.classList.remove('hidden'));
     btn.innerText = 'See Less';
   } else {
-    // যদি আগে থেকেই দেখা যায়, তবে ৪ নম্বরটাতে আবার hidden ক্লাস যোগ করো
     allAwards.forEach((award, index) => {
       if (index >= 3) award.classList.add('hidden');
     });
