@@ -152,35 +152,83 @@
        মোবাইল ওভারফ্লো ফিক্স (Text & Button)
     ==================================== */
     
-    /* ১. লম্বা ইমেইল ভেঙে নিচে নামানোর জন্য */
-    .clink {
-        white-space: normal;
-        word-break: break-word; /* লম্বা ইমেইল ভেঙে যাবে */
-        height: auto;
-        width: 100%; /* মোবাইলে বাটনগুলো ফুল-উইডথ হবে */
-        justify-content: center;
-        text-align: center;
+    /* ====================================
+       মোবাইল ওভারফ্লো ফিক্স (Email & Experience Image)
+    ==================================== */
+    
+    /* ১. কন্টাক্ট বক্স এবং ইমেইল ফিক্স */
+    .contact-box {
+        padding: 1.5rem 1rem !important; /* প্যাডিং কমানো হলো যাতে জায়গা বেশি পাওয়া যায় */
     }
     .contact-links {
-        width: 100%;
-        display: flex;
-        flex-direction: column; /* বাটনগুলো সুন্দর করে নিচে নিচে আসবে */
+        width: 100% !important;
+        flex-direction: column !important; /* বাটনগুলো নিচে নিচে আসবে */
+        gap: 10px !important;
+    }
+    .clink {
+        width: 100% !important;
+        white-space: normal !important;
+        word-break: break-all !important; /* যেকোনো লম্বা ইমেইল ভেঙে দুই লাইন করে দেবে */
+        justify-content: center !important;
+        padding: 0.8rem !important;
+        text-align: center !important;
     }
 
-    /* ২. টেক্সট ওভারফ্লো ফিক্স */
-    p, h1, h2, h3, h4, h5, h6 {
-        overflow-wrap: break-word;
-        word-wrap: break-word;
+    /* ২. এক্সপেরিয়েন্স কার্ড ও ছবি ফিক্স */
+    #experience .card {
+        padding: 1.5rem !important;
+        gap: 1.5rem !important; /* আগের ৩ রেম গ্যাপ কমিয়ে মোবাইলের জন্য ঠিক করা হলো */
+        flex-direction: column !important;
     }
-
-    /* ৩. Experience কার্ডের সাইজ মোবাইলের সাথে ফিট করা */
-    div[style*="min-width: 300px"], div[style*="min-width: 280px"] {
-        min-width: 100% !important; /* ৩০০px লিমিট ভেঙে স্ক্রিনের সমান করা হলো */
+    #experience .card > div {
+        min-width: 100% !important; /* ইনলাইন স্টাইল ব্রেক করে ১০০% করা হলো */
+        width: 100% !important;
+    }
+    #experience img {
+        width: 100% !important;
+        max-width: 100% !important; /* ছবি কোনোভাবেই বক্সের বাইরে যাবে না */
+        height: auto !important;
+    }
+    /* ====================================
+       মোবাইল প্রোফাইল পিকচার ভিজিবিলিটি ফিক্স
+    ==================================== */
+    
+    /* ১. হিরো সেকশন যেন মেনুর নিচে না ঢোকে */
+    .hero {
+        min-height: auto !important; 
+        padding-top: 6rem !important; /* মেনু বারের নিচ থেকে যথেষ্ট জায়গা নেবে */
+        padding-bottom: 2rem !important;
     }
     
-    /* মোবাইলের জন্য কার্ডের ভেতরের প্যাডিং একটু কমানো */
-    .contact-box, #experience .reveal {
-        padding: 1.5rem 1rem !important; 
+    /* ২. হিরো ছবিকে জোর করে মাঝখানে এবং সঠিক সাইজে আনা */
+    .hero-photo-wrap {
+        display: flex !important;
+        justify-content: center;
+        width: 100%;
+        margin-bottom: 1.5rem;
+        z-index: 10;
+    }
+    .hero-photo-ring {
+        width: 200px !important;
+        height: 200px !important;
+        margin: 0 auto;
+    }
+    
+    /* ৩. এবাউট সেকশনের ছবি যেন কোনোভাবেই হাইড না হয় */
+    .about-avatar {
+        display: flex !important;
+        width: 200px !important;
+        height: 200px !important;
+        margin: 0 auto 2rem auto !important;
+        opacity: 1 !important; /* অ্যানিমেশনে আটকে থাকলে জোর করে দেখাবে */
+        transform: none !important;
+    }
+    
+    /* ৪. ছবি যেন বক্সের বাইরে না যায় */
+    .hero-photo-inner img, .about-avatar img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: cover !important;
     }
 }
 
