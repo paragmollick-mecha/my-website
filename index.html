@@ -174,17 +174,18 @@
         text-align: center !important;
     }
 
-    /* ২. এক্সপেরিয়েন্স কার্ড ও ছবি ফিক্স */
-    #experience .card {
-        padding: 1.5rem !important;
-        gap: 1.5rem !important; /* আগের ৩ রেম গ্যাপ কমিয়ে মোবাইলের জন্য ঠিক করা হলো */
-        flex-direction: column !important;
+   /* ২. এক্সপেরিয়েন্স কার্ড ও ছবি ফিক্স (১০০% কাজ করবে) */
+    #experience .reveal {
+        padding: 1.5rem 1rem !important;
+        gap: 1.5rem !important; 
+        flex-direction: column !important; /* লেখা ও ছবিকে নিচে নিচে আনবে */
     }
-    #experience .card > div {
-        min-width: 100% !important; /* ইনলাইন স্টাইল ব্রেক করে ১০০% করা হলো */
+    #experience .reveal > div {
+        min-width: 100% !important; /* ইনলাইন স্টাইলের 300px বাতিল করা হলো */
         width: 100% !important;
+        max-width: 100% !important;
     }
-    #experience img {
+    #experience .reveal img {
         width: 100% !important;
         max-width: 100% !important; /* ছবি কোনোভাবেই বক্সের বাইরে যাবে না */
         height: auto !important;
