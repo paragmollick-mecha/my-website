@@ -120,10 +120,11 @@
 .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text); }
 
 @media(max-width:768px){
+    /* ১. মোবাইল মেনু ফিক্স */
     nav { flex-wrap: wrap; padding: 1rem 1.5rem; }
     .menu-toggle { display: block; }
     .nav-links {
-        display: none; /* ডিফল্ট লুকানো */
+        display: none; 
         width: 100%;
         flex-direction: column;
         text-align: center;
@@ -132,7 +133,21 @@
         border-top: 1px solid var(--border);
         margin-top: 1rem;
     }
-    .nav-links.active { display: flex; }
+    .nav-links.active { display: flex; animation: fadeIn 0.3s ease forwards; }
+
+    /* ২. হিরো সেকশন এবং প্রোফাইল পিকচার ফিক্স (ছবিটি ফিরিয়ে আনার জন্য) */
+    .hero-inner { flex-direction: column-reverse; text-align: center; padding-top: 2rem; }
+    .hero-photo-ring { width: 220px; height: 220px; margin: 0 auto 2rem auto; }
+    .btn-row { justify-content: center; }
+    
+    /* ৩. এবাউট সেকশনের ছবি ফিক্স */
+    .about-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
+    .about-avatar { margin: 0 auto; max-width: 220px; }
+    .stats-row { justify-content: center; }
+    
+    /* ৪. কন্টাক্ট সেকশন ফিক্স */
+    .contact-box { flex-direction: column; text-align: center; gap: 1.5rem; padding: 1.5rem; }
+    .contact-links { justify-content: center; }
 }
 
 /* =========================================
