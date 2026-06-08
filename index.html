@@ -134,12 +134,46 @@
     }
     .nav-links.active { display: flex; }
 }
+
+/* =========================================
+   নতুন অ্যানিমেশন কোড (ফ্লোটিং এবং হোভার)
+========================================== */
+
+/* ১. প্রোফাইল ছবির ফ্লোটিং (Floating) অ্যানিমেশন */
+@keyframes floatAnimation {
+  0% { transform: translateY(0px); }
+  50% { transform: translateY(-15px); }
+  100% { transform: translateY(0px); }
+}
+.hero-photo-ring {
+  animation: floatAnimation 4s ease-in-out infinite;
+}
+
+/* ২. কার্ডগুলোর স্মুথ লিফটিং (Lifting) হোভার ইফেক্ট */
+.skill-card, .project-card, .cert-card, .award-card, .contact-box {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.skill-card:hover, .project-card:hover, .cert-card:hover, .award-card:hover, .contact-box:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15) !important;
+  border-color: var(--c1) !important;
+}
+
+/* ৩. বাটন হোভার ইফেক্ট */
+.btn {
+  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease !important;
+}
+.btn:hover {
+  transform: translateY(-3px) !important;
+  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3) !important;
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Parag Mollick/me.BUET</div>
+  <div class="logo">Parag Mollick/ME.BUET</div>
   <div class="menu-toggle" onclick="toggleMenu()">
     <i class="fas fa-bars"></i>
   </div>
@@ -194,13 +228,20 @@
   <img src="image_3b9770.png" alt="Parag Mollick" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem;">
 </div>
     <div class="about-text">
-      <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka. His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise, demonstrated through the detailed design of complex mechanical components such as a Spiral Jaw Clutch driven disk in last heat transfer project.</p>
-      <div class="stats-row">
-        <div class="stat"><div class="stat-num">3+</div><div class="stat-label">Projects Built</div></div>
-        <div class="stat"><div class="stat-num">4th</div><div class="stat-label">Year ME</div></div>
-        <div class="stat"><div class="stat-num">∞</div><div class="stat-label">Curiosity</div></div>
-      </div>
+  <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka. 
+     <span id="about-more-text" class="hidden"> 
+       His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise. 
+     </span>
+  </p>
+  
+  <button onclick="toggleAboutText()" id="about-read-btn" 
+          style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0; margin-top:10px;">
+    See More
+  </button>
+  
+  <div class="stats-row">
     </div>
+</div>
   </div>
 </section>
 
@@ -384,7 +425,7 @@
     </div>
     <div class="contact-links">
       <a class="clink" href="tel:+8801626058887">
-        <i class="fas fa-phone"></i> +8801626058887
+        <i class="fas fa-phone"></i> 01626-058887
       </a>
 
       <a class="clink" href="javascript:void(0)" onclick="navigator.clipboard.writeText('paragmollick.mechanical@gmail.com'); alert('Email copied to clipboard!');">
@@ -403,7 +444,7 @@
         <i class="fab fa-whatsapp" style="font-size: 1.2em;"></i> WhatsApp
       </a>
 
-      <a class="clink" href="https://linkedin.com/in/yourprofile" target="_blank" rel="noopener noreferrer">
+      <a class="clink" href="https://www.linkedin.com/in/parag-mollick-82ba4b28a/" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-linkedin"></i> LinkedIn
       </a>
     </div>
@@ -512,6 +553,19 @@ function toggleAwards() {
       if (index >= 3) award.classList.add('hidden');
     });
     btn.innerText = 'See More';
+  }
+}
+
+function toggleAboutText() {
+  const moreText = document.getElementById("about-more-text");
+  const btnText = document.getElementById("about-read-btn");
+  
+  if (moreText.classList.contains("hidden")) {
+    moreText.classList.remove("hidden");
+    btnText.innerText = "See Less";
+  } else {
+    moreText.classList.add("hidden");
+    btnText.innerText = "See More";
   }
 }
 </script>
