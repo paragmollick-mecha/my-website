@@ -148,6 +148,40 @@
     /* ৪. কন্টাক্ট সেকশন ফিক্স */
     .contact-box { flex-direction: column; text-align: center; gap: 1.5rem; padding: 1.5rem; }
     .contact-links { justify-content: center; }
+    /* ====================================
+       মোবাইল ওভারফ্লো ফিক্স (Text & Button)
+    ==================================== */
+    
+    /* ১. লম্বা ইমেইল ভেঙে নিচে নামানোর জন্য */
+    .clink {
+        white-space: normal;
+        word-break: break-word; /* লম্বা ইমেইল ভেঙে যাবে */
+        height: auto;
+        width: 100%; /* মোবাইলে বাটনগুলো ফুল-উইডথ হবে */
+        justify-content: center;
+        text-align: center;
+    }
+    .contact-links {
+        width: 100%;
+        display: flex;
+        flex-direction: column; /* বাটনগুলো সুন্দর করে নিচে নিচে আসবে */
+    }
+
+    /* ২. টেক্সট ওভারফ্লো ফিক্স */
+    p, h1, h2, h3, h4, h5, h6 {
+        overflow-wrap: break-word;
+        word-wrap: break-word;
+    }
+
+    /* ৩. Experience কার্ডের সাইজ মোবাইলের সাথে ফিট করা */
+    div[style*="min-width: 300px"], div[style*="min-width: 280px"] {
+        min-width: 100% !important; /* ৩০০px লিমিট ভেঙে স্ক্রিনের সমান করা হলো */
+    }
+    
+    /* মোবাইলের জন্য কার্ডের ভেতরের প্যাডিং একটু কমানো */
+    .contact-box, #experience .reveal {
+        padding: 1.5rem 1rem !important; 
+    }
 }
 
 /* =========================================
