@@ -174,21 +174,24 @@
         text-align: center !important;
     }
 
-   /* ২. এক্সপেরিয়েন্স কার্ড ও ছবি ফিক্স (১০০% কাজ করবে) */
+   /* ২. এক্সপেরিয়েন্স কার্ড ও ছবি ফিক্স (চূড়ান্ত সমাধান) */
     #experience .reveal {
-        padding: 1.5rem 1rem !important;
-        gap: 1.5rem !important; 
-        flex-direction: column !important; /* লেখা ও ছবিকে নিচে নিচে আনবে */
+        flex-direction: column !important; /* লেখা ও ছবি নিচে নিচে আনবে */
+        padding: 1.2rem !important; /* প্যাডিং কমিয়ে জায়গা বাড়ানো হলো */
+        gap: 1.5rem !important;
+        overflow: hidden !important; /* এটা ম্যাজিকের মতো কাজ করবে, কোনো কিছু বক্সের বাইরে যেতে দেবে না */
+        box-sizing: border-box !important;
     }
     #experience .reveal > div {
-        min-width: 100% !important; /* ইনলাইন স্টাইলের 300px বাতিল করা হলো */
+        min-width: 0px !important; /* ইনলাইন কোডের 300px পুরোপুরি বাতিল করা হলো */
         width: 100% !important;
-        max-width: 100% !important;
+        flex: none !important;
     }
     #experience .reveal img {
         width: 100% !important;
-        max-width: 100% !important; /* ছবি কোনোভাবেই বক্সের বাইরে যাবে না */
+        max-width: 100% !important;
         height: auto !important;
+        display: block !important;
     }
     /* ====================================
        মোবাইল প্রোফাইল পিকচার ভিজিবিলিটি ফিক্স
