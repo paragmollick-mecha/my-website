@@ -168,12 +168,77 @@
   transform: translateY(-3px) !important;
   box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3) !important;
 }
+/* =========================================
+   প্রিমিয়াম ব্যাকগ্রাউন্ড (Ambient Tech Glow) - FIXED
+========================================== */
+
+/* সলিড ব্যাকগ্রাউন্ড ফিক্স করা যাতে গ্লো দেখা যায় */
+html {
+  background-color: var(--bg);
+  transition: background-color 0.4s ease;
+}
+body {
+  background-color: transparent !important;
+}
+
+/* পুরো ব্যাকগ্রাউন্ডে গ্লো ইফেক্ট সেট করা */
+body::before, body::after {
+  content: '';
+  position: fixed;
+  width: 50vw;
+  height: 50vw;
+  min-width: 400px;
+  min-height: 400px;
+  border-radius: 50%;
+  filter: blur(100px); /* সফট ব্লার */
+  z-index: -1; /* গ্রিডের নিচে থাকবে */
+  pointer-events: none; 
+  animation: ambientGlowMove 15s ease-in-out infinite alternate;
+}
+
+/* স্ক্রিনের উপরের বাম পাশের নীল আভা */
+body::before {
+  background: var(--c1);
+  top: -15%;
+  left: -10%;
+  opacity: 0.15; /* আভা একটু বাড়িয়ে দিয়েছি যাতে স্পষ্ট বোঝা যায় */
+}
+
+/* স্ক্রিনের নিচের ডান পাশের কালচে আভা */
+body::after {
+  background: var(--c2);
+  bottom: -15%;
+  right: -10%;
+  opacity: 0.15;
+  animation-duration: 20s;
+  animation-direction: alternate-reverse;
+}
+
+/* ডার্ক মোডে গ্লো সেটআপ */
+[data-theme="dark"] body::before, 
+[data-theme="dark"] body::after {
+  opacity: 0.08;
+}
+
+/* আভা ধীরে ধীরে মুভ করার অ্যানিমেশন */
+@keyframes ambientGlowMove {
+  0% { transform: translate(0, 0) scale(1); }
+  100% { transform: translate(80px, 60px) scale(1.1); }
+}
+/* পেজের সব সেকশন থেকে সলিড ব্যাকগ্রাউন্ড সরিয়ে গ্লো ভিজিবল করা */
+.alt-section {
+  background: transparent !important;
+}
+/* ব্যাকগ্রাউন্ডের গ্রিড লাইন মুছে ফেলার জন্য */
+body {
+  background-image: none !important;
+}
 </style>
 </head>
 <body>
 
 <nav>
-  <div class="logo">Parag Mollick/ME.BUET</div>
+  <div class="logo" onclick="window.scrollTo({ top: 0, behavior: 'smooth' });" style="cursor: pointer;">Parag Mollick/ME.BUET</div>
   <div class="menu-toggle" onclick="toggleMenu()">
     <i class="fas fa-bars"></i>
   </div>
@@ -429,8 +494,8 @@
       </a>
 
       <a class="clink" href="javascript:void(0)" onclick="navigator.clipboard.writeText('paragmollick.mechanical@gmail.com'); alert('Email copied to clipboard!');">
-        <i class="fas fa-copy"></i> paragmollick.mechanical@gmail.com
-      </a>
+  <i class="fas fa-envelope"></i> paragmollick.mechanical@gmail.com <i class="fas fa-copy" style="font-size: 0.85em; margin-left: 6px; opacity: 0.6;"></i>
+</a>
 
       <a class="clink" href="https://web.facebook.com/paragmollick.mecha.buet" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-facebook"></i> facebook
