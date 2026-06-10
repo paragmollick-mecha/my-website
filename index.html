@@ -115,7 +115,6 @@
   .hero-photo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%}
   .hero-photo-label{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:2rem;padding:.3rem .9rem;font-size:.72rem;font-weight:600;color:var(--muted);white-space:nowrap;box-shadow:0 2px 8px var(--shadow)}
 
-  /* মোবাইল ভিউ ঠিক করার জন্য নতুন কোড */
 /* মেনু টগল স্টাইল */
 .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text); }
 
@@ -135,7 +134,7 @@
     }
     .nav-links.active { display: flex; animation: fadeIn 0.3s ease forwards; }
 
-    /* ২. হিরো সেকশন এবং প্রোফাইল পিকচার ফিক্স (ছবিটি ফিরিয়ে আনার জন্য) */
+    /* ২. হিরো সেকশন এবং প্রোফাইল পিকচার ফিক্স */
     .hero-inner { flex-direction: column-reverse; text-align: center; padding-top: 2rem; }
     .hero-photo-ring { width: 220px; height: 220px; margin: 0 auto 2rem auto; }
     .btn-row { justify-content: center; }
@@ -148,27 +147,20 @@
     /* ৪. কন্টাক্ট সেকশন ফিক্স */
     .contact-box { flex-direction: column; text-align: center; gap: 1.5rem; padding: 1.5rem; }
     .contact-links { justify-content: center; }
-    /* ====================================
-       মোবাইল ওভারফ্লো ফিক্স (Text & Button)
-    ==================================== */
-    
-    /* ====================================
-       মোবাইল ওভারফ্লো ফিক্স (Email & Experience Image)
-    ==================================== */
     
     /* ১. কন্টাক্ট বক্স এবং ইমেইল ফিক্স */
     .contact-box {
-        padding: 1.5rem 1rem !important; /* প্যাডিং কমানো হলো যাতে জায়গা বেশি পাওয়া যায় */
+        padding: 1.5rem 1rem !important; 
     }
     .contact-links {
         width: 100% !important;
-        flex-direction: column !important; /* বাটনগুলো নিচে নিচে আসবে */
+        flex-direction: column !important; 
         gap: 10px !important;
     }
     .clink {
         width: 100% !important;
         white-space: normal !important;
-        word-break: break-all !important; /* যেকোনো লম্বা ইমেইল ভেঙে দুই লাইন করে দেবে */
+        word-break: break-all !important; 
         justify-content: center !important;
         padding: 0.8rem !important;
         text-align: center !important;
@@ -176,14 +168,14 @@
 
    /* ২. এক্সপেরিয়েন্স কার্ড ও ছবি ফিক্স (চূড়ান্ত সমাধান) */
     #experience > div:last-child {
-        flex-direction: column !important; /* লেখা ও ছবি নিচে নিচে আনবে */
+        flex-direction: column !important; 
         padding: 1.2rem !important; 
         gap: 1.5rem !important;
-        overflow: hidden !important; /* কোনো কিছু বক্সের বাইরে যেতে দেবে না */
+        overflow: hidden !important; 
         box-sizing: border-box !important;
     }
     #experience > div:last-child > div {
-        min-width: 0px !important; /* জেদি ইনলাইন কোড বাতিল করা হলো */
+        min-width: 0px !important; 
         width: 100% !important;
         flex: none !important;
     }
@@ -194,14 +186,11 @@
         display: block !important;
         object-fit: cover !important;
     }
-    /* ====================================
-       মোবাইল প্রোফাইল পিকচার ভিজিবিলিটি ফিক্স
-    ==================================== */
     
     /* ১. হিরো সেকশন যেন মেনুর নিচে না ঢোকে */
     .hero {
         min-height: auto !important; 
-        padding-top: 6rem !important; /* মেনু বারের নিচ থেকে যথেষ্ট জায়গা নেবে */
+        padding-top: 6rem !important; 
         padding-bottom: 2rem !important;
     }
     
@@ -225,7 +214,7 @@
         width: 200px !important;
         height: 200px !important;
         margin: 0 auto 2rem auto !important;
-        opacity: 1 !important; /* অ্যানিমেশনে আটকে থাকলে জোর করে দেখাবে */
+        opacity: 1 !important; 
         transform: none !important;
     }
     
@@ -252,17 +241,17 @@
 }
 
 /* ২. কার্ডগুলোর স্মুথ লিফটিং (Lifting) হোভার ইফেক্ট */
-.skill-card, .project-card, .cert-card, .award-card, .contact-box {
+.skill-card, .project-card, .cert-card, .award-card, .contact-box, .card {
   transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
 }
 
-.skill-card:hover, .project-card:hover, .cert-card:hover, .award-card:hover, .contact-box:hover {
+.skill-card:hover, .project-card:hover, .cert-card:hover, .award-card:hover, .contact-box:hover, .card:hover {
   transform: translateY(-8px) !important;
   box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15) !important;
   border-color: var(--c1) !important;
 }
 
-/* ৩. বাটন হোভার ইফেক্ট */
+/* ৩. বাটন হোভার ইফ效ক্ট */
 .btn {
   transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease !important;
 }
@@ -270,11 +259,22 @@
   transform: translateY(-3px) !important;
   box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3) !important;
 }
+
+/* ৪. স্ক্রল রিভিল অ্যানিমেশন ক্লাস */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s ease-out;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
 /* =========================================
    প্রিমিয়াম ব্যাকগ্রাউন্ড (Ambient Tech Glow) - FIXED
 ========================================== */
 
-/* সলিড ব্যাকগ্রাউন্ড ফিক্স করা যাতে গ্লো দেখা যায় */
 html {
   background-color: var(--bg);
   transition: background-color 0.4s ease;
@@ -283,7 +283,6 @@ body {
   background-color: transparent !important;
 }
 
-/* পুরো ব্যাকগ্রাউন্ডে গ্লো ইফেক্ট সেট করা */
 body::before, body::after {
   content: '';
   position: fixed;
@@ -292,21 +291,19 @@ body::before, body::after {
   min-width: 400px;
   min-height: 400px;
   border-radius: 50%;
-  filter: blur(100px); /* সফট ব্লার */
-  z-index: -1; /* গ্রিডের নিচে থাকবে */
+  filter: blur(100px); 
+  z-index: -1; 
   pointer-events: none; 
   animation: ambientGlowMove 15s ease-in-out infinite alternate;
 }
 
-/* স্ক্রিনের উপরের বাম পাশের নীল আভা */
 body::before {
   background: var(--c1);
   top: -15%;
   left: -10%;
-  opacity: 0.15; /* আভা একটু বাড়িয়ে দিয়েছি যাতে স্পষ্ট বোঝা যায় */
+  opacity: 0.15; 
 }
 
-/* স্ক্রিনের নিচের ডান পাশের কালচে আভা */
 body::after {
   background: var(--c2);
   bottom: -15%;
@@ -316,24 +313,31 @@ body::after {
   animation-direction: alternate-reverse;
 }
 
-/* ডার্ক মোডে গ্লো সেটআপ */
 [data-theme="dark"] body::before, 
 [data-theme="dark"] body::after {
   opacity: 0.08;
 }
 
-/* আভা ধীরে ধীরে মুভ করার অ্যানিমেশন */
 @keyframes ambientGlowMove {
   0% { transform: translate(0, 0) scale(1); }
   100% { transform: translate(80px, 60px) scale(1.1); }
 }
-/* পেজের সব সেকশন থেকে সলিড ব্যাকগ্রাউন্ড সরিয়ে গ্লো ভিজিবল করা */
+
 .alt-section {
   background: transparent !important;
 }
-/* ব্যাকগ্রাউন্ডের গ্রিড লাইন মুছে ফেলার জন্য */
+
 body {
   background-image: none !important;
+}
+
+/* সলাইডারের স্ক্রলবার পুরোপুরি অদৃশ্য (Hide) করার জন্য */
+.slider-wrapper::-webkit-scrollbar {
+  display: none !important;
+}
+.slider-wrapper {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
 }
 </style>
 </head>
@@ -351,6 +355,7 @@ body {
     <a onclick="scroll2('projects')">Projects</a>
     <a onclick="scroll2('experience')">Experiences</a>
     <a onclick="scroll2('awards')">Awards</a>
+    <a onclick="scroll2('travels')">Travel</a> 
     <a onclick="scroll2('contact')">Contact</a>
   </div>
   <div class="theme-toggle">
@@ -392,29 +397,28 @@ body {
   <h2 class="section-title">Who am I?</h2>
   <div class="about-grid">
     <div class="about-avatar" style="overflow: hidden; padding: 0; background: none; box-shadow: none;">
-  <img src="image_3b9770.png" alt="Parag Mollick" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem;">
-</div>
-    <div class="about-text">
-  <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka. 
-     <span id="about-more-text" class="hidden"> 
-       His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise. 
-     </span>
-  </p>
-  
-  <button onclick="toggleAboutText()" id="about-read-btn" 
-          style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0; margin-top:10px;">
-    See More
-  </button>
-  
-  <div class="stats-row">
+      <img src="image_3b9770.png" alt="Parag Mollick" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem;">
     </div>
-</div>
+    <div class="about-text">
+      <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka. 
+         <span id="about-more-text" class="hidden"> 
+           His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise. 
+         </span>
+      </p>
+      
+      <button onclick="toggleAboutText()" id="about-read-btn" 
+              style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0; margin-top:10px;">
+        See More
+      </button>
+      
+      <div class="stats-row"></div>
+    </div>
   </div>
 </section>
 
 <section id="skills" class="alt-section">
   <div class="section-label">What I Know</div>
-  <h2 class="section-title">Skills &amp; Tools</h2>
+  <h2 class="section-title">Skills </h2>
   <div class="skills-grid" id="skills-grid"></div>
 </section>
 
@@ -583,6 +587,67 @@ body {
   </div>
 </section>
 
+<section id="travels" class="alt-section">
+  <div class="section-label">Outside the Office</div>
+  <h2 class="section-title" style="margin-bottom: 2rem;">My Global Footprints</h2>
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
+    
+    <div class="card reveal" style="background:var(--card); border:1px solid var(--border); padding:1rem; border-radius:1rem; display: flex; flex-direction: column;">
+      
+      <div id="thailand-slider" class="slider-wrapper" style="width: 100%; height: 350px; overflow-x: auto; display: flex; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 0.5rem; margin-bottom: 0.8rem;">
+        <img src="thailand1.jpg" style="width: 100%; height: 100%; flex-shrink: 0; object-fit: cover; scroll-snap-align: start;">
+        <img src="thailand2.jpg" style="width: 100%; height: 100%; flex-shrink: 0; object-fit: cover; scroll-snap-align: start;">
+        <img src="thailand3.jpg" style="width: 100%; height: 100%; flex-shrink: 0; object-fit: cover; scroll-snap-align: start;">
+      </div>
+      
+      <div class="slider-dots" id="thailand-dots" style="display: flex; justify-content: center; gap: 6px; margin-bottom: 1rem;">
+        <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--c1); transition: all 0.3s ease; cursor: pointer;"></span>
+        <span class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.3s ease; cursor: pointer;"></span>
+        <span class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.3s ease; cursor: pointer;"></span>
+      </div>
+      <h3 style="margin: 0 0 0.5rem;">Thailand</h3>
+<p style="color:var(--muted); font-size: 0.9rem; line-height: 1.5;">
+  Thailand is a mesmerizing destination in Southeast Asia where rich cultural heritage seamlessly blends with ultra-modern urban life. Globally renowned for its warm hospitality and vibrant atmosphere, the country proudly showcases its deep-rooted traditions through magnificent, intricately designed Buddhist temples like Wat Arun and Wat Pho.
+  <span id="thailand-more-text" class="hidden">
+    In the capital city of Bangkok, soaring modern skyscrapers stand in dynamic contrast alongside historic grand palaces, busy traditional Tuk-Tuks, and the serene flow of the Chao Phraya River. For food enthusiasts, Thailand is an absolute paradise, thriving with bustling night markets and floating markets that offer an incredible array of world-famous street food, including iconic dishes like Pad Thai, Tom Yum soup, and authentic Thai curries. Beyond the urban energy, spectacular island escapes like Phuket and the Phi Phi Islands offer breathtaking natural beauty with pristine white-sand beaches and crystal-clear turquoise waters perfect for snorkeling and island hopping. Whether it is exploring complex infrastructure or relaxing along the tropical coast, Thailand remains a dream destination that perfectly captures the unforgettable essence of exploration.
+  </span>
+</p>
+
+<button onclick="toggleThailandText()" id="thailand-read-btn" style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0; margin-top:8px; font-size: 0.85rem;">
+  See More
+</button>
+      
+    </div>
+
+    <div class="card reveal" style="background:var(--card); border:1px solid var(--border); padding:1rem; border-radius:1rem; transition-delay: 0.15s; display: flex; flex-direction: column;">
+      
+      <div id="malaysia-slider" class="slider-wrapper" style="width: 100%; height: 350px; overflow-x: auto; display: flex; scroll-snap-type: x mandatory; scroll-behavior: smooth; border-radius: 0.5rem; margin-bottom: 0.8rem;">
+        <img src="malaysia1.jpg" style="width: 100%; height: 100%; flex-shrink: 0; object-fit: cover; scroll-snap-align: start;">
+        <img src="malaysia2.jpg" style="width: 100%; height: 100%; flex-shrink: 0; object-fit: cover; scroll-snap-align: start;">
+        <img src="malaysia3.jpg" style="width: 100%; height: 100%; flex-shrink: 0; object-fit: cover; scroll-snap-align: start;">
+      </div>
+      
+      <div class="slider-dots" id="malaysia-dots" style="display: flex; justify-content: center; gap: 6px; margin-bottom: 1rem;">
+        <span class="dot active" style="width: 8px; height: 8px; border-radius: 50%; background: var(--c1); transition: all 0.3s ease; cursor: pointer;"></span>
+        <span class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.3s ease; cursor: pointer;"></span>
+        <span class="dot" style="width: 8px; height: 8px; border-radius: 50%; background: var(--border); transition: all 0.3s ease; cursor: pointer;"></span>
+      </div>
+      <h3 style="margin: 0 0 0.5rem;">Malaysia</h3>
+<p style="color:var(--muted); font-size: 0.9rem; line-height: 1.5;">
+  Malaysia is a captivating destination in Southeast Asia where breathtaking ultra-modern advancements perfectly harmonize with a rich, multicultural heritage. The country proudly showcases its technological and architectural engineering milestones through iconic landmarks like the Petronas Twin Towers.
+  <span id="malaysia-more-text" class="hidden">
+    For food enthusiasts, Malaysia offers an absolute paradise, blending Malay, Chinese, and Indian influences into world-famous culinary street food experiences, including signature dishes like Nasi Lemak, Char Kway Teow, and flavorful Laksa. Beyond the dynamic urban landscape, the country is home to stunning natural wonders, from the serene, tea-covered hills of the Cameron Highlands to pristine tropical island escapes like Langkawi, perfect for exploration and relaxation. Whether marveling at complex city infrastructure, exploring historical UNESCO World Heritage sites in Penang, or immersing oneself in its diverse cultural fusion, Malaysia offers a unique, inspiring perspective on global exploration.
+  </span>
+</p>
+
+<button onclick="toggleMalaysiaText()" id="malaysia-read-btn" style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0; margin-top:8px; font-size: 0.85rem;">
+  See More
+</button>
+      
+    </div>
+    
+  </div>
+</section>
 
 <section id="contact" class="alt-section">
   <div class="contact-box">
@@ -596,8 +661,8 @@ body {
       </a>
 
       <a class="clink" href="javascript:void(0)" onclick="navigator.clipboard.writeText('paragmollick.mechanical@gmail.com'); alert('Email copied to clipboard!');">
-  <i class="fas fa-envelope"></i> paragmollick.mechanical@gmail.com <i class="fas fa-copy" style="font-size: 0.85em; margin-left: 6px; opacity: 0.6;"></i>
-</a>
+        <i class="fas fa-envelope"></i> paragmollick.mechanical@gmail.com <i class="fas fa-copy" style="font-size: 0.85em; margin-left: 6px; opacity: 0.6;"></i>
+      </a>
 
       <a class="clink" href="https://web.facebook.com/paragmollick.mecha.buet" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-facebook"></i> facebook
@@ -688,7 +753,7 @@ function toggleCerts() {
     btn.innerText = 'See Less';
   } else {
     allCerts.forEach((cert, index) => {
-      if (index >= 4) cert.classList.add('hidden'); // Show 4 certificates by default
+      if (index >= 4) cert.classList.add('hidden'); 
     });
     btn.innerText = 'See More';
   }
@@ -699,7 +764,6 @@ function toggleMenu() {
     navLinks.classList.toggle('active');
 }
 
-// লিঙ্ক ক্লিক করলে মেনু অটো বন্ধ হয়ে যাবে
 document.querySelectorAll('.nav-links a').forEach(link => {
     link.addEventListener('click', () => {
         document.getElementById('nav-links').classList.remove('active');
@@ -735,6 +799,115 @@ function toggleAboutText() {
     btnText.innerText = "See More";
   }
 }
+function toggleThailandText() {
+  const moreText = document.getElementById("thailand-more-text");
+  const btnText = document.getElementById("thailand-read-btn");
+  
+  if (moreText.classList.contains("hidden")) {
+    moreText.classList.remove("hidden");
+    btnText.innerText = "See Less";
+  } else {
+    moreText.classList.add("hidden");
+    btnText.innerText = "See More";
+  }
+}
+function toggleMalaysiaText() {
+  const moreText = document.getElementById("malaysia-more-text");
+  const btnText = document.getElementById("malaysia-read-btn");
+  
+  if (moreText.classList.contains("hidden")) {
+    moreText.classList.remove("hidden");
+    btnText.innerText = "See Less";
+  } else {
+    moreText.classList.add("hidden");
+    btnText.innerText = "See More";
+  }
+}
+
+// === ডট ইন্ডিকেটরসহ উন্নত অটো-স্লাইডার ফাংশন ===
+function initPremiumSlider(sliderId, dotsContainerId, delayTime) {
+  const slider = document.getElementById(sliderId);
+  const dotsContainer = document.getElementById(dotsContainerId);
+  if (!slider || !dotsContainer) return;
+
+  const images = slider.querySelectorAll('img');
+  const dots = dotsContainer.querySelectorAll('.dot');
+  const totalImages = images.length;
+  let currentIndex = 0;
+
+  function updateDots(index) {
+    dots.forEach((dot, i) => {
+      if (i === index) {
+        dot.style.background = 'var(--c1)'; 
+        dot.style.transform = 'scale(1.2)';  
+      } else {
+        dot.style.background = 'var(--border)'; 
+        dot.style.transform = 'scale(1)';
+      }
+    });
+  }
+
+  // অটো স্লাইড টাইমার
+  setInterval(() => {
+    currentIndex++;
+    if (currentIndex >= totalImages) {
+      currentIndex = 0;
+    }
+
+    const scrollAmount = slider.clientWidth * currentIndex;
+    slider.scrollTo({
+      left: scrollAmount,
+      behavior: 'smooth'
+    });
+
+    updateDots(currentIndex);
+  }, delayTime);
+
+  // স্ক্রল লিসেনার
+  slider.addEventListener('scroll', () => {
+    const scrollLeft = slider.scrollLeft;
+    const width = slider.clientWidth;
+    const newIndex = Math.round(scrollLeft / width);
+    
+    if (newIndex !== currentIndex && newIndex < totalImages) {
+      currentIndex = newIndex;
+      updateDots(currentIndex);
+    }
+  });
+
+  // ডট ক্লিক কন্ট্রোল
+  dots.forEach((dot, index) => {
+    dot.addEventListener('click', () => {
+      currentIndex = index;
+      slider.scrollTo({
+        left: slider.clientWidth * index,
+        behavior: 'smooth'
+      });
+      updateDots(currentIndex);
+    });
+  });
+}
+
+// স্লাইডার দুটি চালু করা হলো
+setTimeout(() => {
+  initPremiumSlider('thailand-slider', 'thailand-dots', 3000); 
+  initPremiumSlider('malaysia-slider', 'malaysia-dots', 3500); 
+}, 500);
+
+// স্ক্রল রিভিল অ্যানিমেশন অবসার্ভার কোড
+const revealObserver = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if(e.isIntersecting) {
+      e.target.classList.add('active');
+    }
+  });
+}, { threshold: 0.1 });
+
+setTimeout(() => {
+  document.querySelectorAll('.reveal').forEach(el => {
+    revealObserver.observe(el);
+  });
+}, 100);
 </script>
 </body>
 </html>
