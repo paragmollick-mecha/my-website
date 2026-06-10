@@ -895,13 +895,18 @@ setTimeout(() => {
 }, 500);
 
 // স্ক্রল রিভিল অ্যানিমেশন অবসার্ভার কোড
+// === মোবাইল ফ্রেন্ডলি স্ক্রল রিভিল অ্যানিমেশন অবসার্ভার (FIXED) ===
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if(e.isIntersecting) {
       e.target.classList.add('active');
     }
   });
-}, { threshold: 0.1 });
+}, { 
+  // মোবাইলের জন্য থ্রেশহোল্ড কমিয়ে ০.০৫ করা হলো যেন একটুখানি অংশ স্ক্রিনে আসলেই অ্যানিমেশন ট্রিগার হয়
+  threshold: window.innerWidth < 768 ? 0.05 : 0.1,
+  rootMargin: "0px 0px -20px 0px" // স্ক্রিনের নিচ থেকে একটু আগেই অ্যানিমেশন রেডি করবে
+});
 
 setTimeout(() => {
   document.querySelectorAll('.reveal').forEach(el => {
