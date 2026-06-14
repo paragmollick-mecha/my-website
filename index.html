@@ -339,6 +339,16 @@ body {
   -ms-overflow-style: none;  /* IE and Edge */
   scrollbar-width: none;  /* Firefox */
 }
+
+.skill-card, .project-card, .cert-card, .cocurr-card, .award-card, .contact-box, .card {
+  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+}
+
+.skill-card:hover, .project-card:hover, .cert-card:hover, .cocurr-card:hover, .award-card:hover, .contact-box:hover, .card:hover {
+  transform: translateY(-8px) !important;
+  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15) !important;
+  border-color: var(--c1) !important;
+}
 </style>
 </head>
 <body>
@@ -425,7 +435,8 @@ body {
   <div class="section-label">Achievements</div>
   <h2 class="section-title">Certificates</h2>
   
-  <div class="certificates-grid" id="certs-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem;">
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:1.5rem; color:var(--c1);">Academic and Professional</h3>
+  <div class="certificates-grid" id="certs-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem; margin-bottom: 3rem;">
     
     <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
       <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Primary School Certificate</h3>
@@ -458,23 +469,96 @@ body {
     </div>
 
     <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">MATLAB Onramp</h3>
-      <a href="https://drive.google.com/file/d/10UNUVldFavvWTuX3fFqI-RqwdTrtOQ3Z/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
-    </div>
-
-    <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">MATLAB Signal Processing Onramp</h3>
-      <a href="https://drive.google.com/file/d/1CD4HGjX8Pf97TzKXc0hAASGu1CDZDukI/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
-    </div>
-
-    <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Solving Nonlinear Equations with MATLAB</h3>
-      <a href="https://drive.google.com/file/d/14Sq0s1hd-iqRkSDkfWOV0Vs8tUMUL_Wd/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
+      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">MATLAB Professional</h3>
+      <a href="https://drive.google.com/file/d/1tx77UC_OP_s7bKkt9QmCNYFTYC737GW0/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); font-weight:bold; font-size:0.9rem;">View Certificate ↗</a>
     </div>
   </div>
 
-  <div style="text-align: center; margin-top: 2rem;">
+  <div style="text-align: center; margin-top: -1.5rem; margin-bottom: 3rem;">
     <button id="see-more-btn" onclick="toggleCerts()" class="btn btn-outline" style="padding: 0.8rem 2rem; cursor:pointer;">See More</button>
+  </div>
+
+  <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:1.5rem; color:var(--c1); border-top: 1px solid var(--border); padding-top: 2rem;">Co-curricular Activities</h3>
+  <div class="certificates-grid" id="co-curricular-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem;">
+    
+    <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+  <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Singing Certifications</h3>
+  <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Nazrul Geeti and Folk Music</p>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
+    
+    <a href="https://drive.google.com/file/d/1fdHJKPNcDJ9WNZBjPKEoh7wMLuG9QpSk/view?usp=sharing" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;"
+       onmouseover="this.style.opacity='0.9'"
+       onmouseout="this.style.opacity='1'">
+       View Certificate ↗
+    </a>
+
+    <a href="https://drive.google.com/file/d/1eSgyqcOog8ynMxd3vCwxkBpD3xyYH9Cf/view?usp=sharing" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       style="text-decoration:none; color:var(--c1); border: 1px solid var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: background 0.2s, color 0.2s;"
+       onmouseover="this.style.background='var(--c1)'; this.style.color='#fff';"
+       onmouseout="this.style.background='transparent'; this.style.color='var(--c1)';">
+       View Achievement ↗
+    </a>
+
+  </div>
+</div>
+
+   <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+  <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Sports</h3>
+  <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I like to play Badminton</p>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
+    
+    <a href="https://drive.google.com/file/d/1ZALWHsSYLfRWg4VYuPsnpi8Zba1Shj1I/view?usp=sharing" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;"
+       onmouseover="this.style.opacity='0.9'"
+       onmouseout="this.style.opacity='1'">
+       View Achievements ↗
+    </a>
+  </div>
+</div>
+
+    <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+  <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Arts and crafts</h3>
+  <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Arts and crafts</p>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
+    
+    <a href="https://drive.google.com/file/d/1GIoOif4hBnd0wz-_68FjhyOzL_mTzhKr/view?usp=sharing" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;"
+       onmouseover="this.style.opacity='0.9'"
+       onmouseout="this.style.opacity='1'">
+       View Certification ↗
+    </a>
+  </div>
+</div>
+
+<div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+  <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Poetry recitation</h3>
+  <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Poetry recitation</p>
+  
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
+    
+    <a href="https://drive.google.com/file/d/1-ABCG6Wp0kNrhcTVdHB_0spSLOqnCOkT/view?usp=sharing" 
+       target="_blank" 
+       rel="noopener noreferrer" 
+       style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;"
+       onmouseover="this.style.opacity='0.9'"
+       onmouseout="this.style.opacity='1'">
+       View Certification ↗
+    </a>
+  </div>
+</div>
+
   </div>
 </section>
 
