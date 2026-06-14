@@ -71,7 +71,7 @@
   .btn:hover{transform:translateY(-2px);opacity:.88}
   .btn-primary{background:var(--c1);color:#fff}
   .btn-outline{background:var(--card);border:1.5px solid var(--btn-outline-border);color:var(--text)}
-  
+   
   .hero-blob{position:absolute;right:-80px;top:10%;width:420px;height:420px;border-radius:50%;background:radial-gradient(circle,rgba(37,99,235,.08) 0%,transparent 70%);pointer-events:none}
   .hero-blob2{position:absolute;right:120px;top:25%;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(71,85,105,.06) 0%,transparent 70%);pointer-events:none}
 
@@ -138,16 +138,16 @@
     .hero-inner { flex-direction: column-reverse; text-align: center; padding-top: 2rem; }
     .hero-photo-ring { width: 220px; height: 220px; margin: 0 auto 2rem auto; }
     .btn-row { justify-content: center; }
-    
+     
     /* ৩. এবাউট সেকশনের ছবি ফিক্স */
     .about-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
     .about-avatar { margin: 0 auto; max-width: 220px; }
     .stats-row { justify-content: center; }
-    
+     
     /* ৪. কন্টাক্ট সেকশন ফিক্স */
     .contact-box { flex-direction: column; text-align: center; gap: 1.5rem; padding: 1.5rem; }
     .contact-links { justify-content: center; }
-    
+     
     /* ১. কন্টাক্ট বক্স এবং ইমেইল ফিক্স */
     .contact-box {
         padding: 1.5rem 1rem !important; 
@@ -166,7 +166,7 @@
         text-align: center !important;
     }
 
-   /* ২. এক্সপেরিয়েন্স কার্ড ও ছবি ফিক্স (চূড়ান্ত সমাধান) */
+   /* ২. এক্সপেরিয়েন্স কার্ড ও ছবি ফিক্স (চূড়ান্ত সমাধান) */
     #experience > div:last-child {
         flex-direction: column !important; 
         padding: 1.2rem !important; 
@@ -186,14 +186,14 @@
         display: block !important;
         object-fit: cover !important;
     }
-    
+     
     /* ১. হিরো সেকশন যেন মেনুর নিচে না ঢোকে */
     .hero {
         min-height: auto !important; 
         padding-top: 6rem !important; 
         padding-bottom: 2rem !important;
     }
-    
+     
     /* ২. হিরো ছবিকে জোর করে মাঝখানে এবং সঠিক সাইজে আনা */
     .hero-photo-wrap {
         display: flex !important;
@@ -207,8 +207,8 @@
         height: 200px !important;
         margin: 0 auto;
     }
-    
-    /* ৩. এবাউট সেকশনের ছবি যেন কোনোভাবেই হাইড না হয় */
+     
+    /* ৩. এবাউট সেকশনের ছবি যেন কোনোভাবেই হাইড না হয় */
     .about-avatar {
         display: flex !important;
         width: 200px !important;
@@ -217,8 +217,8 @@
         opacity: 1 !important; 
         transform: none !important;
     }
-    
-    /* ৪. ছবি যেন বক্সের বাইরে না যায় */
+     
+    /* ৪. ছবি যেন বক্সের বাইরে না যায় */
     .hero-photo-inner img, .about-avatar img {
         width: 100% !important;
         height: 100% !important;
@@ -272,7 +272,7 @@
 }
 
 /* =========================================
-   প্রিমিয়াম ব্যাকগ্রাউন্ড (Ambient Tech Glow) - FIXED
+   প্রিমিয়াম ব্যাকগ্রাউন্ড (Ambient Tech Glow) - FIXED
 ========================================== */
 
 html {
@@ -349,6 +349,7 @@ body {
   box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15) !important;
   border-color: var(--c1) !important;
 }
+
 </style>
 </head>
 <body>
@@ -388,9 +389,15 @@ body {
       <p>A passionate 4th-year student of Mechanical Engineering at Bangladesh University of Engineering and Technology (BUET).</p>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="scroll2('projects')">View Projects</button>
+        
+        <a href="Parag Mollick CV.pdf" download="Parag Mollick-CV.pdf" class="btn btn-outline">
+          <i class="fas fa-file-pdf" style="margin-right: 6px;"></i> Download CV
+        </a>
+        
         <button class="btn btn-outline" onclick="scroll2('contact')">Let's Talk</button>
       </div>
     </div>
+    
     <div class="hero-photo-wrap">
       <div class="hero-photo-ring">
         <div class="hero-photo-inner">
@@ -411,7 +418,7 @@ body {
     <div class="about-text">
       <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka. 
          <span id="about-more-text" class="hidden"> 
-           His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise. 
+            His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise. 
          </span>
       </p>
       
@@ -677,7 +684,6 @@ body {
     
     <div class="card reveal" style="background:var(--card); border:1px solid var(--border); padding:1rem; border-radius:1rem; display: flex; flex-direction: column;">
 
-  <!-- শহরের ট্যাব বাটন -->
   <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
     <button onclick="switchCity('bangkok')" id="tab-bangkok"
       style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--c1);background:var(--c1);color:#fff;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
@@ -689,15 +695,14 @@ body {
     </button>
     <button onclick="switchCity('chiangmai')" id="tab-chiangmai"
       style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-      Phi-Phi Island
+       Phi-Phi Island
     </button>
     <button onclick="switchCity('pattaya')" id="tab-pattaya"
       style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-     Maya Bay
+      Maya Bay
     </button>
   </div>
 
-  <!-- Bangkok -->
   <div id="city-bangkok" class="city-slider-block">
     <div id="thailand-slider-bangkok" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
       <img src="bangkok1.jpg" alt="Bangkok" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
@@ -715,7 +720,6 @@ body {
     </div>
   </div>
 
-  <!-- Phuket -->
   <div id="city-phuket" class="city-slider-block" style="display:none;">
     <div id="thailand-slider-phuket" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
       <img src="phuket1.jpg" alt="Phuket" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
@@ -733,7 +737,6 @@ body {
     </div>
   </div>
 
-  <!-- Chiang Mai -->
   <div id="city-chiangmai" class="city-slider-block" style="display:none;">
     <div id="thailand-slider-chiangmai" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
       <img src="chiangmai1.jpg" alt="Chiang Mai" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
@@ -751,7 +754,6 @@ body {
     </div>
   </div>
 
-  <!-- Pattaya -->
   <div id="city-pattaya" class="city-slider-block" style="display:none;">
     <div id="thailand-slider-pattaya" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
       <img src="pattaya1.jpg" alt="Pattaya" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
@@ -784,7 +786,6 @@ body {
 
     <div class="card reveal" style="background:var(--card); border:1px solid var(--border); padding:1rem; border-radius:1rem; transition-delay: 0.15s; display: flex; flex-direction: column;">
 
-  <!-- শহরের ট্যাব বাটন -->
   <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
     <button onclick="switchMalaysiaCity('kl')" id="tab-kl"
       style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--c1);background:var(--c1);color:#fff;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
@@ -792,19 +793,18 @@ body {
     </button>
     <button onclick="switchMalaysiaCity('penang')" id="tab-penang"
       style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-      Penang
+       Penang
     </button>
     <button onclick="switchMalaysiaCity('malacca')" id="tab-malacca"
       style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-      Malacca
+       Malacca
     </button>
     <button onclick="switchMalaysiaCity('langkawi')" id="tab-langkawi"
       style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-      Langkawi
+       Langkawi
     </button>
   </div>
 
-  <!-- Kuala Lumpur -->
   <div id="mcity-kl" class="mCity-slider-block">
     <div id="malaysia-slider-kl" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
       <img src="kl1.jpg" alt="Kuala Lumpur" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
@@ -822,7 +822,6 @@ body {
     </div>
   </div>
 
-  <!-- Penang -->
   <div id="mcity-penang" class="mCity-slider-block" style="display:none;">
     <div id="malaysia-slider-penang" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
       <img src="penang1.jpg" alt="Penang" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
@@ -840,7 +839,6 @@ body {
     </div>
   </div>
 
-  <!-- Malacca -->
   <div id="mcity-malacca" class="mCity-slider-block" style="display:none;">
     <div id="malaysia-slider-malacca" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
       <img src="malacca1.jpg" alt="Malacca" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
@@ -858,7 +856,6 @@ body {
     </div>
   </div>
 
-  <!-- Langkawi -->
   <div id="mcity-langkawi" class="mCity-slider-block" style="display:none;">
     <div id="malaysia-slider-langkawi" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
       <img src="langkawi1.jpg" alt="Langkawi" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
@@ -876,7 +873,7 @@ body {
     </div>
   </div>
 
-  <h3 style="margin: 0 0 0.5rem;">Malaysia</h3>
+  <h3>Malaysia</h3>
   <p style="color:var(--muted); font-size: 0.9rem; line-height: 1.5;">
     Malaysia is a captivating destination in Southeast Asia where breathtaking ultra-modern advancements perfectly harmonize with a rich, multicultural heritage. The country proudly showcases its technological and architectural engineering milestones through iconic landmarks like the Petronas Twin Towers.
     <span id="malaysia-more-text" class="hidden">
@@ -1146,7 +1143,7 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { 
-  // মোবাইলের জন্য থ্রেশহোল্ড কমিয়ে ০.০৫ করা হলো যেন একটুখানি অংশ স্ক্রিনে আসলেই অ্যানিমেশন ট্রিগার হয়
+  // মোবাইলের জন্য থ্রেশহোল্ড কমিয়ে ০.০৫ করা হলো যেন একটুখানি অংশ স্ক্রিনে আসলেই অ্যানিমেশন ট্রিগার হয়
   threshold: window.innerWidth < 768 ? 0.05 : 0.1,
   rootMargin: "0px 0px -20px 0px" // স্ক্রিনের নিচ থেকে একটু আগেই অ্যানিমেশন রেডি করবে
 });
