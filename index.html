@@ -10,6 +10,7 @@
 <style>
   .hidden { display: none !important; }
   .cert-card.hidden { display: none !important; }
+  .cocurr-card.hidden { display: none !important; }
   *{margin:0;padding:0;box-sizing:border-box}
 
   [data-theme="light"]{
@@ -116,9 +117,6 @@
 
   .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text); }
 
-  /* =========================================
-     FIXED RESPONSIVE MEDIA QUERY (NO !IMPORTANT)
-     ========================================== */
   @media(max-width:768px){
     nav { flex-wrap: wrap; padding: 1rem 1.5rem; }
     .menu-toggle { display: block; }
@@ -160,9 +158,6 @@
     .hero-photo-inner img, .about-avatar img { width: 100%; height: 100%; object-fit: cover; }
   }
 
-  /* =========================================
-     ANIMATION & AMBIENT EFFECT RULES
-  ========================================== */
   @keyframes floatAnimation {
     0% { transform: translateY(0px); }
     50% { transform: translateY(-15px); }
@@ -376,39 +371,93 @@
   <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:1.5rem; color:var(--c1); border-top: 1px solid var(--border); padding-top: 2rem;">Co-curricular Activities</h3>
   <div class="certificates-grid" id="co-curricular-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem;">
     
-    <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Singing Certifications</h3>
-      <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Nazrul Geeti and Folk Music</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
-        <a href="https://drive.google.com/file/d/1fdHJKPNcDJ9WNZBjPKEoh7wMLuG9QpSk/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+    <div class="card cert-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--card); border: 1px solid var(--border); padding: 1.5rem; border-radius: 1.2rem; box-shadow: 0 1px 4px var(--shadow);">
+      <div>
+        <div style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
+          <img src="presentation_cert.jpg" alt="Interplanetar Workshop Certificate" style="width: 100%; height: 100%; object-fit: fill;">
+        </div>
+        <div class="section-label" style="font-size: 0.7rem; color: var(--c1); margin-bottom: 0.4rem;">Workshop</div>
+        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Interplanetar Workshop 2024</h3>
+        <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5;">
+          Successfully completed the MECHANICAL course at Interplanetar Workshop 2024 held from July 10 to July 18 with commendable dedication.
+        </p>
+      </div>
+      <a href="https://drive.google.com/file/d/1IqZ1RzS8Q21JOER7JLwWCzCOhoHzRnJm/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; margin-top: 1.2rem; display: inline-flex; align-items: center; justify-content: center; width: fit-content; border-radius: 50px; font-weight: bold; font-family: 'Playfair Display', serif; text-decoration: none;">
+          View Certificate
+      </a>
+    </div>
+
+    <div class="card cert-card" style="display: flex; flex-direction: column; justify-content: space-between; background: var(--card); border: 1px solid var(--border); padding: 1.5rem; border-radius: 1.2rem; box-shadow: 0 1px 4px var(--shadow);">
+      <div>
+        <div style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
+          <img src="robotics_cert.jpg" alt="Intra BUET Robo Challenge 2024" style="width: 100%; height: 100%; object-fit: fill;">
+        </div>
+        <div class="section-label" style="font-size: 0.7rem; color: var(--c1); margin-bottom: 0.4rem;">Competition</div>
+        <h3 style="font-size: 1.2rem; margin-bottom: 0.5rem;">Intra BUET Robo Challenge 2024</h3>
+        <p style="color: var(--muted); font-size: 0.88rem; line-height: 1.5;">
+          Outstanding participation in the SOCCER BOT CHALLENGE segment under the event INTRA BUET ROBO CHALLENGE 2024 organized by BUET Robotics Society.
+        </p>
+      </div>
+      <a href="https://drive.google.com/file/d/1uBB50CAlEJFe2QIpzws_-hrFQeVDjfGN/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; margin-top: 1.2rem; display: inline-flex; align-items: center; justify-content: center; width: fit-content; border-radius: 50px; font-weight: bold; font-family: 'Playfair Display', serif; text-decoration: none;">
+          View Certificate
+      </a>
+    </div>
+
+    <div class="cocurr-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1.2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px var(--shadow);">
+      <div>
+        <div style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
+          <img src="singing_thumb.jpg" alt="Singing Certifications Thumbnail" style="width: 100%; height: 100%; object-fit: fill;">
+        </div>
+        <div class="section-label" style="font-size: 0.7rem; color: var(--c1); margin-bottom: 0.4rem;">Cultural</div>
+        <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Singing Certifications</h3>
+        <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem; line-height: 1.5;">I achieved some certifications in Nazrul and Folk Music.</p>
+      </div>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(110px, 1fr)); gap: 0.6rem; max-width: 320px; margin-top: auto;">
+        <a href="https://drive.google.com/file/d/1fdHJKPNcDJ9WNZBjPKEoh7wMLuG9QpSk/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-primary" style="padding: 0.5rem 0; font-size: 0.8rem; text-align: center; border-radius: 50px; text-decoration: none;">
            View Certificate 
         </a>
-        <a href="https://drive.google.com/file/d/1eSgyqcOog8ynMxd3vCwxkBpD3xyYH9Cf/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); border: 1px solid var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: background 0.2s, color 0.2s;" onmouseover="this.style.background='var(--c1)'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='var(--c1)';">
+        <a href="https://drive.google.com/file/d/1eSgyqcOog8ynMxd3vCwxkBpD3xyYH9Cf/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.5rem 0; font-size: 0.8rem; text-align: center; border-radius: 50px; text-decoration: none;">
            View Achievement 
         </a>
       </div>
     </div>
 
-    <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Arts and crafts</h3>
-      <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Arts and crafts</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
-        <a href="https://drive.google.com/file/d/1GIoOif4hBnd0wz-_68FjhyOzL_mTzhKr/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+    <div class="cocurr-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1.2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px var(--shadow);">
+      <div>
+        <div style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
+          <img src="arts_thumb.jpg" alt="Arts and Crafts Thumbnail" style="width: 100%; height: 100%; object-fit: fill;">
+        </div>
+        <div class="section-label" style="font-size: 0.7rem; color: var(--c1); margin-bottom: 0.4rem;">Creative</div>
+        <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Arts and crafts</h3>
+        <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem; line-height: 1.5;">I achieved some certifications in Arts and crafts.</p>
+      </div>
+      <div style="display: flex; margin-top: auto;">
+        <a href="https://drive.google.com/file/d/1GIoOif4hBnd0wz-_68FjhyOzL_mTzhKr/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; display: inline-flex; align-items: center; justify-content: center; width: fit-content; border-radius: 50px; font-weight: bold; font-family: 'Playfair Display', serif; text-decoration: none;">
            View Certification 
         </a>
       </div>
     </div>
 
-    <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Poetry recitation</h3>
-      <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Poetry recitation</p>
-      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
-        <a href="https://drive.google.com/file/d/1-ABCG6Wp0kNrhcTVdHB_0spSLOqnCOkT/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+    <div class="cocurr-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1.2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px var(--shadow);">
+      <div>
+        <div style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
+          <img src="poetry_thumb.jpg" alt="Poetry Recitation Thumbnail" style="width: 100%; height: 100%; object-fit: fill;">
+        </div>
+        <div class="section-label" style="font-size: 0.7rem; color: var(--c1); margin-bottom: 0.4rem;">Performance</div>
+        <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Poetry recitation</h3>
+        <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem; line-height: 1.5;">I achieved some certifications in Poetry recitation.</p>
+      </div>
+      <div style="display: flex; margin-top: auto;">
+        <a href="https://drive.google.com/file/d/1-ABCG6Wp0kNrhcTVdHB_0spSLOqnCOkT/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; display: inline-flex; align-items: center; justify-content: center; width: fit-content; border-radius: 50px; font-weight: bold; font-family: 'Playfair Display', serif; text-decoration: none;">
            View Certification 
         </a>
       </div>
     </div>
 
+  </div>
+
+  <div style="text-align: center; margin-top: 2rem;">
+    <button id="see-more-cocurr-btn" onclick="toggleCocurr()" class="btn btn-outline" style="padding: 0.8rem 2rem; cursor:pointer;">See More</button>
   </div>
 </section>
 
@@ -685,6 +734,20 @@ function toggleAboutText() {
   } else {
     moreText.classList.add("hidden");
     btnText.innerText = "See More";
+  }
+}
+
+function toggleCocurr() {
+  const btn = document.getElementById('see-more-cocurr-btn');
+  const allCocurr = document.querySelectorAll('#co-curricular-grid .cocurr-card');
+  const isHidden = allCocurr[0].classList.contains('hidden');
+
+  if (isHidden) {
+    allCocurr.forEach(card => card.classList.remove('hidden'));
+    btn.innerText = 'See Less';
+  } else {
+    allCocurr.forEach(card => card.classList.add('hidden'));
+    btn.innerText = 'See More';
   }
 }
 
