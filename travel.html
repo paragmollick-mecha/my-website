@@ -15,7 +15,7 @@
   html {
     background-color: var(--bg);
     transition: background-color 0.4s ease;
-    scroll-behavior: smooth; /* এই রুলসটি স্ক্রলিংকে স্মুথ রাখবে */
+    scroll-behavior: smooth;
   }
 
   *{margin:0;padding:0;box-sizing:border-box}
@@ -87,7 +87,7 @@
   }
 
   /* =========================================
-     CORE STYLES & LIFTING HOVER EFFECT
+     CORE DESKTOP STYLES (DEFAULT VIEW)
      ========================================== */
   h1,h2,h3,.logo{font-family:'Playfair Display',serif}
   nav{display:flex;justify-content:space-between;align-items:center;padding:1.2rem 2.5rem;border-bottom:1px solid var(--border);position:sticky;top:0;background:var(--nav-bg);backdrop-filter:blur(8px);z-index:100;}
@@ -121,10 +121,10 @@
   .slider-wrapper::-webkit-scrollbar { display: none !important; }
   .slider-wrapper { -ms-overflow-style: none; scrollbar-width: none; }
   
-  /* =========================================
-     FIXED RESPONSIVE MEDIA QUERY (NO !IMPORTANT)
-     ========================================== */
-  @media(max-width:768px){
+  /* =========================================================
+     FIXED RESPONSIVE MEDIA QUERY (NO HARD-CODED COLUMN COERCION)
+     ========================================================= */
+  @media(max-width:768px) and (max-device-width: 768px){
     nav {
       flex-direction: column;
       gap: 0.8rem;
@@ -401,7 +401,6 @@ function setTheme(mode) {
 const saved = localStorage.getItem('theme') || 'light';
 setTheme(saved);
 
-// স্লাইডার ইনিশিয়ালাইজেশন স্ক্রিপ্ট
 function initPremiumSlider(sliderId, dotsContainerId, delayTime) {
   const slider = document.getElementById(sliderId);
   const dotsContainer = document.getElementById(dotsContainerId);
@@ -425,11 +424,9 @@ function initPremiumSlider(sliderId, dotsContainerId, delayTime) {
   }, delayTime);
 }
 
-// ট্রাভেল অবজেক্ট ট্র্যাক করার জন্য
 const citySliders = { bangkok: true };
 const malaysiacitySliders = { kl: true };
 
-// থাইল্যান্ড সিটি সুইচিং ফাংশন
 function switchCity(city) {
   const cities = ['bangkok', 'phuket', 'chiangmai', 'pattaya'];
   
@@ -453,7 +450,6 @@ function switchCity(city) {
   }
 }
 
-// মালয়েশিয়া সিটি সুইচিং ফাংশন
 function switchMalaysiaCity(city) {
   const cities = ['kl', 'penang', 'malacca', 'langkawi'];
 
@@ -477,13 +473,11 @@ function switchMalaysiaCity(city) {
   }
 }
 
-// ডিফল্ট স্লাইডার রান
 setTimeout(() => {
   initPremiumSlider('thailand-slider-bangkok', 'dots-bangkok', 3000);
   initPremiumSlider('malaysia-slider-kl', 'mdots-kl', 3000);
 }, 500);
 
-// টেক্সট টগল ফাংশন
 function toggleThailandText() {
   const moreText = document.getElementById("thailand-more-text");
   const btnText = document.getElementById("thailand-read-btn");
