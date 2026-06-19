@@ -86,7 +86,6 @@
   .skill-bar{height:3px;background:var(--skill-bar-bg);border-radius:2px;margin-top:.6rem;overflow:hidden}
   .skill-fill{height:100%;border-radius:2px;transition:width .6s ease}
 
-  /* Projects & Action Buttons Styling */
   .project-actions {margin-bottom: 2rem; display: flex; gap: 1rem; align-items: center;}
   .project-pdf-link {text-decoration: none; color: var(--c1); font-weight: bold; font-size: 0.9rem; display: inline-flex; align-items: center; gap: 6px;}
 
@@ -115,11 +114,9 @@
   .hero-photo-inner img{width:100%;height:100%;object-fit:cover;border-radius:50%}
   .hero-photo-label{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:2rem;padding:.3rem .9rem;font-size:.72rem;font-weight:600;color:var(--muted);white-space:nowrap;box-shadow:0 2px 8px var(--shadow)}
 
-/* মেনু টগল স্টাইল */
-.menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text); }
+  .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text); }
 
-@media(max-width:768px){
-    /* ১. মোবাইল মেনু ফিক্স */
+  @media(max-width:768px){
     nav { flex-wrap: wrap; padding: 1rem 1.5rem; }
     .menu-toggle { display: block; }
     .nav-links {
@@ -134,222 +131,87 @@
     }
     .nav-links.active { display: flex; animation: fadeIn 0.3s ease forwards; }
 
-    /* ২. হিরো সেকশন এবং প্রোফাইল পিকচার ফিক্স */
     .hero-inner { flex-direction: column-reverse; text-align: center; padding-top: 2rem; }
     .hero-photo-ring { width: 220px; height: 220px; margin: 0 auto 2rem auto; }
     .btn-row { justify-content: center; }
      
-    /* ৩. এবাউট সেকশনের ছবি ফিক্স */
     .about-grid { grid-template-columns: 1fr; gap: 2rem; text-align: center; }
     .about-avatar { margin: 0 auto; max-width: 220px; }
     .stats-row { justify-content: center; }
      
-    /* ৪. কন্টাক্ট সেকশন ফিক্স */
-    .contact-box { flex-direction: column; text-align: center; gap: 1.5rem; padding: 1.5rem; }
-    .contact-links { justify-content: center; }
+    .contact-box { flex-direction: column; text-align: center; gap: 1.5rem; padding: 1.5rem 1rem !important; }
+    .contact-links { width: 100% !important; flex-direction: column !important; gap: 10px !important; justify-content: center; }
+    .clink { width: 100% !important; white-space: normal !important; word-break: break-all !important; justify-content: center !important; padding: 0.8rem !important; text-align: center !important; }
+
+    #experience > div:last-child { flex-direction: column !important; padding: 1.2rem !important; gap: 1.5rem !important; overflow: hidden !important; box-sizing: border-box !important; }
+    #experience > div:last-child > div { min-width: 0px !important; width: 100% !important; flex: none !important; }
+    #experience img { width: 100% !important; max-width: 100% !important; height: auto !important; display: block !important; object-fit: cover !important; }
      
-    /* ১. কন্টাক্ট বক্স এবং ইমেইল ফিক্স */
-    .contact-box {
-        padding: 1.5rem 1rem !important; 
-    }
-    .contact-links {
-        width: 100% !important;
-        flex-direction: column !important; 
-        gap: 10px !important;
-    }
-    .clink {
-        width: 100% !important;
-        white-space: normal !important;
-        word-break: break-all !important; 
-        justify-content: center !important;
-        padding: 0.8rem !important;
-        text-align: center !important;
-    }
-
-   /* ২. এক্সপেরিয়েন্স কার্ড ও ছবি ফিক্স (চূড়ান্ত সমাধান) */
-    #experience > div:last-child {
-        flex-direction: column !important; 
-        padding: 1.2rem !important; 
-        gap: 1.5rem !important;
-        overflow: hidden !important; 
-        box-sizing: border-box !important;
-    }
-    #experience > div:last-child > div {
-        min-width: 0px !important; 
-        width: 100% !important;
-        flex: none !important;
-    }
-    #experience img {
-        width: 100% !important;
-        max-width: 100% !important;
-        height: auto !important;
-        display: block !important;
-        object-fit: cover !important;
-    }
+    .hero { min-height: auto !important; padding-top: 6rem !important; padding-bottom: 2rem !important; }
      
-    /* ১. হিরো সেকশন যেন মেনুর নিচে না ঢোকে */
-    .hero {
-        min-height: auto !important; 
-        padding-top: 6rem !important; 
-        padding-bottom: 2rem !important;
-    }
+    .hero-photo-wrap { display: flex !important; justify-content: center; width: 100%; margin-bottom: 1.5rem; z-index: 10; }
+    .hero-photo-ring { width: 200px !important; height: 200px !important; margin: 0 auto; }
      
-    /* ২. হিরো ছবিকে জোর করে মাঝখানে এবং সঠিক সাইজে আনা */
-    .hero-photo-wrap {
-        display: flex !important;
-        justify-content: center;
-        width: 100%;
-        margin-bottom: 1.5rem;
-        z-index: 10;
-    }
-    .hero-photo-ring {
-        width: 200px !important;
-        height: 200px !important;
-        margin: 0 auto;
-    }
+    .about-avatar { display: flex !important; width: 200px !important; height: 200px !important; margin: 0 auto 2rem auto !important; opacity: 1 !important; transform: none !important; }
      
-    /* ৩. এবাউট সেকশনের ছবি যেন কোনোভাবেই হাইড না হয় */
-    .about-avatar {
-        display: flex !important;
-        width: 200px !important;
-        height: 200px !important;
-        margin: 0 auto 2rem auto !important;
-        opacity: 1 !important; 
-        transform: none !important;
-    }
-     
-    /* ৪. ছবি যেন বক্সের বাইরে না যায় */
-    .hero-photo-inner img, .about-avatar img {
-        width: 100% !important;
-        height: 100% !important;
-        object-fit: cover !important;
-    }
-}
+    .hero-photo-inner img, .about-avatar img { width: 100% !important; height: 100% !important; object-fit: cover !important; }
+  }
 
-/* =========================================
-   নতুন অ্যানিমেশন কোড (ফ্লোটিং এবং হোভার)
-========================================== */
+  /* =========================================
+     ANIMATION & AMBIENT EFFECT RULES
+  ========================================== */
+  @keyframes floatAnimation {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); }
+    100% { transform: translateY(0px); }
+  }
+  .hero-photo-ring { animation: floatAnimation 4s ease-in-out infinite; }
 
-/* ১. প্রোফাইল ছবির ফ্লোটিং (Floating) অ্যানিমেশন */
-@keyframes floatAnimation {
-  0% { transform: translateY(0px); }
-  50% { transform: translateY(-15px); }
-  100% { transform: translateY(0px); }
-}
-.hero-photo-ring {
-  animation: floatAnimation 4s ease-in-out infinite;
-}
+  .skill-card, .project-card, .cert-card, .cocurr-card, .award-card, .contact-box, .card {
+    transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
+  }
 
-/* ২. কার্ডগুলোর স্মুথ লিফটিং (Lifting) হোভার ইফেক্ট */
-.skill-card, .project-card, .cert-card, .award-card, .contact-box, .card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
-}
+  .skill-card:hover, .project-card:hover, .cert-card:hover, .cocurr-card:hover, .award-card:hover, .contact-box:hover, .card:hover {
+    transform: translateY(-8px) !important;
+    box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15) !important;
+    border-color: var(--c1) !important;
+  }
 
-.skill-card:hover, .project-card:hover, .cert-card:hover, .award-card:hover, .contact-box:hover, .card:hover {
-  transform: translateY(-8px) !important;
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15) !important;
-  border-color: var(--c1) !important;
-}
+  .btn { transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease !important; }
+  .btn:hover { transform: translateY(-3px) !important; box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3) !important; }
 
-/* ৩. বাটন হোভার ইফ效ক্ট */
-.btn {
-  transition: transform 0.2s ease, opacity 0.2s ease, box-shadow 0.2s ease !important;
-}
-.btn:hover {
-  transform: translateY(-3px) !important;
-  box-shadow: 0 5px 15px rgba(37, 99, 235, 0.3) !important;
-}
+  .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+  .reveal.active { opacity: 1; transform: translateY(0); }
 
-/* ৪. স্ক্রল রিভিল অ্যানিমেশন ক্লাস */
-.reveal {
-  opacity: 0;
-  transform: translateY(30px);
-  transition: all 0.8s ease-out;
-}
-.reveal.active {
-  opacity: 1;
-  transform: translateY(0);
-}
+  html { background-color: var(--bg); transition: background-color 0.4s ease; }
+  body { background-color: transparent !important; background-image: none !important; }
 
-/* =========================================
-   প্রিমিয়াম ব্যাকগ্রাউন্ড (Ambient Tech Glow) - FIXED
-========================================== */
+  body::before, body::after {
+    content: '';
+    position: fixed;
+    width: 50vw;
+    height: 50vw;
+    min-width: 400px;
+    min-height: 400px;
+    border-radius: 50%;
+    filter: blur(100px); 
+    z-index: -1; 
+    pointer-events: none; 
+    animation: ambientGlowMove 15s ease-in-out infinite alternate;
+  }
 
-html {
-  background-color: var(--bg);
-  transition: background-color 0.4s ease;
-}
-body {
-  background-color: transparent !important;
-}
+  body::before { background: var(--c1); top: -15%; left: -10%; opacity: 0.15; }
+  body::after { background: var(--c2); bottom: -15%; right: -10%; opacity: 0.15; animation-duration: 20s; animation-direction: alternate-reverse; }
 
-body::before, body::after {
-  content: '';
-  position: fixed;
-  width: 50vw;
-  height: 50vw;
-  min-width: 400px;
-  min-height: 400px;
-  border-radius: 50%;
-  filter: blur(100px); 
-  z-index: -1; 
-  pointer-events: none; 
-  animation: ambientGlowMove 15s ease-in-out infinite alternate;
-}
+  [data-theme="dark"] body::before, 
+  [data-theme="dark"] body::after { opacity: 0.08; }
 
-body::before {
-  background: var(--c1);
-  top: -15%;
-  left: -10%;
-  opacity: 0.15; 
-}
+  @keyframes ambientGlowMove {
+    0% { transform: translate(0, 0) scale(1); }
+    100% { transform: translate(80px, 60px) scale(1.1); }
+  }
 
-body::after {
-  background: var(--c2);
-  bottom: -15%;
-  right: -10%;
-  opacity: 0.15;
-  animation-duration: 20s;
-  animation-direction: alternate-reverse;
-}
-
-[data-theme="dark"] body::before, 
-[data-theme="dark"] body::after {
-  opacity: 0.08;
-}
-
-@keyframes ambientGlowMove {
-  0% { transform: translate(0, 0) scale(1); }
-  100% { transform: translate(80px, 60px) scale(1.1); }
-}
-
-.alt-section {
-  background: transparent !important;
-}
-
-body {
-  background-image: none !important;
-}
-
-/* সলাইডারের স্ক্রলবার পুরোপুরি অদৃশ্য (Hide) করার জন্য */
-.slider-wrapper::-webkit-scrollbar {
-  display: none !important;
-}
-.slider-wrapper {
-  -ms-overflow-style: none;  /* IE and Edge */
-  scrollbar-width: none;  /* Firefox */
-}
-
-.skill-card, .project-card, .cert-card, .cocurr-card, .award-card, .contact-box, .card {
-  transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease !important;
-}
-
-.skill-card:hover, .project-card:hover, .cert-card:hover, .cocurr-card:hover, .award-card:hover, .contact-box:hover, .card:hover {
-  transform: translateY(-8px) !important;
-  box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15) !important;
-  border-color: var(--c1) !important;
-}
-
+  .alt-section { background: transparent !important; }
 </style>
 </head>
 <body>
@@ -366,7 +228,7 @@ body {
     <a onclick="scroll2('projects')">Projects</a>
     <a onclick="scroll2('experience')">Experiences</a>
     <a onclick="scroll2('awards')">Awards</a>
-    <a onclick="scroll2('travels')">Travel</a> 
+    <a href="travel.html">Travel</a>
     <a onclick="scroll2('contact')">Contact</a>
   </div>
   <div class="theme-toggle">
@@ -389,11 +251,9 @@ body {
       <p>A passionate 4th-year student of Mechanical Engineering at Bangladesh University of Engineering and Technology (BUET).</p>
       <div class="btn-row">
         <button class="btn btn-primary" onclick="scroll2('projects')">View Projects</button>
-        
         <a href="Parag Mollick CV.pdf" download="Parag Mollick-CV.pdf" class="btn btn-outline">
           <i class="fas fa-file-pdf" style="margin-right: 6px;"></i> Download CV
         </a>
-        
         <button class="btn btn-outline" onclick="scroll2('contact')">Let's Talk</button>
       </div>
     </div>
@@ -416,17 +276,14 @@ body {
       <img src="image_3b9770.png" alt="Parag Mollick" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem;">
     </div>
     <div class="about-text">
-      <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka. 
+      <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka.
          <span id="about-more-text" class="hidden"> 
-            His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise. 
+            His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise.
          </span>
       </p>
-      
-      <button onclick="toggleAboutText()" id="about-read-btn" 
-              style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0; margin-top:10px;">
+      <button onclick="toggleAboutText()" id="about-read-btn" style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0; margin-top:10px;">
         See More
       </button>
-      
       <div class="stats-row"></div>
     </div>
   </div>
@@ -446,74 +303,67 @@ body {
   <div class="certificates-grid" id="certs-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem; margin-bottom: 3rem;">
     
     <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:1rem;">Primary School Certificate</h3>
-  <a href="https://drive.google.com/file/d/15gNsqL7wXAEWlOHrlW-9rZ4nShTJzA6a/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
-     style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
-     onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" 
-     onmouseout="this.style.background='transparent'">
-    View Certificate 
-  </a>
-</div>
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Primary School Certificate</h3>
+      <a href="https://drive.google.com/file/d/15gNsqL7wXAEWlOHrlW-9rZ4nShTJzA6a/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
+         style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
+         onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" onmouseout="this.style.background='transparent'">
+        View Certificate 
+      </a>
+    </div>
 
-<div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:1rem;">Junior School Certificate</h3>
-  <a href="https://drive.google.com/file/d/1rpDmosA_8SsQUtV1a0BnleE9OrRGzpim/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
-     style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
-     onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" 
-     onmouseout="this.style.background='transparent'">
-    View Certificate 
-  </a>
-</div>
+    <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Junior School Certificate</h3>
+      <a href="https://drive.google.com/file/d/1rpDmosA_8SsQUtV1a0BnleE9OrRGzpim/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
+         style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
+         onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" onmouseout="this.style.background='transparent'">
+        View Certificate 
+      </a>
+    </div>
 
-<div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:1rem;">Secondary School Certificate</h3>
-  <a href="https://drive.google.com/file/d/13QvMc28Z0dCKuwbbHnY1rHFIyf1h5C9f/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
-     style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
-     onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" 
-     onmouseout="this.style.background='transparent'">
-    View Certificate 
-  </a>
-</div>
+    <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Secondary School Certificate</h3>
+      <a href="https://drive.google.com/file/d/13QvMc28Z0dCKuwbbHnY1rHFIyf1h5C9f/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
+         style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
+         onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" onmouseout="this.style.background='transparent'">
+        View Certificate 
+      </a>
+    </div>
 
-<div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:1rem;">Higher Secondary School Certificate</h3>
-  <a href="https://drive.google.com/file/d/13QvMc28Z0dCKuwbbHnY1rHFIyf1h5C9f/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
-     style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
-     onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" 
-     onmouseout="this.style.background='transparent'">
-    View Certificate 
-  </a>
-</div>
+    <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Higher Secondary School Certificate</h3>
+      <a href="https://drive.google.com/file/d/13QvMc28Z0dCKuwbbHnY1rHFIyf1h5C9f/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
+         style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
+         onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" onmouseout="this.style.background='transparent'">
+        View Certificate 
+      </a>
+    </div>
 
-<div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:1rem;">SolidWorks Professional</h3>
-  <a href="https://drive.google.com/file/d/1zbHnkeR9z3hxlTiNjreWGcJlab9PUUYH/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
-     style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
-     onmouseover="this.style.background='#2563EB'" 
-     onmouseout="this.style.background='#3B82F6'">
-    View Certificate 
-  </a>
-</div>
+    <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">SolidWorks Professional</h3>
+      <a href="https://drive.google.com/file/d/1zbHnkeR9z3hxlTiNjreWGcJlab9PUUYH/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
+         style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
+         onmouseover="this.style.background='#2563EB'" onmouseout="this.style.background='#3B82F6'">
+        View Certificate 
+      </a>
+    </div>
 
-<div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:1rem;">Ansys Simulation Expert</h3>
-  <a href="https://drive.google.com/file/d/1p1ZaMO1KHfSnksBVis5LtJw4NZhBu__h/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
-     style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
-     onmouseover="this.style.background='#2563EB'" 
-     onmouseout="this.style.background='#3B82F6'">
-    View Certificate 
-  </a>
-</div>
+    <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Ansys Simulation Expert</h3>
+      <a href="https://drive.google.com/file/d/1p1ZaMO1KHfSnksBVis5LtJw4NZhBu__h/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
+         style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
+         onmouseover="this.style.background='#2563EB'" onmouseout="this.style.background='#3B82F6'">
+        View Certificate 
+      </a>
+    </div>
 
-<div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:1rem;">MATLAB Professional</h3>
-  <a href="https://drive.google.com/file/d/1tx77UC_OP_s7bKkt9QmCNYFTYC737GW0/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
-     style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
-     onmouseover="this.style.background='#2563EB'" 
-     onmouseout="this.style.background='#3B82F6'">
-    View Certificate 
-  </a>
-</div>
+    <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+      <h3 style="font-size:1.1rem; margin-bottom:1rem;">MATLAB Professional</h3>
+      <a href="https://drive.google.com/file/d/1tx77UC_OP_s7bKkt9QmCNYFTYC737GW0/view?usp=sharing" target="_blank" rel="noopener noreferrer" 
+         style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s;" 
+         onmouseover="this.style.background='#2563EB'" onmouseout="this.style.background='#3B82F6'">
+        View Certificate 
+      </a>
+    </div>
   </div>
 
   <div style="text-align: center; margin-top: -1.5rem; margin-bottom: 3rem;">
@@ -524,67 +374,37 @@ body {
   <div class="certificates-grid" id="co-curricular-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem;">
     
     <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Singing Certifications</h3>
-  <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Nazrul Geeti and Folk Music</p>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
-    
-    <a href="https://drive.google.com/file/d/1fdHJKPNcDJ9WNZBjPKEoh7wMLuG9QpSk/view?usp=sharing" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;"
-       onmouseover="this.style.opacity='0.9'"
-       onmouseout="this.style.opacity='1'">
-       View Certificate 
-    </a>
-
-    <a href="https://drive.google.com/file/d/1eSgyqcOog8ynMxd3vCwxkBpD3xyYH9Cf/view?usp=sharing" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       style="text-decoration:none; color:var(--c1); border: 1px solid var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: background 0.2s, color 0.2s;"
-       onmouseover="this.style.background='var(--c1)'; this.style.color='#fff';"
-       onmouseout="this.style.background='transparent'; this.style.color='var(--c1)';">
-       View Achievement 
-    </a>
-
-  </div>
-</div>
-
-   
+      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Singing Certifications</h3>
+      <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Nazrul Geeti and Folk Music</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
+        <a href="https://drive.google.com/file/d/1fdHJKPNcDJ9WNZBjPKEoh7wMLuG9QpSk/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+           View Certificate 
+        </a>
+        <a href="https://drive.google.com/file/d/1eSgyqcOog8ynMxd3vCwxkBpD3xyYH9Cf/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:var(--c1); border: 1px solid var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: background 0.2s, color 0.2s;" onmouseover="this.style.background='var(--c1)'; this.style.color='#fff';" onmouseout="this.style.background='transparent'; this.style.color='var(--c1)';">
+           View Achievement 
+        </a>
+      </div>
+    </div>
 
     <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Arts and crafts</h3>
-  <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Arts and crafts</p>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
-    
-    <a href="https://drive.google.com/file/d/1GIoOif4hBnd0wz-_68FjhyOzL_mTzhKr/view?usp=sharing" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;"
-       onmouseover="this.style.opacity='0.9'"
-       onmouseout="this.style.opacity='1'">
-       View Certification 
-    </a>
-  </div>
-</div>
+      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Arts and crafts</h3>
+      <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Arts and crafts</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
+        <a href="https://drive.google.com/file/d/1GIoOif4hBnd0wz-_68FjhyOzL_mTzhKr/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+           View Certification 
+        </a>
+      </div>
+    </div>
 
-<div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
-  <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Poetry recitation</h3>
-  <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Poetry recitation</p>
-  
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
-    
-    <a href="https://drive.google.com/file/d/1-ABCG6Wp0kNrhcTVdHB_0spSLOqnCOkT/view?usp=sharing" 
-       target="_blank" 
-       rel="noopener noreferrer" 
-       style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;"
-       onmouseover="this.style.opacity='0.9'"
-       onmouseout="this.style.opacity='1'">
-       View Certification 
-    </a>
-  </div>
-</div>
+    <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem;">
+      <h3 style="font-size:1.1rem; margin-bottom:0.5rem;">Poetry recitation</h3>
+      <p style="color:var(--muted); font-size:0.85rem; margin-bottom:1.2rem;">I achieved some certifications in Poetry recitation</p>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 0.8rem; max-width: 320px;">
+        <a href="https://drive.google.com/file/d/1-ABCG6Wp0kNrhcTVdHB_0spSLOqnCOkT/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="text-decoration:none; color:#fff; background:var(--c1); font-weight:500; font-size:0.85rem; padding: 0.6rem 0; border-radius: 0.5rem; text-align: center; transition: opacity 0.2s;" onmouseover="this.style.opacity='0.9'" onmouseout="this.style.opacity='1'">
+           View Certification 
+        </a>
+      </div>
+    </div>
 
   </div>
 </section>
@@ -611,14 +431,12 @@ body {
       <div style="display: flex; flex-wrap: wrap; gap: 1rem; align-items: center;">
         <a href="https://drive.google.com/file/d/1AKdLJZxef2YgFVL8lTBsy63l3Yh0WU3v/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-pdf-link" 
            style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #1f2937); border: 1.5px solid #4b5563; padding: 0.6rem 1.8rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: bold; transition: 0.2s;" 
-           onmouseover="this.style.background='rgba(75, 85, 99, 0.15)'" 
-           onmouseout="this.style.background='transparent'">
+           onmouseover="this.style.background='rgba(75, 85, 99, 0.15)'" onmouseout="this.style.background='transparent'">
           View Image 
         </a>
         <a href="https://drive.google.com/file/d/1zjSlOQDUi3YJhgUZAvT2U-gya0Uf0L0m/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="project-pdf-link" 
            style="display: inline-flex; align-items: center; justify-content: center; background: #3b82f6; color: #ffffff; padding: 0.6rem 1.8rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: bold; transition: 0.2s;" 
-           onmouseover="this.style.background='#2563eb'" 
-           onmouseout="this.style.background='#3b82f6'">
+           onmouseover="this.style.background='#2563eb'" onmouseout="this.style.background='#3b82f6'">
           View Video 
         </a>
       </div>
@@ -628,8 +446,7 @@ body {
       <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem;">Design and Optimization of Spiral Jaw Clutch</h3>
       <a href="https://drive.google.com/file/d/1gINuKnRBcTa1VoLBJLWyrkwcatcB3swL/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="project-pdf-link" 
          style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #1f2937); border: 1.5px solid #4b5563; padding: 0.6rem 1.8rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: bold; transition: 0.2s;" 
-         onmouseover="this.style.background='rgba(75, 85, 99, 0.15)'" 
-         onmouseout="this.style.background='transparent'">
+         onmouseover="this.style.background='rgba(75, 85, 99, 0.15)'" onmouseout="this.style.background='transparent'">
         View Project PDF
       </a>
     </div>
@@ -638,8 +455,7 @@ body {
       <h3 style="font-family: 'Playfair Display', serif; font-size: 1.2rem; margin-bottom: 1rem;">Radiator-Type Rear door Heat Exchanger Equipment</h3>
       <a href="https://drive.google.com/file/d/1Xqh4m2CPmdsplN-0eMz1Fm1DgrDAu_cS/view?usp=drive_link" target="_blank" rel="noopener noreferrer" class="project-pdf-link" 
          style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.6rem 1.8rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.95rem; font-weight: bold; transition: 0.2s;" 
-         onmouseover="this.style.background='#2563EB'" 
-         onmouseout="this.style.background='#3B82F6'">
+         onmouseover="this.style.background='#2563EB'" onmouseout="this.style.background='#3B82F6'">
         View Project PDF
       </a>
     </div>
@@ -658,11 +474,9 @@ body {
     <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
       <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:0.3rem; color:var(--c1);">Industrial Attachment Trainee</h3>
       <h4 style="font-size:1.1rem; margin-bottom:1rem; font-weight: normal;">Meghna Group of Industries (MGI)</h4>
-      
       <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem; font-weight: bold;">
         <i class="fas fa-calendar-alt" style="margin-right: 5px;"></i> 01th to 20th June
       </p>
-      
       <p style="color:var(--muted); font-size:0.95rem; line-height: 1.6;">
         Gaining practical, hands-on experience in large-scale industrial operations and mechanical maintenance. Observing real-world engineering applications, manufacturing processes, and safety protocols within a leading industrial setup in Bangladesh.
       </p>
@@ -710,232 +524,19 @@ body {
     </div>
 
     <div class="award-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.8rem; border-radius:1.2rem; box-shadow:0 1px 4px var(--shadow); max-width: 300px;">
-  <div style="font-size: 2rem; margin-bottom: 0.8rem;">🏅</div>
-  <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.5rem; color:var(--c1);">Sports</h3>
-  <p style="color:var(--muted); font-size:0.85rem; margin-bottom:0.3rem; font-weight: bold;">Badminton</p>
-  <p style="color:var(--muted); font-size:0.85rem; line-height: 1.4; margin-bottom: 1.2rem;">Awarded for being Champion in the Annual Sports of the School.</p>
-  
-  <a href="https://drive.google.com/file/d/1ZALWHsSYLfRWg4VYuPsnpi8Zba1Shj1I/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px;">
-    View Achievement 
-  </a>
-</div>
+      <div style="font-size: 2rem; margin-bottom: 0.8rem;">🏅</div>
+      <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.5rem; color:var(--c1);">Sports</h3>
+      <p style="color:var(--muted); font-size:0.85rem; margin-bottom:0.3rem; font-weight: bold;">Badminton</p>
+      <p style="color:var(--muted); font-size:0.85rem; line-height: 1.4; margin-bottom: 1.2rem;">Awarded for being Champion in the Annual Sports of the School.</p>
+      <a href="https://drive.google.com/file/d/1ZALWHsSYLfRWg4VYuPsnpi8Zba1Shj1I/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px;">
+        View Achievement 
+      </a>
+    </div>
 
   </div>
 
   <div style="text-align: center; margin-top: 2rem;">
     <button id="see-more-awards-btn" onclick="toggleAwards()" class="btn btn-outline" style="padding: 0.8rem 2rem; cursor:pointer;">See More</button>
-  </div>
-</section>
-
-<section id="travels" class="alt-section">
-  <div class="section-label">Outside the Office</div>
-  <h2 class="section-title" style="margin-bottom: 2rem;">My Global Footprints</h2>
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem;">
-    
-    <div class="card reveal" style="background:var(--card); border:1px solid var(--border); padding:1rem; border-radius:1rem; display: flex; flex-direction: column;">
-
-  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
-    <button onclick="switchCity('bangkok')" id="tab-bangkok"
-      style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--c1);background:var(--c1);color:#fff;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-      Bangkok
-    </button>
-    <button onclick="switchCity('phuket')" id="tab-phuket"
-      style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-       Phuket
-    </button>
-    <button onclick="switchCity('chiangmai')" id="tab-chiangmai"
-      style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-       Phi-Phi Island
-    </button>
-    <button onclick="switchCity('pattaya')" id="tab-pattaya"
-      style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-      Maya Bay
-    </button>
-  </div>
-
-  <div id="city-bangkok" class="city-slider-block">
-    <div id="thailand-slider-bangkok" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
-      <img src="bangkok1.jpg" alt="Bangkok" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="bangkok2.jpg" alt="Bangkok" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="bangkok3.jpg" alt="Bangkok" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="bangkok4.jpg" alt="Bangkok" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="bangkok5.jpg" alt="Bangkok" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-    </div>
-    <div id="dots-bangkok" style="display:flex;justify-content:center;gap:6px;margin-bottom:0.6rem;">
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--c1);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-    </div>
-  </div>
-
-  <div id="city-phuket" class="city-slider-block" style="display:none;">
-    <div id="thailand-slider-phuket" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
-      <img src="phuket1.jpg" alt="Phuket" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="phuket2.jpg" alt="Phuket" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="phuket3.jpg" alt="Phuket" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="phuket4.jpg" alt="Phuket" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="phuket5.jpg" alt="Phuket" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-    </div>
-    <div id="dots-phuket" style="display:flex;justify-content:center;gap:6px;margin-bottom:0.6rem;">
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--c1);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-    </div>
-  </div>
-
-  <div id="city-chiangmai" class="city-slider-block" style="display:none;">
-    <div id="thailand-slider-chiangmai" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
-      <img src="chiangmai1.jpg" alt="Chiang Mai" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="chiangmai2.jpg" alt="Chiang Mai" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="chiangmai3.jpg" alt="Chiang Mai" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="chiangmai4.jpg" alt="Chiang Mai" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="chiangmai5.jpg" alt="Chiang Mai" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-    </div>
-    <div id="dots-chiangmai" style="display:flex;justify-content:center;gap:6px;margin-bottom:0.6rem;">
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--c1);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-    </div>
-  </div>
-
-  <div id="city-pattaya" class="city-slider-block" style="display:none;">
-    <div id="thailand-slider-pattaya" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
-      <img src="pattaya1.jpg" alt="Pattaya" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="pattaya2.jpg" alt="Pattaya" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="pattaya3.jpg" alt="Pattaya" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="pattaya4.jpg" alt="Pattaya" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="pattaya5.jpg" alt="Pattaya" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-    </div>
-    <div id="dots-pattaya" style="display:flex;justify-content:center;gap:6px;margin-bottom:0.6rem;">
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--c1);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-    </div>
-  </div>
-
-  <h3 style="margin: 0 0 0.5rem;">Thailand</h3>
-  <p style="color:var(--muted); font-size: 0.9rem; line-height: 1.5;">
-    Thailand is a mesmerizing destination in Southeast Asia where rich cultural heritage seamlessly blends with ultra-modern urban life. Globally renowned for its warm hospitality and vibrant atmosphere, the country proudly showcases its deep-rooted traditions through magnificent, intricately designed Buddhist temples like Wat Arun and Wat Pho.
-    <span id="thailand-more-text" class="hidden">
-      In the capital city of Bangkok, soaring modern skyscrapers stand in dynamic contrast alongside historic grand palaces, busy traditional Tuk-Tuks, and the serene flow of the Chao Phraya River. For food enthusiasts, Thailand is an absolute paradise, thriving with bustling night markets and floating markets that offer an incredible array of world-famous street food, including iconic dishes like Pad Thai, Tom Yum soup, and authentic Thai curries. Beyond the urban energy, spectacular island escapes like Phuket and the Phi Phi Islands offer breathtaking natural beauty with pristine white-sand beaches and crystal-clear turquoise waters perfect for snorkeling and island hopping. Whether it is exploring complex infrastructure or relaxing along the tropical coast, Thailand remains a dream destination that perfectly captures the unforgettable essence of exploration.
-    </span>
-  </p>
-  <button onclick="toggleThailandText()" id="thailand-read-btn" style="border:none;background:none;color:var(--c1);cursor:pointer;font-weight:bold;padding:0;margin-top:8px;font-size:0.85rem;">
-    See More
-  </button>
-
-</div>
-
-    <div class="card reveal" style="background:var(--card); border:1px solid var(--border); padding:1rem; border-radius:1rem; transition-delay: 0.15s; display: flex; flex-direction: column;">
-
-  <div style="display: flex; flex-wrap: wrap; gap: 0.5rem; margin-bottom: 0.8rem;">
-    <button onclick="switchMalaysiaCity('kl')" id="tab-kl"
-      style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--c1);background:var(--c1);color:#fff;font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-      Kuala Lumpur
-    </button>
-    <button onclick="switchMalaysiaCity('penang')" id="tab-penang"
-      style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-       Penang
-    </button>
-    <button onclick="switchMalaysiaCity('malacca')" id="tab-malacca"
-      style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-       Malacca
-    </button>
-    <button onclick="switchMalaysiaCity('langkawi')" id="tab-langkawi"
-      style="padding:0.35rem 0.9rem;border-radius:2rem;border:1.5px solid var(--border);background:transparent;color:var(--text);font-size:0.8rem;font-weight:600;cursor:pointer;transition:all 0.2s;">
-       Langkawi
-    </button>
-  </div>
-
-  <div id="mcity-kl" class="mCity-slider-block">
-    <div id="malaysia-slider-kl" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
-      <img src="kl1.jpg" alt="Kuala Lumpur" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="kl2.jpg" alt="Kuala Lumpur" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="kl3.jpg" alt="Kuala Lumpur" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="kl4.jpg" alt="Kuala Lumpur" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="kl5.jpg" alt="Kuala Lumpur" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-    </div>
-    <div id="mdots-kl" style="display:flex;justify-content:center;gap:6px;margin-bottom:0.6rem;">
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--c1);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-    </div>
-  </div>
-
-  <div id="mcity-penang" class="mCity-slider-block" style="display:none;">
-    <div id="malaysia-slider-penang" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
-      <img src="penang1.jpg" alt="Penang" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="penang2.jpg" alt="Penang" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="penang3.jpg" alt="Penang" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="penang4.jpg" alt="Penang" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="penang5.jpg" alt="Penang" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-    </div>
-    <div id="mdots-penang" style="display:flex;justify-content:center;gap:6px;margin-bottom:0.6rem;">
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--c1);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-    </div>
-  </div>
-
-  <div id="mcity-malacca" class="mCity-slider-block" style="display:none;">
-    <div id="malaysia-slider-malacca" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
-      <img src="malacca1.jpg" alt="Malacca" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="malacca2.jpg" alt="Malacca" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="malacca3.jpg" alt="Malacca" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="malacca4.jpg" alt="Malacca" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="malacca5.jpg" alt="Malacca" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-    </div>
-    <div id="mdots-malacca" style="display:flex;justify-content:center;gap:6px;margin-bottom:0.6rem;">
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--c1);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-    </div>
-  </div>
-
-  <div id="mcity-langkawi" class="mCity-slider-block" style="display:none;">
-    <div id="malaysia-slider-langkawi" class="slider-wrapper" style="width:100%;height:350px;overflow-x:auto;display:flex;scroll-snap-type:x mandatory;scroll-behavior:smooth;border-radius:0.5rem;margin-bottom:0.6rem;">
-      <img src="langkawi1.jpg" alt="Langkawi" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="langkawi2.jpg" alt="Langkawi" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="langkawi3.jpg" alt="Langkawi" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="langkawi4.jpg" alt="Langkawi" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-      <img src="langkawi5.jpg" alt="Langkawi" style="width:100%;height:100%;flex-shrink:0;object-fit:cover;scroll-snap-align:start;">
-    </div>
-    <div id="mdots-langkawi" style="display:flex;justify-content:center;gap:6px;margin-bottom:0.6rem;">
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--c1);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-      <span class="dot" style="width:8px;height:8px;border-radius:50%;background:var(--border);cursor:pointer;transition:all 0.3s;"></span>
-    </div>
-  </div>
-
-  <h3>Malaysia</h3>
-  <p style="color:var(--muted); font-size: 0.9rem; line-height: 1.5;">
-    Malaysia is a captivating destination in Southeast Asia where breathtaking ultra-modern advancements perfectly harmonize with a rich, multicultural heritage. The country proudly showcases its technological and architectural engineering milestones through iconic landmarks like the Petronas Twin Towers.
-    <span id="malaysia-more-text" class="hidden">
-      For food enthusiasts, Malaysia offers an absolute paradise, blending Malay, Chinese, and Indian influences into world-famous culinary street food experiences, including signature dishes like Nasi Lemak, Char Kway Teow, and flavorful Laksa. Beyond the dynamic urban landscape, the country is home to stunning natural wonders, from the serene, tea-covered hills of the Cameron Highlands to pristine tropical island escapes like Langkawi, perfect for exploration and relaxation. Whether marveling at complex city infrastructure, exploring historical UNESCO World Heritage sites in Penang, or immersing oneself in its diverse cultural fusion, Malaysia offers a unique, inspiring perspective on global exploration.
-    </span>
-  </p>
-  <button onclick="toggleMalaysiaText()" id="malaysia-read-btn" style="border:none;background:none;color:var(--c1);cursor:pointer;font-weight:bold;padding:0;margin-top:8px;font-size:0.85rem;">
-    See More
-  </button>
-
-</div>
-    
   </div>
 </section>
 
@@ -949,23 +550,18 @@ body {
       <a class="clink" href="tel:+8801626058887">
         <i class="fas fa-phone"></i> 01626-058887
       </a>
-
       <a class="clink" href="javascript:void(0)" onclick="navigator.clipboard.writeText('paragmollick.mechanical@gmail.com'); alert('Email copied to clipboard!');">
         <i class="fas fa-envelope"></i> paragmollick.mechanical@gmail.com <i class="fas fa-copy" style="font-size: 0.85em; margin-left: 6px; opacity: 0.6;"></i>
       </a>
-
       <a class="clink" href="https://web.facebook.com/paragmollick.mecha.buet" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-facebook"></i> facebook
       </a>
-
       <a class="clink" href="https://www.instagram.com/paragmollick/" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-instagram"></i> instagram
       </a>
-
       <a class="clink" href="https://wa.me/+8801626058887" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-whatsapp" style="font-size: 1.2em;"></i> WhatsApp
       </a>
-
       <a class="clink" href="https://www.linkedin.com/in/parag-mollick-82ba4b28a/" target="_blank" rel="noopener noreferrer">
         <i class="fab fa-linkedin"></i> LinkedIn
       </a>
@@ -1063,7 +659,6 @@ document.querySelectorAll('.nav-links a').forEach(link => {
 function toggleAwards() {
   const btn = document.getElementById('see-more-awards-btn');
   const allAwards = document.querySelectorAll('.award-card');
-
   const isHidden = allAwards[3].classList.contains('hidden');
 
   if (isHidden) {
@@ -1089,103 +684,8 @@ function toggleAboutText() {
     btnText.innerText = "See More";
   }
 }
-function toggleThailandText() {
-  const moreText = document.getElementById("thailand-more-text");
-  const btnText = document.getElementById("thailand-read-btn");
-  
-  if (moreText.classList.contains("hidden")) {
-    moreText.classList.remove("hidden");
-    btnText.innerText = "See Less";
-  } else {
-    moreText.classList.add("hidden");
-    btnText.innerText = "See More";
-  }
-}
-function toggleMalaysiaText() {
-  const moreText = document.getElementById("malaysia-more-text");
-  const btnText = document.getElementById("malaysia-read-btn");
-  
-  if (moreText.classList.contains("hidden")) {
-    moreText.classList.remove("hidden");
-    btnText.innerText = "See Less";
-  } else {
-    moreText.classList.add("hidden");
-    btnText.innerText = "See More";
-  }
-}
-
-// === ডট ইন্ডিকেটরসহ উন্নত অটো-স্লাইডার ফাংশন ===
-function initPremiumSlider(sliderId, dotsContainerId, delayTime) {
-  const slider = document.getElementById(sliderId);
-  const dotsContainer = document.getElementById(dotsContainerId);
-  if (!slider || !dotsContainer) return;
-
-  const images = slider.querySelectorAll('img');
-  const dots = dotsContainer.querySelectorAll('.dot');
-  const totalImages = images.length;
-  let currentIndex = 0;
-
-  function updateDots(index) {
-    dots.forEach((dot, i) => {
-      if (i === index) {
-        dot.style.background = 'var(--c1)'; 
-        dot.style.transform = 'scale(1.2)';  
-      } else {
-        dot.style.background = 'var(--border)'; 
-        dot.style.transform = 'scale(1)';
-      }
-    });
-  }
-
-  // অটো স্লাইড টাইমার
-  setInterval(() => {
-    currentIndex++;
-    if (currentIndex >= totalImages) {
-      currentIndex = 0;
-    }
-
-    const scrollAmount = slider.clientWidth * currentIndex;
-    slider.scrollTo({
-      left: scrollAmount,
-      behavior: 'smooth'
-    });
-
-    updateDots(currentIndex);
-  }, delayTime);
-
-  // স্ক্রল লিসেনার
-  slider.addEventListener('scroll', () => {
-    const scrollLeft = slider.scrollLeft;
-    const width = slider.clientWidth;
-    const newIndex = Math.round(scrollLeft / width);
-    
-    if (newIndex !== currentIndex && newIndex < totalImages) {
-      currentIndex = newIndex;
-      updateDots(currentIndex);
-    }
-  });
-
-  // ডট ক্লিক কন্ট্রোল
-  dots.forEach((dot, index) => {
-    dot.addEventListener('click', () => {
-      currentIndex = index;
-      slider.scrollTo({
-        left: slider.clientWidth * index,
-        behavior: 'smooth'
-      });
-      updateDots(currentIndex);
-    });
-  });
-}
-
-// স্লাইডার দুটি চালু করা হলো
-setTimeout(() => {
-  initPremiumSlider('thailand-slider', 'thailand-dots', 3000); 
-  initPremiumSlider('malaysia-slider', 'malaysia-dots', 3500); 
-}, 500);
 
 // স্ক্রল রিভিল অ্যানিমেশন অবসার্ভার কোড
-// === মোবাইল ফ্রেন্ডলি স্ক্রল রিভিল অ্যানিমেশন অবসার্ভার (FIXED) ===
 const revealObserver = new IntersectionObserver((entries) => {
   entries.forEach(e => {
     if(e.isIntersecting) {
@@ -1193,83 +693,9 @@ const revealObserver = new IntersectionObserver((entries) => {
     }
   });
 }, { 
-  // মোবাইলের জন্য থ্রেশহোল্ড কমিয়ে ০.০৫ করা হলো যেন একটুখানি অংশ স্ক্রিনে আসলেই অ্যানিমেশন ট্রিগার হয়
   threshold: window.innerWidth < 768 ? 0.05 : 0.1,
-  rootMargin: "0px 0px -20px 0px" // স্ক্রিনের নিচ থেকে একটু আগেই অ্যানিমেশন রেডি করবে
+  rootMargin: "0px 0px -20px 0px"
 });
-
-setTimeout(() => {
-  document.querySelectorAll('.reveal').forEach(el => {
-    revealObserver.observe(el);
-  });
-}, 100);
-// থাইল্যান্ড শহর ট্যাব সুইচার
-const citySliders = {
-  bangkok: null,
-  phuket: null,
-  chiangmai: null,
-  pattaya: null
-};
-
-function switchCity(city) {
-  const cities = ['bangkok', 'phuket', 'chiangmai', 'pattaya'];
-  
-  cities.forEach(c => {
-    document.getElementById('city-' + c).style.display = 'none';
-    const tab = document.getElementById('tab-' + c);
-    tab.style.background = 'transparent';
-    tab.style.color = 'var(--text)';
-    tab.style.borderColor = 'var(--border)';
-  });
-
-  document.getElementById('city-' + city).style.display = 'block';
-  const activeTab = document.getElementById('tab-' + city);
-  activeTab.style.background = 'var(--c1)';
-  activeTab.style.color = '#fff';
-  activeTab.style.borderColor = 'var(--c1)';
-
-  // শুধু প্রথমবার স্লাইডার ইনিশিয়ালাইজ করবে
-  if (!citySliders[city]) {
-    citySliders[city] = true;
-    initPremiumSlider('thailand-slider-' + city, 'dots-' + city, 3000);
-  }
-}
-
-// পেজ লোডে Bangkok ডিফল্ট স্লাইডার চালু
-setTimeout(() => {
-  initPremiumSlider('thailand-slider-bangkok', 'dots-bangkok', 3000);
-  citySliders.bangkok = true;
-}, 
-500);
-const malaysiacitySliders = {};
-
-function switchMalaysiaCity(city) {
-  const cities = ['kl', 'penang', 'malacca', 'langkawi'];
-
-  cities.forEach(c => {
-    document.getElementById('mcity-' + c).style.display = 'none';
-    const tab = document.getElementById('tab-' + c);
-    tab.style.background = 'transparent';
-    tab.style.color = 'var(--text)';
-    tab.style.borderColor = 'var(--border)';
-  });
-
-  document.getElementById('mcity-' + city).style.display = 'block';
-  const activeTab = document.getElementById('tab-' + city);
-  activeTab.style.background = 'var(--c1)';
-  activeTab.style.color = '#fff';
-  activeTab.style.borderColor = 'var(--c1)';
-
-  if (!malaysiacitySliders[city]) {
-    malaysiacitySliders[city] = true;
-    initPremiumSlider('malaysia-slider-' + city, 'mdots-' + city, 3000);
-  }
-}
-
-setTimeout(() => {
-  initPremiumSlider('malaysia-slider-kl', 'mdots-kl', 3000);
-  malaysiacitySliders['kl'] = true;
-}, 500);
 </script>
 </body>
 </html>
