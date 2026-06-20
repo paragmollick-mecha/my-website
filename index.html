@@ -58,7 +58,7 @@
   .theme-btn{padding:.3rem .8rem;border-radius:1.5rem;border:none;background:transparent;font-size:.75rem;font-weight:600;cursor:pointer;transition:all .2s;color:var(--muted)}
   .theme-btn.active{background:var(--c2);color:#fff}
 
-  section{padding:5rem 2.5rem}
+  section{padding:5rem 2.5rem; max-width: 100%; box-sizing: border-box;}
 
   .hero{min-height:88vh;display:flex;align-items:center;position:relative;overflow:hidden}
   .hero-inner{display:flex;align-items:center;justify-content:space-between;gap:3rem;width:100%}
@@ -118,7 +118,8 @@
   .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text); }
 
   @media(max-width:768px){
-    nav { flex-wrap: wrap; padding: 1rem 1.5rem; }
+    section { padding: 3rem 1.2rem; }
+    nav { flex-wrap: wrap; padding: 1rem 1.2rem; }
     .menu-toggle { display: block; }
     .nav-links {
         display: none; 
@@ -144,17 +145,17 @@
     .contact-links { width: 100%; flex-direction: column; gap: 10px; justify-content: center; }
     .clink { width: 100%; white-space: normal; word-break: break-all; justify-content: center; padding: 0.8rem; text-align: center; }
 
-    #experience > div:last-child { flex-direction: column; padding: 1.2rem; gap: 1.5rem; overflow: hidden; box-sizing: border-box; }
-    #experience > div:last-child > div { min-width: 0px; width: 100%; flex: none; }
-    #experience img { width: 100%; max-width: 100%; height: auto; display: block; object-fit: cover; }
+    /* মোবাইলে এক্সপেরিয়েন্স কার্ড ফিক্স */
+    #experience-card { flex-direction: column !important; padding: 1.2rem !important; gap: 1.5rem !important; overflow: hidden; box-sizing: border-box; }
+    #experience-card > div { width: 100% !important; min-width: 0 !important; flex: none !important; }
+    #experience-card img { width: 100% !important; max-width: 100% !important; height: auto !important; display: block; object-fit: cover; }
      
-    .hero { min-height: auto; padding-top: 6rem; padding-bottom: 2rem; }
+    .hero { min-height: auto; padding-top: 4rem; padding-bottom: 2rem; }
      
     .hero-photo-wrap { display: flex; justify-content: center; width: 100%; margin-bottom: 1.5rem; z-index: 10; }
     .hero-photo-ring { width: 200px; height: 200px; margin: 0 auto; }
      
     .about-avatar { display: flex; width: 200px; height: 200px; margin: 0 auto 2rem auto; opacity: 1; transform: none; }
-     
     .hero-photo-inner img, .about-avatar img { width: 100%; height: 100%; object-fit: cover; }
   }
 
@@ -524,11 +525,11 @@
   <div class="section-label">Career Journey</div>
   <h2 class="section-title" style="margin-bottom: 2rem;">Experience</h2>
   
-  <div style="display: flex; flex-wrap: wrap; gap: 2rem; background: var(--card); border: 1px solid var(--border); padding: 2rem; border-radius: 1.2rem; box-shadow: 0 1px 4px var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease;" 
+  <div id="experience-card" style="display: flex; flex-wrap: wrap; gap: 2rem; background: var(--card); border: 1px solid var(--border); padding: 2rem; border-radius: 1.2rem; box-shadow: 0 1px 4px var(--shadow); transition: transform 0.3s ease, box-shadow 0.3s ease, border-color 0.3s ease; box-sizing: border-box; max-width: 100%;" 
        onmouseover="this.style.transform='translateY(-8px)'; this.style.boxShadow='0 15px 30px rgba(59, 130, 246, 0.2)'; this.style.borderColor='var(--c1)';" 
        onmouseout="this.style.transform='translateY(0px)'; this.style.boxShadow='0 1px 4px var(--shadow)'; this.style.borderColor='var(--border)';">
     
-    <div style="flex: 1; min-width: 300px; display: flex; flex-direction: column; justify-content: center;">
+    <div style="flex: 1; min-width: 250px; display: flex; flex-direction: column; justify-content: center; box-sizing: border-box;">
       <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:0.3rem; color:var(--c1);">Industrial Attachment Trainee</h3>
       <h4 style="font-size:1.1rem; margin-bottom:1rem; font-weight: normal;">Meghna Group of Industries (MGI)</h4>
       <p style="color:var(--muted); font-size:0.9rem; margin-bottom:1rem; font-weight: bold;">
@@ -539,8 +540,8 @@
       </p>
     </div>
 
-    <div style="flex: 1; min-width: 300px; display: flex; align-items: center; justify-content: center;">
-      <img src="mgi_attachment_image.jpg" alt="Industrial Attachment at Meghna Group" style="max-width: 100%; height: auto; border-radius: 0.8rem; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.1);">
+    <div style="flex: 1; min-width: 250px; display: flex; align-items: center; justify-content: center; box-sizing: border-box; width: 100%;">
+      <img src="mgi_attachment_image.jpg" alt="Industrial Attachment at Meghna Group" style="width: 100%; max-width: 100%; height: auto; border-radius: 0.8rem; border: 1px solid var(--border); box-shadow: 0 2px 8px rgba(0,0,0,0.1); object-fit: cover; display: block;">
     </div>
 
   </div>
@@ -585,7 +586,7 @@
       <h3 style="font-family:'Playfair Display',serif; font-size:1.2rem; margin-bottom:0.5rem; color:var(--c1);">Sports</h3>
       <p style="color:var(--muted); font-size:0.85rem; margin-bottom:0.3rem; font-weight: bold;">Badminton</p>
       <p style="color:var(--muted); font-size:0.85rem; line-height: 1.4; margin-bottom: 1.2rem;">Awarded for being Champion in the Annual Sports of the School.</p>
-      <a href="https://drive.google.com/file/d/1ZALWHsSYLfRWg4VYuPsnpi8Zba1Shj1I/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; display: inline-flex; align-items: center; gap: 6px;">
+      <a href="https://drive.google.com/file/d/1ZALWHsSYLfRWg4VYuPsnpi8Zba1Shj1I/view?usp=sharing" target="_blank" rel="noopener noreferrer" class="btn btn-outline" style="padding: 0.5rem 1.2rem; font-size: 0.8rem; display: inline-flex; align-items: gap: 6px;">
         View Achievement 
       </a>
     </div>
@@ -755,17 +756,6 @@ function toggleCocurr() {
     btn.innerText = 'See More';
   }
 }
-
-const revealObserver = new IntersectionObserver((entries) => {
-  entries.forEach(e => {
-    if(e.isIntersecting) {
-      e.target.classList.add('active');
-    }
-  });
-}, { 
-  threshold: window.innerWidth < 768 ? 0.05 : 0.1,
-  rootMargin: "0px 0px -20px 0px"
-});
 </script>
 </body>
 </html>
