@@ -116,6 +116,7 @@
   .hero-photo-label{position:absolute;bottom:-8px;left:50%;transform:translateX(-50%);background:var(--card);border:1px solid var(--border);border-radius:2rem;padding:.3rem .9rem;font-size:.72rem;font-weight:600;color:var(--muted);white-space:nowrap;box-shadow:0 2px 8px var(--shadow)}
 
   .menu-toggle { display: none; cursor: pointer; font-size: 1.5rem; color: var(--text); }
+  .mobile-toggle { display: none; }
 
   @media(max-width:768px){
     section { padding: 3rem 1.2rem; scroll-margin-top: 130px; }
@@ -162,6 +163,9 @@
     #certs-grid, #co-curricular-grid { grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)) !important; }
 
     #projects > div > div[style*="grid-template-columns"] { grid-template-columns: 1fr !important; }
+
+    .desktop-toggle { display: none !important; }
+    .mobile-toggle { display: flex !important; margin: 0.5rem auto 0; }
   }
 
   @keyframes floatAnimation {
@@ -286,10 +290,14 @@
     <a onclick="scroll2('awards')">Awards</a>
     <a href="travel.html">Travel</a>
     <a onclick="scroll2('contact')">Contact</a>
+    <div class="theme-toggle mobile-toggle">
+      <button class="theme-btn active" data-mode="light" onclick="setTheme('light')">☀️</button>
+      <button class="theme-btn" data-mode="dark" onclick="setTheme('dark')">🌙</button>
+    </div>
   </div>
-  <div class="theme-toggle">
-    <button class="theme-btn active" id="btn-light" onclick="setTheme('light')">☀️</button>
-    <button class="theme-btn" id="btn-dark" onclick="setTheme('dark')">🌙</button>
+  <div class="theme-toggle desktop-toggle">
+    <button class="theme-btn active" data-mode="light" onclick="setTheme('light')">☀️</button>
+    <button class="theme-btn" data-mode="dark" onclick="setTheme('dark')">🌙</button>
   </div>
 </nav>
 
@@ -715,8 +723,8 @@
 <script>
 function setTheme(mode) {
   document.documentElement.setAttribute('data-theme', mode);
-  document.getElementById('btn-light').classList.toggle('active', mode === 'light');
-  document.getElementById('btn-dark').classList.toggle('active', mode === 'dark');
+  document.querySelectorAll('.theme-btn[data-mode="light"]').forEach(btn => btn.classList.toggle('active', mode === 'light'));
+  document.querySelectorAll('.theme-btn[data-mode="dark"]').forEach(btn => btn.classList.toggle('active', mode === 'dark'));
   localStorage.setItem('theme', mode);
 }
 
