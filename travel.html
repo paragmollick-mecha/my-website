@@ -45,41 +45,50 @@
   body::before, body::after {
     content: '';
     position: fixed;
-    width: 50vw;
-    height: 50vw;
-    min-width: 400px;
-    min-height: 400px;
+    width: 55vw;
+    height: 55vw;
+    min-width: 440px;
+    min-height: 440px;
     border-radius: 50%;
-    filter: blur(100px); 
-    z-index: -1; 
-    pointer-events: none; 
-    animation: ambientGlowMove 15s ease-in-out infinite alternate;
+    filter: blur(100px);
+    z-index: -1;
+    pointer-events: none;
+    animation: ambientGlowMove 16s ease-in-out infinite alternate;
   }
 
   body::before {
     background: var(--c1);
-    top: -15%;
-    left: -10%;
-    opacity: 0.15; 
+    top: -18%;
+    left: -12%;
+    opacity: 0.22;
   }
 
   body::after {
     background: var(--c2);
-    bottom: -15%;
-    right: -10%;
-    opacity: 0.15;
-    animation-duration: 20s;
+    bottom: -18%;
+    right: -12%;
+    opacity: 0.20;
+    animation-duration: 21s;
     animation-direction: alternate-reverse;
+  }
+
+  .ambient-blob-3 {
+    position: fixed; width: 42vw; height: 42vw; min-width: 340px; min-height: 340px;
+    border-radius: 50%; filter: blur(95px); z-index: -1; pointer-events: none;
+    background: var(--c1); opacity: 0.12; top: 30%; left: 42%;
+    animation: ambientGlowMove 23s ease-in-out infinite alternate-reverse;
   }
 
   [data-theme="dark"] body::before, 
   [data-theme="dark"] body::after {
-    opacity: 0.08;
+    opacity: 0.13;
   }
+  [data-theme="dark"] .ambient-blob-3 { opacity: 0.08; }
 
   @keyframes ambientGlowMove {
-    0% { transform: translate(0, 0) scale(1); }
-    100% { transform: translate(80px, 60px) scale(1.1); }
+    0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
+    50%  { transform: translate(50px, -35px) scale(1.12) rotate(8deg); }
+    100% { transform: translate(90px, 65px) scale(1.18) rotate(-6deg); }
   }
 
   .alt-section {
@@ -100,6 +109,13 @@
   .section-label{font-size:.75rem;font-weight:700;letter-spacing:.12em;color:var(--c2);text-transform:uppercase;margin-bottom:.6rem}
   .section-title{font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;margin-bottom:3rem}
   
+  @keyframes heroFadeUp {
+    0% { opacity: 0; transform: translateY(24px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .section-label { animation: heroFadeUp 0.7s ease-out both; }
+  .section-title { animation: heroFadeUp 0.7s ease-out 0.12s both; }
+
   .card {
     background:var(--card);
     border:1px solid var(--border);
@@ -114,6 +130,12 @@
     box-shadow: 0 15px 30px rgba(37, 99, 235, 0.15) !important;
     border-color: var(--c1) !important;
   }
+
+  .reveal { opacity: 0; transform: translateY(46px) scale(0.98); transition: opacity 0.75s cubic-bezier(.22,1,.36,1), transform 0.75s cubic-bezier(.22,1,.36,1); }
+  .reveal.active { opacity: 1; transform: translateY(0) scale(1); }
+
+  nav { transition: background .3s, border-color .3s, box-shadow .3s; }
+  nav.scrolled { box-shadow: 0 6px 24px var(--shadow); }
 
   .btn{padding:.8rem 2rem;border-radius:2rem;font-family:'Playfair Display',serif;font-weight:700;font-size:.9rem;cursor:pointer;border:none;text-decoration:none;display:inline-block;}
   .btn-outline{background:var(--card);border:1.5px solid var(--btn-outline-border);color:var(--text)}
@@ -191,6 +213,9 @@
 </style>
 </head>
 <body>
+
+<div class="ambient-blob-3"></div>
+
 
 <nav>
   <div class="logo" onclick="window.scrollTo(0,0);" style="cursor: pointer;">Parag Mollick/ME.BUET</div>
@@ -400,6 +425,26 @@ function setTheme(mode) {
 }
 const saved = localStorage.getItem('theme') || 'light';
 setTheme(saved);
+
+document.querySelectorAll('.card').forEach((el, i) => {
+  el.classList.add('reveal');
+  el.style.transitionDelay = ((i % 4) * 0.08) + 's';
+});
+const revealObs = new IntersectionObserver((entries) => {
+  entries.forEach(e => {
+    if (e.isIntersecting) {
+      e.target.classList.add('active');
+      revealObs.unobserve(e.target);
+    }
+  });
+}, { threshold: 0.12 });
+document.querySelectorAll('.card').forEach(el => revealObs.observe(el));
+
+window.addEventListener('scroll', () => {
+  const nav = document.querySelector('nav');
+  if (window.scrollY > 20) { nav.classList.add('scrolled'); }
+  else { nav.classList.remove('scrolled'); }
+});
 
 function initPremiumSlider(sliderId, dotsContainerId, delayTime) {
   const slider = document.getElementById(sliderId);
