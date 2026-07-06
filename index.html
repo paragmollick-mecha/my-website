@@ -92,7 +92,7 @@
 
   .about-grid{display:grid;grid-template-columns:1fr 1.4fr;gap:4rem;align-items:center}
   .about-avatar{width:100%;aspect-ratio:1;border-radius:1.5rem;background:linear-gradient(135deg,var(--c2),var(--c1));display:flex;align-items:center;justify-content:center;font-size:5rem;max-width:260px}
-  .about-text p{color:var(--muted);line-height:1.85;margin-bottom:1rem}
+  .about-text p{color:var(--muted);line-height:1.85;margin-bottom:1rem;font-size:1.10rem}
   .stats-row{display:flex;gap:2rem;margin-top:2rem;flex-wrap:wrap}
   .stat{text-align:left}
   .stat-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:800;color:var(--c1)}
@@ -341,14 +341,8 @@
       <img src="image_3b9770.png" alt="Parag Mollick" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem;">
     </div>
     <div class="about-text">
-      <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka.
-         <span id="about-more-text" class="hidden"> 
-            His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise.
-         </span>
+      <p>Parag Mollick is a senior Mechanical Engineering undergraduate at BUET, Dhaka. His academic focus centers on thermo-fluid system modeling, CFD-driven heat transfer analysis, and thermal management for data centers. Along with basic ANSYS proficiency, he is a Certified SOLIDWORKS Associate (CSWA), and has recently co-developed an electromechanical, drone-based tranquilization system featuring a custom coil gun for remote wildlife management. He possesses strong CAD modeling expertise. Most recently, he led the design and validation of a Rear Door Heat Exchanger (RDHx) for data centre server cooling — a cost-effective, automotive-radiator-inspired alternative to direct-to-chip liquid cooling, capable of neutralizing up to 5 kW of server heat load. The project combined analytical heat exchanger sizing, 3D CFD simulation in ANSYS Fluent, 1D transient system modeling in GT-SUITE, and hands-on fabrication and hydrostatic testing of a working physical prototype. He has also worked on the structural and fatigue analysis of a spiral-jaw mechanical clutch, where a three-tier validation methodology — theoretical hand calculations, individual-component FEA, and full-assembly simulation in ANSYS — was used to verify the static strength and fatigue life of all critical components under cyclic torsional loading.
       </p>
-      <button onclick="toggleAboutText()" id="about-read-btn" style="border:none; background:none; color:var(--c1); cursor:pointer; font-weight:bold; padding:0; margin-top:10px;">
-        See More
-      </button>
       <div class="stats-row"></div>
     </div>
   </div>
@@ -848,19 +842,6 @@ function toggleAwards() {
       if (index >= 3) award.classList.add('hidden');
     });
     btn.innerText = 'See More';
-  }
-}
-
-function toggleAboutText() {
-  const moreText = document.getElementById("about-more-text");
-  const btnText = document.getElementById("about-read-btn");
-  
-  if (moreText.classList.contains("hidden")) {
-    moreText.classList.remove("hidden");
-    btnText.innerText = "See Less";
-  } else {
-    moreText.classList.add("hidden");
-    btnText.innerText = "See More";
   }
 }
 
