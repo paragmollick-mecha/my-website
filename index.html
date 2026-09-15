@@ -305,21 +305,7 @@
   }
   #flowfield.on{ opacity: .78; }
   [data-theme="dark"] #flowfield.on{ opacity: .82; }
-
-  /* keeps hero copy crisp where the field is densest */
-  .hero::before{
-    content:'';
-    position:absolute; inset:-10% -5%;
-    z-index:0; pointer-events:none;
-    background: radial-gradient(58% 52% at 24% 50%, var(--bg) 0%, transparent 70%);
-    opacity:.62;
-  }
   .hero-inner{ position:relative; z-index:1; }
-
-  @media (max-width: 768px){
-    /* hero copy is centred on small screens, so the clear-zone follows it */
-    .hero::before{ background: radial-gradient(74% 56% at 50% 62%, var(--bg) 0%, transparent 76%); }
-  }
 
   @media (prefers-reduced-motion: reduce){
     #flowfield.on{ opacity:.42; }
@@ -369,7 +355,6 @@
   <div class="hero-blob2"></div>
   <div class="hero-inner">
     <div class="hero-text">
-      <img src="buet_logo.png" alt="BUET Watermark" style="position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%); width: 500px; max-width: 80%; opacity: 0.06; z-index: 0; pointer-events: none;">
       <div class="section-label" style="margin-bottom: 1.2rem;">Thermo-Fluids · CFD · CAD</div>
       <h1 style="font-size: clamp(2.2rem, 9vw, 4rem); line-height: 1.15; margin-bottom: 1rem; font-family: 'Playfair Display', serif;">
         Hi, I'm <span class="name-accent" style="color: var(--c1); position:relative; display:inline-block;">Parag Mollick</span><br>
