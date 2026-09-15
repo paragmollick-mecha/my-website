@@ -503,7 +503,7 @@
       </a>
     </div>
 
-    <div class="cocurr-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1.2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px var(--shadow);">
+    <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1.2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px var(--shadow);">
       <div>
         <div style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
           <img src="singing_thumb.jpg" alt="Singing Certifications Thumbnail" style="width: 100%; height: 100%; object-fit: fill;">
@@ -522,7 +522,7 @@
       </div>
     </div>
 
-    <div class="cocurr-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1.2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px var(--shadow);">
+    <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1.2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px var(--shadow);">
       <div>
         <div style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
           <img src="arts_thumb.jpg" alt="Arts and Crafts Thumbnail" style="width: 100%; height: 100%; object-fit: fill;">
@@ -538,7 +538,7 @@
       </div>
     </div>
 
-    <div class="cocurr-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1.2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px var(--shadow);">
+    <div class="cocurr-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1.2rem; display: flex; flex-direction: column; justify-content: space-between; box-shadow: 0 1px 4px var(--shadow);">
       <div>
         <div style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
           <img src="poetry_thumb.jpg" alt="Poetry Recitation Thumbnail" style="width: 100%; height: 100%; object-fit: fill;">
@@ -554,10 +554,6 @@
       </div>
     </div>
 
-  </div>
-
-  <div style="text-align: center; margin-top: 2rem;">
-    <button id="see-more-cocurr-btn" onclick="toggleCocurr()" class="btn btn-outline" style="padding: 0.8rem 2rem; cursor:pointer;">See More</button>
   </div>
 </section>
 
@@ -859,7 +855,7 @@ function toggleText() {
 
 function toggleCerts() {
   const btn = document.getElementById('see-more-btn');
-  const allCerts = document.querySelectorAll('.cert-card');
+  const allCerts = document.querySelectorAll('#certs-grid .cert-card');
   
   if (btn.innerText === 'See More') {
     allCerts.forEach(cert => cert.classList.remove('hidden'));
@@ -899,19 +895,6 @@ function toggleAwards() {
   }
 }
 
-function toggleCocurr() {
-  const btn = document.getElementById('see-more-cocurr-btn');
-  const allCocurr = document.querySelectorAll('#co-curricular-grid .cocurr-card');
-  const isHidden = allCocurr[0].classList.contains('hidden');
-
-  if (isHidden) {
-    allCocurr.forEach(card => card.classList.remove('hidden'));
-    btn.innerText = 'See Less';
-  } else {
-    allCocurr.forEach(card => card.classList.add('hidden'));
-    btn.innerText = 'See More';
-  }
-}
 </script>
 
 
