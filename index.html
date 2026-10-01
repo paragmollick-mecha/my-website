@@ -314,6 +314,38 @@
     .hero-tag,.hero h1,.hero p,.btn-row,.hero-photo-wrap{ animation: none !important; }
     .reveal{ opacity:1 !important; transform:none !important; transition:none !important; }
   }
+
+  /* ================= Publications ================= */
+  .pub-list{display:flex;flex-direction:column;gap:1.2rem}
+  .pub-card{display:flex;gap:1.6rem;background:var(--card);border:1px solid var(--border);border-radius:1.2rem;padding:1.6rem 1.8rem;box-shadow:0 1px 4px var(--shadow);position:relative;transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .pub-card:hover{transform:translateY(-6px);box-shadow:0 15px 30px rgba(37,99,235,.15);border-color:var(--c1)}
+  .pub-year{flex-shrink:0;width:64px;font-family:'Playfair Display',serif;font-size:1.6rem;font-weight:800;color:var(--c1);line-height:1.1}
+  .pub-body{flex:1;min-width:0}
+  .pub-type{display:inline-block;font-size:.72rem;font-weight:700;padding:.22rem .75rem;border-radius:2rem;margin-bottom:.7rem;background:rgba(37,99,235,.1);color:var(--c1)}
+  .pub-type.review{background:rgba(245,158,11,.14);color:#b45309}
+  [data-theme="dark"] .pub-type.review{color:#fbbf24}
+  .pub-title{font-family:'Playfair Display',serif;font-size:1.2rem;line-height:1.4;margin-bottom:.5rem;color:var(--text)}
+  .pub-authors{color:var(--muted);font-size:.92rem;line-height:1.55;margin-bottom:.25rem}
+  .pub-authors strong{color:var(--text);font-weight:600}
+  .pub-venue{color:var(--muted);font-size:.9rem;font-style:italic;margin-bottom:1rem}
+  .pub-links{display:flex;flex-wrap:wrap;gap:.6rem}
+  .pub-link{display:inline-flex;align-items:center;gap:.4rem;padding:.42rem 1.1rem;border-radius:50px;font-family:'Playfair Display',serif;font-size:.82rem;font-weight:700;text-decoration:none;border:1.5px solid var(--btn-outline-border);color:var(--text);background:transparent;transition:background .2s,border-color .2s,color .2s}
+  .pub-link:hover{background:var(--c1);border-color:var(--c1);color:#fff}
+  .pub-link:focus-visible{outline:2px solid var(--c1);outline-offset:2px}
+  .pub-tags{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:.8rem}
+  .pub-tags .pub-type{margin-bottom:0}
+  .pub-type.accepted{background:rgba(16,185,129,.13);color:#047857}
+  [data-theme="dark"] .pub-type.accepted{color:#34d399}
+  .pub-type.submitted{background:rgba(100,116,139,.14);color:var(--muted)}
+  .pub-type.ongoing{background:rgba(139,92,246,.14);color:#6d28d9}
+  [data-theme="dark"] .pub-type.ongoing{color:#c4b5fd}
+  .pub-title sub{font-size:.7em;line-height:0}
+  .pub-group{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--c1);margin:0 0 1.2rem}
+  .pub-list + .pub-group{margin-top:2.6rem;padding-top:2rem;border-top:1px solid var(--border)}
+  @media(max-width:768px){
+    .pub-card{flex-direction:column;gap:.4rem;padding:1.3rem 1.2rem}
+    .pub-year{width:auto;font-size:1.3rem}
+  }
 </style>
 
 </head>
@@ -334,6 +366,7 @@
     <a onclick="scroll2('skills')">Skills</a>
     <a onclick="scroll2('certificates')">Certificates</a>
     <a onclick="scroll2('projects')">Projects</a>
+    <a onclick="scroll2('publications')">Publications</a>
     <a onclick="scroll2('experience')">Experiences</a>
     <a onclick="scroll2('awards')">Awards</a>
     <a href="travel.html">Travel</a>
@@ -649,6 +682,56 @@
   </div>
 </section>
 
+<!-- ================= Publications ================= -->
+<!-- নতুন পেপার যোগ করতে একটা <article class="pub-card"> ... </article> ব্লক কপি করে পেস্ট করুন। DOI/PDF লিংক দিতে pub-venue এর নিচে <div class="pub-links"><a class="pub-link" href="LINK" target="_blank" rel="noopener noreferrer"><i class="fas fa-link"></i> DOI</a></div> যোগ করুন। -->
+<section id="publications" class="alt-section">
+  <div class="section-label">Research Output</div>
+  <h2 class="section-title" style="margin-bottom: 2rem;">Publications</h2>
+
+  <div class="pub-list">
+
+    <article class="pub-card">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-tags"><span class="pub-type">Conference Paper</span><span class="pub-type accepted">Abstract Accepted</span><span class="pub-type review">Manuscript Under Review</span></div>
+        <h3 class="pub-title">Design, Experimental Validation, and Numerical Coolant Comparison of a Compact Plate-Fin-and-Tube Rear Door Heat Exchanger with Al<sub>2</sub>O<sub>3</sub> Nanofluid for Data Center Cooling</h3>
+        <p class="pub-authors"><strong>Parag Mollick</strong> et al.</p>
+        <p class="pub-venue">ICMIME 2026, Thermal Engineering Track</p>
+      </div>
+    </article>
+
+    <article class="pub-card">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-tags"><span class="pub-type">Conference Paper</span><span class="pub-type accepted">Abstract Accepted</span><span class="pub-type review">Manuscript Under Review</span></div>
+        <h3 class="pub-title">Numerical Investigation of the Thermo-Hydraulic Performance of Plain and Wavy Fin Geometries in a Fin-and-Tube Rear Door Heat Exchanger for AI Server Cooling</h3>
+        <p class="pub-authors"><strong>Parag Mollick</strong> et al.</p>
+        <p class="pub-venue">BSME-ICTE 2026, Thermo-Fluid Engineering Track</p>
+      </div>
+    </article>
+
+    <article class="pub-card">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-tags"><span class="pub-type ongoing">Ongoing</span></div>
+        <h3 class="pub-title">Numerical Study of a Mono and a Ternary Hybrid Nanofluid in a Droplet-Fin Cold Plate with Circular Cavities for Lithium-Ion Battery Thermal Management</h3>
+        <p class="pub-authors"><strong>Parag Mollick</strong> et al.</p>
+        <p class="pub-venue">Thermo-Fluid Engineering Track</p>
+      </div>
+    </article>
+
+    <article class="pub-card">
+      <div class="pub-year">2026</div>
+      <div class="pub-body">
+        <div class="pub-tags"><span class="pub-type ongoing">Ongoing</span></div>
+        <h3 class="pub-title">Numerical Investigation of Bio-Inspired Alula Winglets in Plain-Fin Rear Door Heat Exchangers for Low-Airflow Hybrid Liquid-Cooled AI Racks</h3>
+        <p class="pub-authors"><strong>Parag Mollick</strong> et al.</p>
+      </div>
+    </article>
+
+  </div>
+</section>
+
 <section id="experience" class="alt-section">
   <div class="section-label">Career Journey</div>
   <h2 class="section-title" style="margin-bottom: 2rem;">Experience</h2>
@@ -918,6 +1001,18 @@ function toggleAwards() {
 
 </script>
 
+
+<script>
+/* Publications: same scroll-reveal as the other cards */
+(function () {
+  if (typeof revealObs === 'undefined') return;
+  document.querySelectorAll('.pub-card').forEach(function (el, i) {
+    el.classList.add('reveal');
+    el.style.transitionDelay = ((i % 4) * 0.08) + 's';
+    revealObs.observe(el);
+  });
+})();
+</script>
 
 <canvas id="flowfield" aria-hidden="true"></canvas>
 <script>
