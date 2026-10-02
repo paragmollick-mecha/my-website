@@ -377,6 +377,14 @@
     .edu-head{flex-direction:column;gap:.15rem}
   }
 
+  /* Education logos: beside the institution name; if a logo file is missing the card simply shows text */
+  .edu-card{display:flex;align-items:flex-start;gap:1.3rem}
+  .edu-body{flex:1;min-width:0}
+  .edu-logo{flex-shrink:0;width:64px;height:64px;object-fit:contain}
+  @media(max-width:768px){
+    .edu-card{gap:.85rem}
+    .edu-logo{width:46px;height:46px}
+  }
   /* ===== Skills: certificate link on logo ===== */
   .skill-card.has-cert{position:relative}
   .skill-cert-link{position:relative;text-decoration:none;cursor:pointer;border-radius:.6rem;transition:transform .2s ease}
@@ -494,29 +502,17 @@
     <article class="edu-item current">
       <div class="edu-dot"><i class="fas fa-building-columns" aria-hidden="true"></i></div>
       <div class="edu-card">
-        <div class="edu-head">
-          <h3 class="edu-school">Bangladesh University of Engineering and Technology (BUET)</h3>
-          <span class="edu-year">2022 &ndash; Present</span>
-        </div>
-        <p class="edu-degree">Bachelor of Science in Mechanical Engineering</p>
-        <div class="edu-meta">
-          <span class="edu-chip now">Currently in 4th Year</span>
-          <span class="edu-place"><i class="fas fa-location-dot" aria-hidden="true"></i> Dhaka</span>
-        </div>
-      </div>
-    </article>
-
-    <article class="edu-item">
-      <div class="edu-dot"><i class="fas fa-school" aria-hidden="true"></i></div>
-      <div class="edu-card">
-        <div class="edu-head">
-          <h3 class="edu-school">Cantonment College Jashore</h3>
-          <span class="edu-year">2019 &ndash; 2021</span>
-        </div>
-        <p class="edu-degree">Higher Secondary Certificate (HSC), Science</p>
-        <div class="edu-meta">
-          <span class="edu-chip">GPA 5.00 / 5.00</span>
-          <span class="edu-place"><i class="fas fa-location-dot" aria-hidden="true"></i> Jashore</span>
+        <img class="edu-logo" src="buet_logo.png" alt="BUET logo" loading="lazy" onerror="this.remove()">
+        <div class="edu-body">
+          <div class="edu-head">
+            <h3 class="edu-school">Bangladesh University of Engineering and Technology (BUET)</h3>
+            <span class="edu-year">2022 &ndash; Present</span>
+          </div>
+          <p class="edu-degree">Bachelor of Science in Mechanical Engineering</p>
+          <div class="edu-meta">
+            <span class="edu-chip now">Currently in 4th Year</span>
+            <span class="edu-place"><i class="fas fa-location-dot" aria-hidden="true"></i> Dhaka</span>
+          </div>
         </div>
       </div>
     </article>
@@ -524,14 +520,35 @@
     <article class="edu-item">
       <div class="edu-dot"><i class="fas fa-school" aria-hidden="true"></i></div>
       <div class="edu-card">
-        <div class="edu-head">
-          <h3 class="edu-school">Satkhira Government High School</h3>
-          <span class="edu-year">2019</span>
+        <img class="edu-logo" src="cantonment_college_logo.png" alt="Cantonment College Jashore logo" loading="lazy" onerror="this.remove()">
+        <div class="edu-body">
+          <div class="edu-head">
+            <h3 class="edu-school">Cantonment College Jashore</h3>
+            <span class="edu-year">2019 &ndash; 2021</span>
+          </div>
+          <p class="edu-degree">Higher Secondary Certificate (HSC), Science</p>
+          <div class="edu-meta">
+            <span class="edu-chip">GPA 5.00 / 5.00</span>
+            <span class="edu-place"><i class="fas fa-location-dot" aria-hidden="true"></i> Jashore</span>
+          </div>
         </div>
-        <p class="edu-degree">Secondary School Certificate (SSC), Science</p>
-        <div class="edu-meta">
-          <span class="edu-chip">GPA 5.00 / 5.00</span>
-          <span class="edu-place"><i class="fas fa-location-dot" aria-hidden="true"></i> Satkhira</span>
+      </div>
+    </article>
+
+    <article class="edu-item">
+      <div class="edu-dot"><i class="fas fa-school" aria-hidden="true"></i></div>
+      <div class="edu-card">
+        <img class="edu-logo" src="satkhira_school_logo.png" alt="Satkhira Government High School logo" loading="lazy" onerror="this.remove()">
+        <div class="edu-body">
+          <div class="edu-head">
+            <h3 class="edu-school">Satkhira Government High School</h3>
+            <span class="edu-year">2019</span>
+          </div>
+          <p class="edu-degree">Secondary School Certificate (SSC), Science</p>
+          <div class="edu-meta">
+            <span class="edu-chip">GPA 5.00 / 5.00</span>
+            <span class="edu-place"><i class="fas fa-location-dot" aria-hidden="true"></i> Satkhira</span>
+          </div>
         </div>
       </div>
     </article>
@@ -894,7 +911,7 @@ const skills = [
   { name: 'SolidWorks', icon: '<img src="solidworks.png" alt="SolidWorks" style="width: 90px; height: 35px; object-fit: contain;">', pct: 90, color: '#e3241b', cert: 'https://drive.google.com/file/d/1zbHnkeR9z3hxlTiNjreWGcJlab9PUUYH/view?usp=sharing' },
   { name: 'AutoCAD', icon: '<img src="autocad.png" alt="AutoCAD" style="width: 35px; height: 35px; object-fit: contain;">', pct: 85, color: '#0070bb' },
   { name: 'Ansys', icon: '<img src="ansys.png" alt="Ansys" style="width: 100px; height:35px; object-fit: contain;">', pct: 80, color: '#f7b000', cert: 'https://drive.google.com/file/d/1p1ZaMO1KHfSnksBVis5LtJw4NZhBu__h/view?usp=sharing' },
-  { name: 'COMSOL', icon: '<img src="comsol.png" alt="COMSOL Multiphysics" style="width: 140px; height: 50px; object-fit: contain; flex-shrink: 0;">', pct: 80, color: '#0060a8' },
+  { name: 'COMSOL', icon: '<img src="comsol.png" alt="COMSOL Multiphysics" style="width: 125px; height: 46px; object-fit: contain; flex-shrink: 0;">', pct: 80, color: '#0060a8' },
   { name: 'Matlab', icon: '<img src="matlab.png" alt="MATLAB" style="width: 40px; height: 35px; object-fit: contain;">', pct: 80, color: '#e16737', cert: 'https://drive.google.com/file/d/1tx77UC_OP_s7bKkt9QmCNYFTYC737GW0/view?usp=sharing' },
 ];
 
