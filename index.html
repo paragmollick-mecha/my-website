@@ -347,6 +347,45 @@
     .pub-year{width:auto;font-size:1.3rem}
   }
 
+  /* ================= Education ================= */
+  .edu-list{position:relative;display:flex;flex-direction:column;gap:1.4rem;padding-left:0}
+  .edu-list::before{content:"";position:absolute;left:23px;top:24px;bottom:24px;width:2px;background:linear-gradient(to bottom,var(--c1),var(--border));opacity:.5}
+  .edu-item{display:flex;gap:1.4rem;align-items:flex-start;position:relative}
+  .edu-dot{flex-shrink:0;width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--card);border:2px solid var(--border);color:var(--c1);font-size:1.05rem;position:relative;z-index:1;box-shadow:0 1px 4px var(--shadow);transition:border-color .3s,background .3s,color .3s}
+  .edu-item.current .edu-dot{background:var(--c1);border-color:var(--c1);color:#fff;box-shadow:0 0 0 6px rgba(37,99,235,.14)}
+  .edu-card{flex:1;min-width:0;background:var(--card);border:1px solid var(--border);border-radius:1.2rem;padding:1.4rem 1.7rem;box-shadow:0 1px 4px var(--shadow);transition:opacity .75s cubic-bezier(.22,1,.36,1),transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+  .edu-item:hover .edu-card{transform:translateY(-4px);box-shadow:0 15px 30px rgba(37,99,235,.15);border-color:var(--c1)}
+  .edu-item:hover .edu-dot{border-color:var(--c1)}
+  .edu-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.35rem}
+  .edu-school{font-size:1.25rem;line-height:1.35;color:var(--text)}
+  .edu-year{flex-shrink:0;font-weight:700;font-size:.95rem;color:var(--c1);white-space:nowrap}
+  .edu-degree{color:var(--muted);font-size:1rem;margin-bottom:.9rem}
+  .edu-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.1rem}
+  .edu-chip{display:inline-block;font-size:.78rem;font-weight:700;padding:.25rem .8rem;border-radius:2rem;background:rgba(37,99,235,.1);color:var(--c1)}
+  .edu-chip.now{background:rgba(16,185,129,.13);color:#047857}
+  [data-theme="dark"] .edu-chip.now{color:#34d399}
+  .edu-place{font-size:.88rem;color:var(--muted)}
+  .edu-place i{margin-right:.3rem;color:var(--c1);opacity:.8}
+  #education .edu-list{margin-bottom:3rem}
+  @media(max-width:768px){
+    .edu-list::before{left:17px}
+    .edu-item{gap:.9rem}
+    .edu-dot{width:36px;height:36px;font-size:.85rem}
+    .edu-item.current .edu-dot{box-shadow:0 0 0 4px rgba(37,99,235,.14)}
+    .edu-card{padding:1.1rem 1.15rem}
+    .edu-school{font-size:1.08rem}
+    .edu-head{flex-direction:column;gap:.15rem}
+  }
+
+  /* ===== Skills: certificate link on logo ===== */
+  .skill-card.has-cert{position:relative}
+  .skill-cert-link{position:relative;text-decoration:none;cursor:pointer;border-radius:.6rem;transition:transform .2s ease}
+  .skill-cert-link img{transition:transform .2s ease,filter .2s ease}
+  .skill-cert-link:hover img,.skill-cert-link:focus-visible img{transform:scale(1.08)}
+  .skill-cert-link:focus-visible{outline:2px solid var(--c1);outline-offset:4px}
+  .skill-cert-badge{position:absolute;top:-.55rem;right:-.55rem;width:22px;height:22px;border-radius:50%;display:flex;align-items:center;justify-content:center;background:var(--c1);color:#fff;font-size:.65rem;box-shadow:0 2px 6px rgba(37,99,235,.35);transition:transform .2s ease}
+  .skill-cert-link:hover .skill-cert-badge{transform:scale(1.15)}
+
   /* ===== Site-wide font: Times New Roman (icons excluded so Font Awesome keeps working) ===== */
   *:not(i):not([class*="fa-"]):not(.fa):not(.fas):not(.fab):not(.far){
     font-family:'Times New Roman',Times,'Liberation Serif',serif !important;
@@ -369,7 +408,7 @@
   <div class="nav-links" id="nav-links">
     <a onclick="scroll2('about')">About</a>
     <a onclick="scroll2('skills')">Skills</a>
-    <a onclick="scroll2('certificates')">Certificates</a>
+    <a onclick="scroll2('education')">Education</a>
     <a onclick="scroll2('projects')">Projects</a>
     <a onclick="scroll2('publications')">Publications</a>
     <a onclick="scroll2('experience')">Experiences</a>
@@ -445,86 +484,58 @@
   <div class="skills-grid" id="skills-grid"></div>
 </section>
 
-<section id="certificates" class="alt-section">
-  <div class="section-label">Achievements</div>
-  <h2 class="section-title">Certificates</h2>
-  
-  <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:1.5rem; color:var(--c1);">Academic and Professional</h3>
-  <div class="certificates-grid" id="certs-grid" style="display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1.5rem; margin-bottom: 3rem;">
-    
-    <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem; display:flex; flex-direction:column;">
-      <div class="cert-thumb" style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
-        <img src="primary_thumb.jpg" alt="Primary School Certificate Thumbnail" loading="lazy" onerror="this.closest('.cert-thumb').style.display='none'" style="width: 100%; height: 100%; object-fit: fill;">
-      </div>
-      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Primary School Certificate</h3>
-      <a href="https://drive.google.com/file/d/15gNsqL7wXAEWlOHrlW-9rZ4nShTJzA6a/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s; margin-top: auto; align-self: flex-start;" onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" onmouseout="this.style.background='transparent'">
-        View Certificate 
-      </a>
-    </div>
+<!-- ================= Education ================= -->
+<section id="education" class="alt-section">
+  <div class="section-label">Academic Background</div>
+  <h2 class="section-title" style="margin-bottom: 2rem;">Education</h2>
 
-    <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem; display:flex; flex-direction:column;">
-      <div class="cert-thumb" style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
-        <img src="junior_thumb.JPG" alt="Junior School Certificate Thumbnail" loading="lazy" onerror="this.closest('.cert-thumb').style.display='none'" style="width: 100%; height: 100%; object-fit: fill;">
-      </div>
-      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Junior School Certificate</h3>
-      <a href="https://drive.google.com/file/d/1rpDmosA_8SsQUtV1a0BnleE9OrRGzpim/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s; margin-top: auto; align-self: flex-start;" onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" onmouseout="this.style.background='transparent'">
-        View Certificate 
-      </a>
-    </div>
+  <div class="edu-list">
 
-    <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem; display:flex; flex-direction:column;">
-      <div class="cert-thumb" style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
-        <img src="secondary_thumb.JPG" alt="Secondary School Certificate Thumbnail" loading="lazy" onerror="this.closest('.cert-thumb').style.display='none'" style="width: 100%; height: 100%; object-fit: fill;">
+    <article class="edu-item current">
+      <div class="edu-dot"><i class="fas fa-building-columns" aria-hidden="true"></i></div>
+      <div class="edu-card">
+        <div class="edu-head">
+          <h3 class="edu-school">Bangladesh University of Engineering and Technology (BUET)</h3>
+          <span class="edu-year">2022 &ndash; Present</span>
+        </div>
+        <p class="edu-degree">Bachelor of Science in Mechanical Engineering</p>
+        <div class="edu-meta">
+          <span class="edu-chip now">Currently in 4th Year</span>
+          <span class="edu-place"><i class="fas fa-location-dot" aria-hidden="true"></i> Dhaka</span>
+        </div>
       </div>
-      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Secondary School Certificate</h3>
-      <a href="https://drive.google.com/file/d/13QvMc28Z0dCKuwbbHnY1rHFIyf1h5C9f/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s; margin-top: auto; align-self: flex-start;" onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" onmouseout="this.style.background='transparent'">
-        View Certificate 
-      </a>
-    </div>
+    </article>
 
-    <div class="cert-card" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem; display:flex; flex-direction:column;">
-      <div class="cert-thumb" style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
-        <img src="hsc_thumb.jpg" alt="Higher Secondary School Certificate Thumbnail" loading="lazy" onerror="this.closest('.cert-thumb').style.display='none'" style="width: 100%; height: 100%; object-fit: fill;">
+    <article class="edu-item">
+      <div class="edu-dot"><i class="fas fa-school" aria-hidden="true"></i></div>
+      <div class="edu-card">
+        <div class="edu-head">
+          <h3 class="edu-school">Cantonment College Jashore</h3>
+          <span class="edu-year">2019 &ndash; 2021</span>
+        </div>
+        <p class="edu-degree">Higher Secondary Certificate (HSC), Science</p>
+        <div class="edu-meta">
+          <span class="edu-chip">GPA 5.00 / 5.00</span>
+          <span class="edu-place"><i class="fas fa-location-dot" aria-hidden="true"></i> Jashore</span>
+        </div>
       </div>
-      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Higher Secondary School Certificate</h3>
-      <a href="https://drive.google.com/file/d/1pybNuYiEa4v-qzeclmjVCWN58v6MEpM3/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; background: transparent; color: var(--text, #374151); border: 1px solid #4B5563; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s; margin-top: auto; align-self: flex-start;" onmouseover="this.style.background='rgba(75, 85, 99, 0.1)'" onmouseout="this.style.background='transparent'">
-        View Certificate 
-      </a>
-    </div>
+    </article>
 
-    <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem; display:flex; flex-direction:column;">
-      <div class="cert-thumb" style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
-        <img src="solidworks_thumb.jpg" alt="SolidWorks Professional Thumbnail" loading="lazy" onerror="this.closest('.cert-thumb').style.display='none'" style="width: 100%; height: 100%; object-fit: fill;">
+    <article class="edu-item">
+      <div class="edu-dot"><i class="fas fa-school" aria-hidden="true"></i></div>
+      <div class="edu-card">
+        <div class="edu-head">
+          <h3 class="edu-school">Satkhira Government High School</h3>
+          <span class="edu-year">2019</span>
+        </div>
+        <p class="edu-degree">Secondary School Certificate (SSC), Science</p>
+        <div class="edu-meta">
+          <span class="edu-chip">GPA 5.00 / 5.00</span>
+          <span class="edu-place"><i class="fas fa-location-dot" aria-hidden="true"></i> Satkhira</span>
+        </div>
       </div>
-      <h3 style="font-size:1.1rem; margin-bottom:1rem;">SolidWorks Professional</h3>
-      <a href="https://drive.google.com/file/d/1zbHnkeR9z3hxlTiNjreWGcJlab9PUUYH/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s; margin-top: auto; align-self: flex-start;" onmouseover="this.style.background='#2563EB'" onmouseout="this.style.background='#3B82F6'">
-        View Certificate 
-      </a>
-    </div>
+    </article>
 
-    <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem; display:flex; flex-direction:column;">
-      <div class="cert-thumb" style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
-        <img src="ansys_thumb.jpg" alt="Ansys Simulation Expert Thumbnail" loading="lazy" onerror="this.closest('.cert-thumb').style.display='none'" style="width: 100%; height: 100%; object-fit: fill;">
-      </div>
-      <h3 style="font-size:1.1rem; margin-bottom:1rem;">Ansys Simulation Expert</h3>
-      <a href="https://drive.google.com/file/d/1p1ZaMO1KHfSnksBVis5LtJw4NZhBu__h/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s; margin-top: auto; align-self: flex-start;" onmouseover="this.style.background='#2563EB'" onmouseout="this.style.background='#3B82F6'">
-        View Certificate 
-      </a>
-    </div>
-
-    <div class="cert-card hidden" style="background:var(--card); border:1px solid var(--border); padding:1.5rem; border-radius:1rem; display:flex; flex-direction:column;">
-      <div class="cert-thumb" style="width: 100%; height: auto; aspect-ratio: 4 / 3; overflow: hidden; border-radius: 0.5rem; margin-bottom: 1rem; border: 1px solid var(--border); background: var(--bg); display: flex; align-items: center; justify-content: center;">
-        <img src="matlab_thumb.jpg" alt="MATLAB Professional Thumbnail" loading="lazy" onerror="this.closest('.cert-thumb').style.display='none'" style="width: 100%; height: 100%; object-fit: fill;">
-      </div>
-      <h3 style="font-size:1.1rem; margin-bottom:1rem;">MATLAB Professional</h3>
-      <a href="https://drive.google.com/file/d/1tx77UC_OP_s7bKkt9QmCNYFTYC737GW0/view?usp=sharing" target="_blank" rel="noopener noreferrer" style="display: inline-flex; align-items: center; justify-content: center; background: #3B82F6; color: #ffffff; padding: 0.5rem 1.5rem; border-radius: 50px; text-decoration: none; font-family: 'Playfair Display', serif; font-size: 0.85rem; font-weight: bold; transition: 0.2s; margin-top: auto; align-self: flex-start;" onmouseover="this.style.background='#2563EB'" onmouseout="this.style.background='#3B82F6'">
-        View Certificate 
-      </a>
-    </div>
-  </div>
-
-  <div style="text-align: center; margin-top: -1.5rem; margin-bottom: 3rem;">
-    <button id="see-more-btn" onclick="toggleCerts()" class="btn btn-outline" style="padding: 0.8rem 2rem; cursor:pointer;">See More</button>
   </div>
 
   <h3 style="font-family:'Playfair Display',serif; font-size:1.5rem; margin-bottom:1.5rem; color:var(--c1); border-top: 1px solid var(--border); padding-top: 2rem;">Co-curricular Activities</h3>
@@ -880,18 +891,20 @@ const saved = localStorage.getItem('theme') || 'light';
 setTheme(saved);
 
 const skills = [
-  { name: 'SolidWorks', icon: '<img src="solidworks.png" alt="SolidWorks" style="width: 90px; height: 35px; object-fit: contain;">', pct: 90, color: '#e3241b' },
+  { name: 'SolidWorks', icon: '<img src="solidworks.png" alt="SolidWorks" style="width: 90px; height: 35px; object-fit: contain;">', pct: 90, color: '#e3241b', cert: 'https://drive.google.com/file/d/1zbHnkeR9z3hxlTiNjreWGcJlab9PUUYH/view?usp=sharing' },
   { name: 'AutoCAD', icon: '<img src="autocad.png" alt="AutoCAD" style="width: 35px; height: 35px; object-fit: contain;">', pct: 85, color: '#0070bb' },
-  { name: 'Ansys', icon: '<img src="ansys.png" alt="Ansys" style="width: 100px; height:35px; object-fit: contain;">', pct: 80, color: '#f7b000' },
-  { name: 'COMSOL', icon: '<img src="comsol.png" alt="COMSOL Multiphysics" style="width: 90px; height: 35px; object-fit: contain;">', pct: 80, color: '#0060a8' },
-  { name: 'Matlab', icon: '<img src="matlab.png" alt="MATLAB" style="width: 40px; height: 35px; object-fit: contain;">', pct: 80, color: '#e16737' },
+  { name: 'Ansys', icon: '<img src="ansys.png" alt="Ansys" style="width: 100px; height:35px; object-fit: contain;">', pct: 80, color: '#f7b000', cert: 'https://drive.google.com/file/d/1p1ZaMO1KHfSnksBVis5LtJw4NZhBu__h/view?usp=sharing' },
+  { name: 'COMSOL', icon: '<img src="comsol.png" alt="COMSOL Multiphysics" style="width: 140px; height: 50px; object-fit: contain; flex-shrink: 0;">', pct: 80, color: '#0060a8' },
+  { name: 'Matlab', icon: '<img src="matlab.png" alt="MATLAB" style="width: 40px; height: 35px; object-fit: contain;">', pct: 80, color: '#e16737', cert: 'https://drive.google.com/file/d/1tx77UC_OP_s7bKkt9QmCNYFTYC737GW0/view?usp=sharing' },
 ];
 
 const sg = document.getElementById('skills-grid');
 skills.forEach(s => {
   sg.innerHTML += `
-    <div class="skill-card">
-      <div class="skill-icon">${s.icon}</div>
+    <div class="skill-card${s.cert ? ' has-cert' : ''}">
+      ${s.cert
+        ? `<a class="skill-icon skill-cert-link" href="${s.cert}" target="_blank" rel="noopener noreferrer" title="View ${s.name} certificate" aria-label="View ${s.name} certificate">${s.icon}<span class="skill-cert-badge" aria-hidden="true"><i class="fas fa-award"></i></span></a>`
+        : `<div class="skill-icon">${s.icon}</div>`}
       <div class="skill-name">${s.name}</div>
       <div class="skill-bar">
         <div class="skill-fill" data-w="${s.pct}" style="width:0%;background:${s.color}"></div>
@@ -973,21 +986,6 @@ function toggleText() {
   }
 }
 
-function toggleCerts() {
-  const btn = document.getElementById('see-more-btn');
-  const allCerts = document.querySelectorAll('#certs-grid .cert-card');
-  
-  if (btn.innerText === 'See More') {
-    allCerts.forEach(cert => cert.classList.remove('hidden'));
-    btn.innerText = 'See Less';
-  } else {
-    allCerts.forEach((cert, index) => {
-      if (index >= 4) cert.classList.add('hidden'); 
-    });
-    btn.innerText = 'See More';
-  }
-}
-
 function toggleMenu() {
     const navLinks = document.getElementById('nav-links');
     navLinks.classList.toggle('active');
@@ -1022,7 +1020,7 @@ function toggleAwards() {
 /* Publications: same scroll-reveal as the other cards */
 (function () {
   if (typeof revealObs === 'undefined') return;
-  document.querySelectorAll('.pub-card').forEach(function (el, i) {
+  document.querySelectorAll('.pub-card, .edu-item').forEach(function (el, i) {
     el.classList.add('reveal');
     el.style.transitionDelay = ((i % 4) * 0.08) + 's';
     revealObs.observe(el);
