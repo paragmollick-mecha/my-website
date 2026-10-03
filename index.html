@@ -398,6 +398,11 @@
   *:not(i):not([class*="fa-"]):not(.fa):not(.fas):not(.fab):not(.far){
     font-family:'Times New Roman',Times,'Liberation Serif',serif !important;
   }
+
+  /* ===== Hero photo → "Who am I?" floating transition ===== */
+  .photo-flyer{position:fixed;left:0;top:0;z-index:50;visibility:hidden;pointer-events:none;padding:4px;background:linear-gradient(135deg,var(--c1),var(--c2));transform-origin:0 0;will-change:transform;backface-visibility:hidden;contain:layout paint}
+  .photo-flyer img{display:block;width:100%;height:100%;object-fit:cover;background:var(--bg-alt)}
+  .photo-flyer-shadow{position:absolute;inset:0;border-radius:inherit;box-shadow:0 30px 80px rgba(37,99,235,.32);opacity:0;will-change:opacity;z-index:-1}
 </style>
 
 </head>
@@ -1307,4 +1312,140 @@ function toggleAwards() {
 })();
 </script>
 
+
+<script>
+/* ============================================================
+   Hero portrait floats down into the "Who am I?" slot on scroll
+   and floats back up when scrolling up.
+   - Progress follows the scroll with a soft "chase" (inertia), so
+     mouse-wheel steps become one continuous glide.
+   - In flight the photo is position:fixed and moved only with
+     transform (GPU), so it never shakes against the page scroll.
+   - Once landed (or back home) it is anchored to the page itself.
+   ============================================================ */
+(function () {
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
+
+  var ring = document.querySelector('.hero-photo-ring');
+  var srcImg = ring && ring.querySelector('img');
+  var slot = document.querySelector('.about-avatar');
+  if (!ring || !srcImg || !slot) return;
+  var slotImg = slot.querySelector('img');
+  var nav = document.querySelector('nav');
+
+  var fly = document.createElement('div');
+  fly.className = 'photo-flyer';
+  fly.setAttribute('aria-hidden', 'true');
+  var shadow = document.createElement('div');
+  shadow.className = 'photo-flyer-shadow';
+  var img = document.createElement('img');
+  img.src = srcImg.currentSrc || srcImg.src;
+  img.alt = '';
+  img.decoding = 'async';
+  fly.appendChild(shadow);
+  fly.appendChild(img);
+  document.body.appendChild(fly);
+
+  var LAND_RADIUS = 24;   /* 1.5rem corners of the About card */
+  var BORDER = 4;         /* gradient border, same as the hero ring */
+  var SMOOTH = 120;       /* ms: higher = floatier, lower = snappier */
+
+  function clamp(v) { return v < 0 ? 0 : v > 1 ? 1 : v; }
+  function lerp(a, b, t) { return a + (b - a) * t; }
+  function easeInOut(t) { return t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2; }
+  function easeSine(t) { return -(Math.cos(Math.PI * t) - 1) / 2; }
+
+  var cur = 0, first = true, last = 0, raf = 0, aliveUntil = 0;
+  var baseW = 0, baseH = 0, mode = '', visible = false;
+
+  function setVisible(v) {
+    if (v === visible) return;
+    visible = v;
+    fly.style.visibility = v ? 'visible' : 'hidden';
+    ring.style.opacity = v ? '0' : '';
+    /* freeze the hero bob while the photo is away so the start point is steady */
+    ring.style.animationPlayState = v ? 'paused' : '';
+  }
+
+  function frame(now) {
+    raf = 0;
+    var dt = last ? Math.min(64, now - last) : 16;
+    last = now;
+
+    var sx = window.scrollX || window.pageXOffset;
+    var sy = window.scrollY || window.pageYOffset;
+    var a = ring.getBoundingClientRect();
+    var b = slot.getBoundingClientRect();
+    if (!a.width || !b.width) { setVisible(false); return; }
+
+    /* page (document) coordinates of start and end */
+    var ax = a.left + sx, ay = a.top + sy, bx = b.left + sx, by = b.top + sy;
+
+    /* scroll position where the About slot sits centred below the nav */
+    var vh = window.innerHeight;
+    var navH = nav ? nav.getBoundingClientRect().height : 0;
+    var endScroll = Math.max(150, by + b.height / 2 - (navH + (vh - navH) / 2));
+    var target = clamp(sy / endScroll);
+
+    /* soft chase towards the scroll position (frame-rate independent) */
+    if (first) { cur = target; first = false; }
+    else cur += (target - cur) * (1 - Math.exp(-dt / SMOOTH));
+    if (Math.abs(target - cur) < 0.0005) cur = target;
+
+    if (cur <= 0) {
+      setVisible(false);
+      if (slotImg) slotImg.style.opacity = '';
+    } else {
+      /* fixed base size = landing size; flight size is done with scale() */
+      if (baseW !== b.width || baseH !== b.height) {
+        baseW = b.width; baseH = b.height;
+        fly.style.width = baseW + 'px';
+        fly.style.height = baseH + 'px';
+      }
+
+      var e = easeInOut(cur), ey = easeSine(cur), lift = Math.sin(Math.PI * cur);
+      var w = lerp(a.width, b.width, e);
+      var h = lerp(a.height, b.height, e);
+      var cx = lerp(ax, bx, e) + w / 2;          /* centre, page coords */
+      var cy = lerp(ay, by, ey) + h / 2;
+      var k = w / baseW;                          /* size scale */
+      var pop = 1 + 0.06 * lift;                  /* gentle mid-air swell */
+      var radius = lerp(Math.min(w, h) / 2, LAND_RADIUS, e) / k;
+
+      /* landed → ride with the page; in flight → fixed, moved by transform */
+      var landed = cur >= 1;
+      var m = landed ? 'absolute' : 'fixed';
+      if (m !== mode) { mode = m; fly.style.position = m; }
+      var tx = landed ? cx : cx - sx;
+      var ty = landed ? cy : cy - sy;
+
+      fly.style.transform =
+        'translate3d(' + tx.toFixed(2) + 'px,' + ty.toFixed(2) + 'px,0)' +
+        ' rotate(' + (-5 * lift).toFixed(3) + 'deg)' +
+        ' scale(' + (k * pop).toFixed(4) + ',' + ((h / baseH) * pop).toFixed(4) + ')' +
+        ' translate(' + (-baseW / 2) + 'px,' + (-baseH / 2) + 'px)';
+      fly.style.borderRadius = radius.toFixed(2) + 'px';
+      img.style.borderRadius = Math.max(0, radius - BORDER).toFixed(2) + 'px';
+      shadow.style.opacity = (0.45 + 0.55 * lift).toFixed(3);
+
+      setVisible(true);
+      if (slotImg) slotImg.style.opacity = String(1 - clamp((cur - 0.7) / 0.3));
+    }
+
+    if (cur !== target || (cur > 0 && cur < 1) || now < aliveUntil) raf = requestAnimationFrame(frame);
+    else last = 0;
+  }
+
+  function kick() {
+    aliveUntil = performance.now() + 600;
+    if (!raf) raf = requestAnimationFrame(frame);
+  }
+
+  window.addEventListener('scroll', kick, { passive: true });
+  window.addEventListener('resize', kick);
+  window.addEventListener('load', kick);
+  if (window.ResizeObserver) new ResizeObserver(kick).observe(document.body);
+  kick();
+})();
+</script>
 </body></html>
