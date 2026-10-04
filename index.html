@@ -1335,6 +1335,7 @@ function toggleAwards() {
   if (!ring || !srcImg || !slot) return;
   var slotImg = slot.querySelector('img');
   var nav = document.querySelector('nav');
+  var section = slot.closest('section');
 
   var fly = document.createElement('div');
   fly.className = 'photo-flyer';
@@ -1359,7 +1360,7 @@ function toggleAwards() {
   function easeSine(t) { return -(Math.cos(Math.PI * t) - 1) / 2; }
 
   var cur = 0, first = true, last = 0, raf = 0, aliveUntil = 0;
-  var baseW = 0, baseH = 0, mode = '', visible = false;
+  var baseW = 0, baseH = 0, mode = '', visible = false, lastSlot = '';
 
   function setVisible(v) {
     if (v === visible) return;
@@ -1381,13 +1382,25 @@ function toggleAwards() {
     var b = slot.getBoundingClientRect();
     if (!a.width || !b.width) { setVisible(false); return; }
 
+    /* keep following the slot while it is still moving (e.g. the About
+       card's reveal animation after a nav-link jump) */
+    var bk = (b.top + sy).toFixed(1) + ',' + (b.left + sx).toFixed(1) + ',' + b.width.toFixed(1);
+    if (bk !== lastSlot) { lastSlot = bk; aliveUntil = Math.max(aliveUntil, now + 250); }
+
     /* page (document) coordinates of start and end */
     var ax = a.left + sx, ay = a.top + sy, bx = b.left + sx, by = b.top + sy;
 
     /* scroll position where the About slot sits centred below the nav */
     var vh = window.innerHeight;
     var navH = nav ? nav.getBoundingClientRect().height : 0;
-    var endScroll = Math.max(150, by + b.height / 2 - (navH + (vh - navH) / 2));
+    var endScroll = by + b.height / 2 - (navH + (vh - navH) / 2);
+    /* must also be fully landed where the "About" nav link scrolls to */
+    if (section) {
+      var anchor = section.getBoundingClientRect().top + sy -
+                   (parseFloat(getComputedStyle(section).scrollMarginTop) || 0);
+      endScroll = Math.min(endScroll, anchor - 2);
+    }
+    endScroll = Math.max(150, endScroll);
     var target = clamp(sy / endScroll);
 
     /* soft chase towards the scroll position (frame-rate independent) */
