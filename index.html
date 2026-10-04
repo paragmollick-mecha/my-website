@@ -479,7 +479,6 @@
   <h2 class="section-title">Who am I?</h2>
   <div class="about-grid">
     <div class="about-avatar" style="overflow: hidden; padding: 0; background: none; box-shadow: none;">
-      <img src="image_3b9770.png" alt="Parag Mollick" style="width: 100%; height: 100%; object-fit: cover; border-radius: 1.5rem;">
     </div>
     <div class="about-text">
       <p>Parag Mollick is a final-year Mechanical Engineering student at BUET in Dhaka, working in heat transfer and thermo-fluid systems. Most of his projects deal with cooling equipment that runs hot, such as AI server racks and electric vehicle battery packs.</p>
@@ -1327,12 +1326,20 @@ function toggleAwards() {
    - Once landed (or back home) it is anchored to the page itself.
    ============================================================ */
 (function () {
-  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) return;
-
   var ring = document.querySelector('.hero-photo-ring');
   var srcImg = ring && ring.querySelector('img');
   var slot = document.querySelector('.about-avatar');
   if (!ring || !srcImg || !slot) return;
+
+  /* Visitors who turned off motion: no flight, just show the photo in the About slot */
+  if (window.matchMedia && matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    var still = document.createElement('img');
+    still.src = srcImg.currentSrc || srcImg.src;
+    still.alt = 'Parag Mollick';
+    still.style.cssText = 'width:100%;height:100%;object-fit:cover;border-radius:1.5rem;border:4px solid var(--c1)';
+    slot.appendChild(still);
+    return;
+  }
   var slotImg = slot.querySelector('img');
   var nav = document.querySelector('nav');
   var section = slot.closest('section');
