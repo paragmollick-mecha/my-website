@@ -939,10 +939,66 @@ skills.forEach(s => {
 function scroll2(id) {
   const navLinks = document.getElementById('nav-links');
   const wasOpen = navLinks.classList.contains('active');
-  if (wasOpen) { navLinks.classList.remove('active'); }
-  setTimeout(() => {
-    document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
-  }, wasOpen ? 50 : 0);
+
+  /* Desktop: unchanged */
+  if (!window.matchMedia('(max-width: 768px)').matches) {
+    if (wasOpen) { navLinks.classList.remove('active'); }
+    setTimeout(() => {
+      document.getElementById(id).scrollIntoView({ behavior: 'smooth' });
+    }, wasOpen ? 50 : 0);
+    return;
+  }
+
+  /* Mobile: close the menu without the page jumping, then glide */
+  const target = document.getElementById(id);
+  if (wasOpen) {
+    const before = target.getBoundingClientRect().top;
+    navLinks.classList.remove('active');
+    /* the nav is sticky, so closing it can pull the page up; put it back
+       (some browsers already do this themselves, then the shift is 0) */
+    const shift = before - target.getBoundingClientRect().top;
+    if (shift > 0.5 && window.scrollY > 0) {
+      window.scrollTo({ top: Math.max(0, window.scrollY - shift), behavior: 'instant' });
+    }
+  }
+  glideTo(target);
+}
+
+/* Eased scroll for phones: one steady glide (slow start, slow stop) that keeps
+   aiming at the section even if photos above it finish loading mid-way, and
+   stops the moment the visitor touches the screen. */
+let glideRaf = 0;
+function glideTo(el) {
+  if (!el) return;
+  cancelAnimationFrame(glideRaf);
+  const targetY = () => {
+    const margin = parseFloat(getComputedStyle(el).scrollMarginTop) || 0;
+    const max = document.documentElement.scrollHeight - window.innerHeight;
+    return Math.max(0, Math.min(max, el.getBoundingClientRect().top + window.scrollY - margin));
+  };
+  const startY = window.scrollY;
+  const dist = Math.abs(targetY() - startY);
+  if (dist < 2) return;
+  if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    window.scrollTo({ top: targetY(), behavior: 'instant' });
+    return;
+  }
+  const duration = Math.min(1100, Math.max(500, 420 + dist * 0.12));
+  const ease = t => t < .5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2;
+  const stop = () => {
+    cancelAnimationFrame(glideRaf);
+    ['touchstart', 'wheel', 'keydown'].forEach(ev => window.removeEventListener(ev, stop));
+  };
+  ['touchstart', 'wheel', 'keydown'].forEach(ev => window.addEventListener(ev, stop, { passive: true }));
+  let t0 = null;
+  const step = now => {
+    if (t0 === null) t0 = now;
+    const t = Math.min(1, (now - t0) / duration);
+    window.scrollTo({ top: startY + (targetY() - startY) * ease(t), behavior: 'instant' });
+    if (t < 1) glideRaf = requestAnimationFrame(step);
+    else stop();
+  };
+  glideRaf = requestAnimationFrame(step);
 }
 
 const obs = new IntersectionObserver((entries) => {
