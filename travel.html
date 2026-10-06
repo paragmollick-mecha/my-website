@@ -534,6 +534,88 @@
     </div>
     
   </div>
+
+  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: start; margin-top: 2rem;">
+    <div class="card">
+      <div id="coxsbazar-block" class="city-slider-block">
+        <div id="coxsbazar-slider" class="slider-wrapper">
+          <img src="coxsbazar1.jpg" alt="Cox's Bazar" loading="lazy" decoding="async">
+          <img src="coxsbazar2.jpg" alt="Cox's Bazar" loading="lazy" decoding="async">
+          <img src="coxsbazar3.jpg" alt="Cox's Bazar" loading="lazy" decoding="async">
+          <img src="coxsbazar4.jpg" alt="Cox's Bazar" loading="lazy" decoding="async">
+          <img src="coxsbazar5.jpg" alt="Cox's Bazar" loading="lazy" decoding="async">
+          <img src="coxsbazar6.jpg" alt="Cox's Bazar" loading="lazy" decoding="async">
+          <img src="coxsbazar7.jpg" alt="Cox's Bazar" loading="lazy" decoding="async">
+          <img src="coxsbazar8.jpg" alt="Cox's Bazar" loading="lazy" decoding="async">
+          <img src="coxsbazar9.jpg" alt="Cox's Bazar" loading="lazy" decoding="async">
+        </div>
+        <div id="dots-coxsbazar" class="slider-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <h3 class="country-title"><svg class="flag" viewBox="0 0 1000 600" role="img" aria-label="Flag of Bangladesh"><rect width="1000" height="600" fill="#006A4E"/><circle cx="450" cy="300" r="200" fill="#F42A41"/></svg><span>Cox's Bazar</span></h3>
+      <p class="card-text">
+        Cox's Bazar, on the southeastern coast of Bangladesh, is home to one of the longest natural sea beaches in the world, an unbroken stretch of golden sand of about 120 kilometres along the Bay of Bengal.
+        <span id="coxsbazar-more-text" class="hidden">
+          The Marine Drive runs beside the sea for much of that length, with green hills on one side and open water on the other, leading to spots like Himchari, with its small waterfall and hilltop view, and the quieter rocky shore of Inani Beach. Evenings bring wide sunsets over the water, and the town's markets are known for fresh seafood and Burmese-style handicrafts. Cox's Bazar is also the gateway to Saint Martin's Island, the country's only coral island.
+        </span>
+      </p>
+      <button onclick="toggleMore('coxsbazar-more-text', 'coxsbazar-read-btn')" id="coxsbazar-read-btn" type="button" class="read-toggle" aria-expanded="false">
+        See More
+      </button>
+    </div>
+
+    <div class="card">
+      <div id="bandarban-block" class="city-slider-block">
+        <div id="bandarban-slider" class="slider-wrapper">
+          <img src="bandarban1.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban2.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban3.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban4.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban5.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban6.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban7.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban8.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban9.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban10.jpg" alt="Bandarban" loading="lazy" decoding="async">
+          <img src="bandarban11.jpg" alt="Bandarban" loading="lazy" decoding="async">
+        </div>
+        <div id="dots-bandarban" class="slider-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <h3 class="country-title"><svg class="flag" viewBox="0 0 1000 600" role="img" aria-label="Flag of Bangladesh"><rect width="1000" height="600" fill="#006A4E"/><circle cx="450" cy="300" r="200" fill="#F42A41"/></svg><span>Bandarban</span></h3>
+      <p class="card-text">
+        Bandarban, in the Chittagong Hill Tracts, is the most mountainous district of Bangladesh, a landscape of green ridges, deep valleys and drifting clouds that feels very different from the plains of the rest of the country.
+        <span id="bandarban-more-text" class="hidden">
+          Viewpoints such as Nilgiri and Nilachal sit high enough that clouds often roll past below them, and the Sangu River winds through the hills toward remote waterfalls like Nafakhum. Further in lie Boga Lake, a natural lake set high in the mountains, and Keokradong, one of the tallest peaks in the country. The district is also home to many indigenous communities, including the Marma, Bawm and Mro peoples, and to the hilltop Buddha Dhatu Jadi, often called the Golden Temple.
+        </span>
+      </p>
+      <button onclick="toggleMore('bandarban-more-text', 'bandarban-read-btn')" id="bandarban-read-btn" type="button" class="read-toggle" aria-expanded="false">
+        See More
+      </button>
+    </div>
+  </div>
 </section>
 
 <footer>by Parag Mollick · 2026</footer>
@@ -744,6 +826,8 @@ function switchMalaysiaCity(city) {
 
 setupSlider('thailand-slider-bangkok', 'dots-bangkok');
 setupSlider('malaysia-slider-kl', 'mdots-kl');
+setupSlider('coxsbazar-slider', 'dots-coxsbazar');
+setupSlider('bandarban-slider', 'dots-bandarban');
 
 /* ===== See more / See less ===== */
 function toggleMore(textId, btnId) {
