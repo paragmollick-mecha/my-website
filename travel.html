@@ -332,6 +332,10 @@
     .slider-dots .dot.is-active::after{animation:none;transform:none}
     .city-slider-block.panel-in,.mCity-slider-block.panel-in,.card-text .more-in{animation:none}
   }
+  /* International / National tour groups */
+  .tour-group-title{display:flex;align-items:center;gap:.6rem;font-size:clamp(1.25rem,2.6vw,1.6rem);font-weight:700;color:var(--text);margin:0 0 1.25rem}
+  .tour-group-title i{color:var(--c1);font-size:.9em}
+  .tour-group-title.national{margin-top:3.5rem}
 </style>
 </head>
 <body>
@@ -355,6 +359,7 @@
 <section id="travels" class="alt-section">
   <div class="section-label">Outside the Office</div>
   <h2 class="section-title" style="margin-bottom: 2rem;">My Global Footprints</h2>
+  <h3 class="tour-group-title"><i class="fas fa-earth-asia" aria-hidden="true"></i>International Tours</h3>
   <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: start;">
     
     <div class="card">
@@ -535,7 +540,8 @@
     
   </div>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(max(300px, calc((100% - 2rem) / 2)), 1fr)); gap: 2rem; align-items: start; margin-top: 2rem;">
+  <h3 class="tour-group-title national"><i class="fas fa-location-dot" aria-hidden="true"></i>Domestic Tours</h3>
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(max(300px, calc((100% - 2rem) / 2)), 1fr)); gap: 2rem; align-items: start;">
     <div class="card">
       <div id="coxsbazar-block" class="city-slider-block">
         <div id="coxsbazar-slider" class="slider-wrapper">
