@@ -681,6 +681,80 @@
         See More
       </button>
     </div>
+
+    <div class="card">
+      <div id="sreemangal-block" class="city-slider-block">
+        <div id="sreemangal-slider" class="slider-wrapper">
+          <img src="sreemangal1.jpg" alt="Sreemangal" loading="lazy" decoding="async">
+          <img src="sreemangal2.jpg" alt="Sreemangal" loading="lazy" decoding="async">
+          <img src="sreemangal3.jpg" alt="Sreemangal" loading="lazy" decoding="async">
+          <img src="sreemangal4.jpg" alt="Sreemangal" loading="lazy" decoding="async">
+          <img src="sreemangal5.jpg" alt="Sreemangal" loading="lazy" decoding="async">
+          <img src="sreemangal6.jpg" alt="Sreemangal" loading="lazy" decoding="async">
+          <img src="sreemangal7.jpg" alt="Sreemangal" loading="lazy" decoding="async">
+          <img src="sreemangal8.jpg" alt="Sreemangal" loading="lazy" decoding="async">
+        </div>
+        <div id="dots-sreemangal" class="slider-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <h3 class="country-title"><svg class="flag" viewBox="0 0 1000 600" role="img" aria-label="Flag of Bangladesh"><rect width="1000" height="600" fill="#006A4E"/><circle cx="450" cy="300" r="200" fill="#F42A41"/></svg><span>Sreemangal</span></h3>
+      <p class="card-text">
+        Sreemangal, in Moulvibazar district, is often called the tea capital of Bangladesh, a quiet town surrounded by endless tea gardens, rubber and pineapple plantations, and patches of tropical forest.
+        <span id="sreemangal-more-text" class="hidden">
+          Just outside town, Lawachara National Park is one of the last surviving rainforests in the country and home to the endangered western hoolock gibbon, with walking trails under a tall green canopy. The town is famous for its layered multi-colour tea, and it hosts the Bangladesh Tea Research Institute. In winter, the Baikka Beel wetland draws large flocks of migratory birds, and Madhabpur Lake lies nearby among the hills and tea estates. The area is also home to the Khasi and Manipuri communities, whose villages and crafts are part of the region's character.
+        </span>
+      </p>
+      <button onclick="toggleMore('sreemangal-more-text', 'sreemangal-read-btn')" id="sreemangal-read-btn" type="button" class="read-toggle" aria-expanded="false">
+        See More
+      </button>
+    </div>
+
+    <div class="card">
+      <div id="sajek-block" class="city-slider-block">
+        <div id="sajek-slider" class="slider-wrapper">
+          <img src="sajek1.jpg" alt="Sajek Valley" loading="lazy" decoding="async">
+          <img src="sajek2.jpg" alt="Sajek Valley" loading="lazy" decoding="async">
+          <img src="sajek3.jpg" alt="Sajek Valley" loading="lazy" decoding="async">
+          <img src="sajek4.jpg" alt="Sajek Valley" loading="lazy" decoding="async">
+          <img src="sajek5.jpg" alt="Sajek Valley" loading="lazy" decoding="async">
+          <img src="sajek6.jpg" alt="Sajek Valley" loading="lazy" decoding="async">
+          <img src="sajek7.jpg" alt="Sajek Valley" loading="lazy" decoding="async">
+          <img src="sajek8.jpg" alt="Sajek Valley" loading="lazy" decoding="async">
+          <img src="sajek9.jpg" alt="Sajek Valley" loading="lazy" decoding="async">
+        </div>
+        <div id="dots-sajek" class="slider-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <h3 class="country-title"><svg class="flag" viewBox="0 0 1000 600" role="img" aria-label="Flag of Bangladesh"><rect width="1000" height="600" fill="#006A4E"/><circle cx="450" cy="300" r="200" fill="#F42A41"/></svg><span>Sajek Valley</span></h3>
+      <p class="card-text">
+        Sajek Valley, high in the hills of Rangamati district, is often called the kingdom of clouds, a ridge-top village where mornings begin with a sea of white clouds filling the valleys below.
+        <span id="sajek-more-text" class="hidden">
+          Sitting at around 1,800 feet and reached by a winding mountain road through Khagrachari, Sajek opens up to endless layers of green hills stretching toward the Mizoram border. Visitors gather at the helipad and nearby viewpoints for sunrise and sunset, and the short climb to Konglak Para, the highest point of the valley, gives one of the widest views in the area. The valley is home to the Lushai, Pangkhua and Tripura communities, whose colourful wooden houses line the main road through Ruilui Para.
+        </span>
+      </p>
+      <button onclick="toggleMore('sajek-more-text', 'sajek-read-btn')" id="sajek-read-btn" type="button" class="read-toggle" aria-expanded="false">
+        See More
+      </button>
+    </div>
   </div>
 </section>
 
@@ -896,6 +970,8 @@ setupSlider('coxsbazar-slider', 'dots-coxsbazar');
 setupSlider('bandarban-slider', 'dots-bandarban');
 setupSlider('rangamati-slider', 'dots-rangamati');
 setupSlider('sylhet-slider', 'dots-sylhet');
+setupSlider('sreemangal-slider', 'dots-sreemangal');
+setupSlider('sajek-slider', 'dots-sajek');
 
 /* ===== See more / See less ===== */
 function toggleMore(textId, btnId) {
