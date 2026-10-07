@@ -535,7 +535,7 @@
     
   </div>
 
-  <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; align-items: start; margin-top: 2rem;">
+  <div style="display: grid; grid-template-columns: repeat(auto-fill, minmax(max(300px, calc((100% - 2rem) / 2)), 1fr)); gap: 2rem; align-items: start; margin-top: 2rem;">
     <div class="card">
       <div id="coxsbazar-block" class="city-slider-block">
         <div id="coxsbazar-slider" class="slider-wrapper">
@@ -612,6 +612,38 @@
         </span>
       </p>
       <button onclick="toggleMore('bandarban-more-text', 'bandarban-read-btn')" id="bandarban-read-btn" type="button" class="read-toggle" aria-expanded="false">
+        See More
+      </button>
+    </div>
+
+    <div class="card">
+      <div id="rangamati-block" class="city-slider-block">
+        <div id="rangamati-slider" class="slider-wrapper">
+          <img src="rangamati1.jpg" alt="Rangamati" loading="lazy" decoding="async">
+          <img src="rangamati2.jpg" alt="Rangamati" loading="lazy" decoding="async">
+          <img src="rangamati3.jpg" alt="Rangamati" loading="lazy" decoding="async">
+          <img src="rangamati4.jpg" alt="Rangamati" loading="lazy" decoding="async">
+          <img src="rangamati5.jpg" alt="Rangamati" loading="lazy" decoding="async">
+          <img src="rangamati6.jpg" alt="Rangamati" loading="lazy" decoding="async">
+        </div>
+        <div id="dots-rangamati" class="slider-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <h3 class="country-title"><svg class="flag" viewBox="0 0 1000 600" role="img" aria-label="Flag of Bangladesh"><rect width="1000" height="600" fill="#006A4E"/><circle cx="450" cy="300" r="200" fill="#F42A41"/></svg><span>Rangamati</span></h3>
+      <p class="card-text">
+        Rangamati, in the Chittagong Hill Tracts, is a hill district wrapped around Kaptai Lake, the largest man-made lake in Bangladesh, where green hills rise straight out of calm blue water.
+        <span id="rangamati-more-text" class="hidden">
+          The lake was formed when the Kaptai Dam was built on the Karnaphuli River in the 1960s, and today boats carry visitors between its islands, hillside villages and the Shuvolong waterfall. The town's orange Hanging Bridge stretches across one arm of the lake, and Rajban Vihara is one of the most important Buddhist monasteries in the country. Rangamati is also the home of the Chakma people and many other indigenous communities, and the district reaches up to Sajek Valley, famous for its view above the clouds.
+        </span>
+      </p>
+      <button onclick="toggleMore('rangamati-more-text', 'rangamati-read-btn')" id="rangamati-read-btn" type="button" class="read-toggle" aria-expanded="false">
         See More
       </button>
     </div>
@@ -828,6 +860,7 @@ setupSlider('thailand-slider-bangkok', 'dots-bangkok');
 setupSlider('malaysia-slider-kl', 'mdots-kl');
 setupSlider('coxsbazar-slider', 'dots-coxsbazar');
 setupSlider('bandarban-slider', 'dots-bandarban');
+setupSlider('rangamati-slider', 'dots-rangamati');
 
 /* ===== See more / See less ===== */
 function toggleMore(textId, btnId) {
