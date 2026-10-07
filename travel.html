@@ -647,6 +647,40 @@
         See More
       </button>
     </div>
+
+    <div class="card">
+      <div id="sylhet-block" class="city-slider-block">
+        <div id="sylhet-slider" class="slider-wrapper">
+          <img src="sylhet1.jpg" alt="Sylhet" loading="lazy" decoding="async">
+          <img src="sylhet2.jpg" alt="Sylhet" loading="lazy" decoding="async">
+          <img src="sylhet3.jpg" alt="Sylhet" loading="lazy" decoding="async">
+          <img src="sylhet4.jpg" alt="Sylhet" loading="lazy" decoding="async">
+          <img src="sylhet5.jpg" alt="Sylhet" loading="lazy" decoding="async">
+          <img src="sylhet6.jpg" alt="Sylhet" loading="lazy" decoding="async">
+          <img src="sylhet7.jpg" alt="Sylhet" loading="lazy" decoding="async">
+        </div>
+        <div id="dots-sylhet" class="slider-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <h3 class="country-title"><svg class="flag" viewBox="0 0 1000 600" role="img" aria-label="Flag of Bangladesh"><rect width="1000" height="600" fill="#006A4E"/><circle cx="450" cy="300" r="200" fill="#F42A41"/></svg><span>Sylhet</span></h3>
+      <p class="card-text">
+        Sylhet, in the northeast of Bangladesh, is the country's tea capital, a region of rolling tea gardens, clear rivers and green hills along the border with the Indian state of Meghalaya.
+        <span id="sylhet-more-text" class="hidden">
+          Malnicherra, on the edge of Sylhet city, is known as the first commercial tea garden in the subcontinent, and the estates around Sylhet and Srimangal still produce much of the country's tea. To the north, Jaflong sits beside the Piyain River with the Meghalaya hills behind it, and Lalakhal is famous for the striking blue-green water of the Sari River. Ratargul is one of the few freshwater swamp forests in the country, explored by small boat between half-submerged trees, and Bisnakandi brings stony streams down from the hills. The city is also home to the shrine of Hazrat Shah Jalal, one of the most visited places in Bangladesh.
+        </span>
+      </p>
+      <button onclick="toggleMore('sylhet-more-text', 'sylhet-read-btn')" id="sylhet-read-btn" type="button" class="read-toggle" aria-expanded="false">
+        See More
+      </button>
+    </div>
   </div>
 </section>
 
@@ -861,6 +895,7 @@ setupSlider('malaysia-slider-kl', 'mdots-kl');
 setupSlider('coxsbazar-slider', 'dots-coxsbazar');
 setupSlider('bandarban-slider', 'dots-bandarban');
 setupSlider('rangamati-slider', 'dots-rangamati');
+setupSlider('sylhet-slider', 'dots-sylhet');
 
 /* ===== See more / See less ===== */
 function toggleMore(textId, btnId) {
