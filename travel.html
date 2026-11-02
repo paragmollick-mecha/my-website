@@ -761,6 +761,36 @@
         See More
       </button>
     </div>
+
+    <div class="card">
+      <div id="swarupkathi-block" class="city-slider-block">
+        <div id="swarupkathi-slider" class="slider-wrapper">
+          <img src="swarupkathi1.jpg" alt="Swarupkathi, Barishal" loading="lazy" decoding="async">
+          <img src="swarupkathi2.jpg" alt="Swarupkathi, Barishal" loading="lazy" decoding="async">
+          <img src="swarupkathi3.jpg" alt="Swarupkathi, Barishal" loading="lazy" decoding="async">
+          <img src="swarupkathi4.jpg" alt="Swarupkathi, Barishal" loading="lazy" decoding="async">
+          <img src="swarupkathi5.jpg" alt="Swarupkathi, Barishal" loading="lazy" decoding="async">
+        </div>
+        <div id="dots-swarupkathi" class="slider-dots">
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+          <span class="dot"></span>
+        </div>
+      </div>
+
+      <h3 class="country-title"><svg class="flag" viewBox="0 0 1000 600" role="img" aria-label="Flag of Bangladesh"><rect width="1000" height="600" fill="#006A4E"/><circle cx="450" cy="300" r="200" fill="#F42A41"/></svg><span>Swarupkathi, Barishal</span></h3>
+      <p class="card-text">
+        Swarupkathi, in Pirojpur district of Barishal Division, sits in the heart of southern Bangladesh's river country, a quiet web of canals, green orchards and wooden boats where much of daily life still moves on the water.
+        <span id="swarupkathi-more-text" class="hidden">
+          The area is best known for its floating guava markets, where during the monsoon harvest farmers bring boatloads of fresh guava from the surrounding orchards and trade them directly from the water along the canals around Atghar, Kuriana and nearby Bhimruli. Narrow channels lined with coconut, betel nut and guava trees make the whole region feel like a natural maze, which is part of why Barishal is often called the Venice of Bengal. Swarupkathi is also a long-established centre for the timber trade and for nurseries that supply plants and saplings across the country.
+        </span>
+      </p>
+      <button onclick="toggleMore('swarupkathi-more-text', 'swarupkathi-read-btn')" id="swarupkathi-read-btn" type="button" class="read-toggle" aria-expanded="false">
+        See More
+      </button>
+    </div>
   </div>
 </section>
 
@@ -978,6 +1008,7 @@ setupSlider('rangamati-slider', 'dots-rangamati');
 setupSlider('sylhet-slider', 'dots-sylhet');
 setupSlider('sreemangal-slider', 'dots-sreemangal');
 setupSlider('sajek-slider', 'dots-sajek');
+setupSlider('swarupkathi-slider', 'dots-swarupkathi');
 
 /* ===== See more / See less ===== */
 function toggleMore(textId, btnId) {
