@@ -1164,7 +1164,7 @@ function toggleAwards() {
   function respawn(p, stagger) {
     p.x = Math.random() < 0.34 ? (-40 - Math.random() * 80) : Math.random() * W;
     p.y = Math.random() * H;
-    p.n = 0; p.head = 0;
+    p.n = 0; p.head = 0; p.bad = false;
     p.max = 320 + Math.random() * 420;
     p.age = stagger ? Math.random() * p.max * 0.8 : 0;
     p.lvl = 3;
@@ -1224,13 +1224,23 @@ function toggleAwards() {
   }
 
   function syncObstacle() {
-    var el = document.querySelector('.hero-photo-ring');
+    /* follow the portrait wherever it is shown: in the hero, in flight,
+       or landed in the "Who am I?" card (the floating copy) */
+    var fly = document.querySelector('.photo-flyer');
+    var onFly = !!(fly && fly.style.visibility === 'visible');
+    var el = onFly ? fly : document.querySelector('.hero-photo-ring');
     if (!el) { ob.k *= 0.94; return; }
     var r = el.getBoundingClientRect();
     if (!r.width) { ob.k *= 0.94; return; }
     ob.x = r.left + r.width / 2;
     ob.y = r.top + r.height / 2;
-    ob.r = r.width * 0.54;
+    var f = 0.54;                                   /* round portrait */
+    if (onFly) {                                    /* round -> rounded square */
+      var bw = fly.offsetWidth || r.width;
+      var br = parseFloat(fly.style.borderRadius) || 0;
+      f = 0.70 - 0.16 * Math.min(1, br / (bw * 0.5));
+    }
+    ob.r = Math.max(r.width, r.height) * f;
     var vis = 1 - Math.min(1, Math.abs(ob.y - H * 0.42) / (H * 0.85));
     ob.k += (Math.max(0, vis) - ob.k) * 0.06;
   }
@@ -1247,9 +1257,12 @@ function toggleAwards() {
     var sp = 0, s;
     for (s = 0; s < SUB; s++) {
       field(p.x, p.y, out);
+      sp = Math.sqrt(out[0] * out[0] + out[1] * out[1]);
+      /* a point that ends up inside the portrait (e.g. right after the
+         portrait moves) would be flung out in one straight jump; drop it */
+      if (sp > U * 4) { p.bad = true; return; }
       p.x += out[0] * STEP;
       p.y += out[1] * STEP;
-      sp = Math.sqrt(out[0] * out[0] + out[1] * out[1]);
     }
     /* speed band, smoothed so a line doesn't flicker between colours */
     var lvl = sp / (U * 1.9) * LEVELS;
@@ -1276,7 +1289,7 @@ function toggleAwards() {
     for (i = 0; i < parts.length; i++) {
       var p = parts[i];
       advance(p);
-      if (p.age > p.max || p.x < -160 || p.x > W + 160 || p.y < -160 || p.y > H + 160 ||
+      if (p.bad || p.age > p.max || p.x < -160 || p.x > W + 160 || p.y < -160 || p.y > H + 160 ||
           insideCylinder(p.x, p.y)) {
         respawn(p, false);
         continue;
