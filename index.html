@@ -1133,7 +1133,7 @@ function toggleAwards() {
   var TRAIL = small ? 48 : 72;         // points held per streamline
   var LEVELS = 8, palette = [];
 
-  var ob    = { x: -9999, y: -9999, r: 0, k: 0 };   // the "cylinder"
+  var ob    = { x: -9999, y: -9999, r: 0, k: 0, n: 2 };  // the "cylinder"; n = 2 round, higher = squarer
   var mouse = { x: -9999, y: -9999, on: 0, want: 0 };
 
   function isDark() {
@@ -1201,13 +1201,18 @@ function toggleAwards() {
     u += 0.30 * U * Math.sin(y * 0.0074 + t * 0.21) + 0.14 * U * Math.sin(y * 0.0185 - t * 0.15);
     v += 0.27 * U * Math.cos(x * 0.0061 - t * 0.17) + 0.12 * U * Math.cos(x * 0.0158 + t * 0.13);
 
-    /* doublet: exact streamlines for flow past a cylinder */
+    /* doublet: streamlines for flow past the portrait. With n = 2 this is
+       the exact flow past a cylinder; for the square photo the distance is
+       measured as a superellipse (|X|^n + |Y|^n), so the streamline that
+       touches the body follows a rounded square instead of a circle. */
     if (ob.k > 0.015) {
-      var X = x - ob.x, Y = y - ob.y, r2 = X * X + Y * Y;
-      if (r2 > 4) {
-        var c = U * ob.k * ob.r * ob.r / (r2 * r2);
-        u -= c * (X * X - Y * Y);
-        v -= c * 2 * X * Y;
+      var X = x - ob.x, Y = y - ob.y, n = ob.n;
+      var ax = Math.abs(X) || 1e-6, ay = Math.abs(Y) || 1e-6;
+      var px = Math.pow(ax, n), py = Math.pow(ay, n), S = px + py;
+      if (S > Math.pow(2, n)) {
+        var A = U * ob.k * ob.r * ob.r, Sm = Math.pow(S, -2 / n);
+        u -= A * Sm * (1 - 2 * py / S);
+        v -= 2 * A * Y * (px / ax) * (X < 0 ? -1 : 1) * Sm / S;
       }
     }
 
@@ -1234,21 +1239,22 @@ function toggleAwards() {
     if (!r.width) { ob.k *= 0.94; return; }
     ob.x = r.left + r.width / 2;
     ob.y = r.top + r.height / 2;
-    var f = 0.54;                                   /* round portrait */
+    ob.r = Math.max(r.width, r.height) * 0.54;     /* round portrait */
+    ob.n = 2;
     if (onFly) {                                    /* round -> rounded square */
       var bw = fly.offsetWidth || r.width;
       var br = parseFloat(fly.style.borderRadius) || 0;
-      f = 0.70 - 0.16 * Math.min(1, br / (bw * 0.5));
+      var round = Math.min(1, br / (bw * 0.5));     /* 1 = circle, ~0.15 = landed */
+      ob.n = 2 + 4.5 * (1 - round);
     }
-    ob.r = Math.max(r.width, r.height) * f;
     var vis = 1 - Math.min(1, Math.abs(ob.y - H * 0.42) / (H * 0.85));
     ob.k += (Math.max(0, vis) - ob.k) * 0.06;
   }
 
   function insideCylinder(x, y) {
     if (ob.k < 0.35) return false;
-    var X = x - ob.x, Y = y - ob.y;
-    return X * X + Y * Y < ob.r * ob.r * 0.95;
+    var X = Math.abs(x - ob.x), Y = Math.abs(y - ob.y);
+    return Math.pow(X, ob.n) + Math.pow(Y, ob.n) < Math.pow(ob.r * 0.975, ob.n);
   }
 
   var out = [0, 0];
