@@ -361,6 +361,8 @@
   .edu-item:hover .edu-dot{border-color:var(--c1)}
   .edu-head{display:flex;justify-content:space-between;align-items:baseline;gap:1rem;flex-wrap:wrap;margin-bottom:.35rem}
   .edu-school{font-size:1.25rem;line-height:1.35;color:var(--text)}
+  .edu-link{color:inherit;text-decoration:none;transition:color .2s}
+  .edu-link:hover{color:var(--c1);text-decoration:underline}
   .edu-year{flex-shrink:0;font-weight:700;font-size:.95rem;color:var(--c1);white-space:nowrap}
   .edu-degree{color:var(--muted);font-size:1rem;margin-bottom:.9rem}
   .edu-meta{display:flex;flex-wrap:wrap;align-items:center;gap:.6rem 1.1rem}
@@ -512,7 +514,7 @@
         <img class="edu-logo" src="buet_logo.png" alt="BUET logo" loading="lazy" onerror="this.remove()">
         <div class="edu-body">
           <div class="edu-head">
-            <h3 class="edu-school">Bangladesh University of Engineering and Technology (BUET)</h3>
+            <h3 class="edu-school"><a class="edu-link" href="https://www.buet.ac.bd/web/#/" target="_blank" rel="noopener">Bangladesh University of Engineering and Technology (BUET)</a></h3>
             <span class="edu-year">2022 &ndash; Present</span>
           </div>
           <p class="edu-degree">Bachelor of Science in Mechanical Engineering</p>
@@ -530,7 +532,7 @@
         <img class="edu-logo" src="cantonment_college_logo.png" alt="Cantonment College Jashore logo" loading="lazy" onerror="this.remove()">
         <div class="edu-body">
           <div class="edu-head">
-            <h3 class="edu-school">Cantonment College Jashore</h3>
+            <h3 class="edu-school"><a class="edu-link" href="https://ccj.edu.bd/" target="_blank" rel="noopener">Cantonment College Jashore</a></h3>
             <span class="edu-year">2019 &ndash; 2021</span>
           </div>
           <p class="edu-degree">Higher Secondary Certificate (HSC), Science, Jashore Board</p>
@@ -548,7 +550,7 @@
         <img class="edu-logo" src="satkhira_school_logo.png" alt="Satkhira Government High School logo" loading="lazy" onerror="this.remove()">
         <div class="edu-body">
           <div class="edu-head">
-            <h3 class="edu-school">Satkhira Government High School</h3>
+            <h3 class="edu-school"><a class="edu-link" href="https://sghss.school.gov.bd/" target="_blank" rel="noopener">Satkhira Government High School</a></h3>
             <span class="edu-year">2019</span>
           </div>
           <p class="edu-degree">Secondary School Certificate (SSC), Science, Jashore Board</p>
