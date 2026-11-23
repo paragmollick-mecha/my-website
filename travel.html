@@ -42,60 +42,37 @@
     min-height: 100vh;
   }
 
-  /* =========================================
-     AMBIENT BACKGROUND GLOW ANIMATION
-     ========================================== */
-  body::before, body::after {
-    content: '';
-    position: fixed;
-    width: 55vw;
-    height: 55vw;
-    min-width: 440px;
-    min-height: 440px;
-    border-radius: 50%;
-    filter: blur(100px);
-    z-index: -1;
-    pointer-events: none;
-    animation: ambientGlowMove 16s ease-in-out infinite alternate;
-    will-change: transform;
-  }
-
+  /* layered light: warm-free tonal wash, static */
   body::before {
-    background: var(--c1);
-    top: -18%;
-    left: -12%;
-    opacity: 0.22;
+    content: '';
+    position: fixed; inset: 0; z-index: -2; pointer-events: none;
+    background:
+      radial-gradient(1200px 700px at 85% -12%, rgba(37,99,235,.20), transparent 60%),
+      radial-gradient(900px 620px at -8% 12%, rgba(71,85,105,.16), transparent 62%),
+      radial-gradient(1000px 800px at 50% 118%, rgba(37,99,235,.12), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.55) 0%, transparent 38%);
   }
 
+  /* fine film grain — gives the flat colour a printed, non-digital surface */
   body::after {
-    background: var(--c2);
-    bottom: -18%;
-    right: -12%;
-    opacity: 0.20;
-    animation-duration: 21s;
-    animation-direction: alternate-reverse;
+    content: '';
+    position: fixed; inset: 0; z-index: -1; pointer-events: none;
+    background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='180' height='180'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.5'/%3E%3C/svg%3E");
+    background-size: 180px 180px;
+    opacity: .07;
+    mix-blend-mode: multiply;
   }
 
-  .ambient-blob-3 {
-    position: fixed; width: 42vw; height: 42vw; min-width: 340px; min-height: 340px;
-    border-radius: 50%; filter: blur(95px); z-index: -1; pointer-events: none;
-    background: var(--c1); opacity: 0.12; top: 30%; left: 42%;
-    animation: ambientGlowMove 23s ease-in-out infinite alternate-reverse;
-    will-change: transform;
+  [data-theme="dark"] body::before {
+    background:
+      radial-gradient(1200px 700px at 85% -12%, rgba(59,130,246,.24), transparent 60%),
+      radial-gradient(900px 620px at -8% 12%, rgba(148,163,184,.10), transparent 62%),
+      radial-gradient(1000px 800px at 50% 118%, rgba(59,130,246,.14), transparent 60%),
+      linear-gradient(180deg, rgba(255,255,255,.05) 0%, transparent 40%);
   }
+  [data-theme="dark"] body::after { opacity: .10; mix-blend-mode: screen; }
 
-  [data-theme="dark"] body::before, 
-  [data-theme="dark"] body::after {
-    opacity: 0.13;
-  }
-  [data-theme="dark"] .ambient-blob-3 { opacity: 0.08; }
-
-  @keyframes ambientGlowMove {
-    0%   { transform: translate(0, 0) scale(1) rotate(0deg); }
-    50%  { transform: translate(50px, -35px) scale(1.12) rotate(8deg); }
-    100% { transform: translate(90px, 65px) scale(1.18) rotate(-6deg); }
-  }
-
+  .ambient-blob-3 { display: none !important; }
   .alt-section {
     background: transparent !important;
   }
@@ -219,7 +196,9 @@
 
   /* ================= CFD flow-field background ================= */
   /* ambient glows drop a layer so the streamline canvas sits above them */
-  body::before, body::after, .ambient-blob-3 { z-index: -3 !important; }
+  html[data-theme="light"]{ background-color: #eaeff6; }
+  html[data-theme="dark"]{ background-color: #0a1120; }
+  body::before { z-index: -3 !important; }
 
   #flowfield{
     position: fixed; inset: 0;
@@ -231,6 +210,9 @@
   }
   #flowfield.on{ opacity: .78; }
   [data-theme="dark"] #flowfield.on{ opacity: .82; }
+  #thermal{ position: fixed; inset: 0; width: 100%; height: 100%; z-index: -3;
+             pointer-events: none; opacity: 0; transition: opacity 1.6s ease; }
+  #thermal.on{ opacity: 1; }
 
   @media (prefers-reduced-motion: reduce){
     #flowfield.on{ opacity:.42; }
@@ -1022,6 +1004,245 @@ function toggleMore(textId, btnId) {
 }
 function toggleThailandText() { toggleMore('thailand-more-text', 'thailand-read-btn'); }
 function toggleMalaysiaText() { toggleMore('malaysia-more-text', 'malaysia-read-btn'); }
+</script>
+
+<canvas id="thermal" aria-hidden="true"></canvas>
+<script>
+/* ============================================================
+   Temperature-contour background (under the streamlines).
+   Heat source = the portrait; a warm plume is carried downstream
+   (to the right, with the flow) and meanders slowly. The whole
+   page cools as you scroll down, like moving through a heat
+   exchanger. Filled contour + isotherm lines, CFD style.
+   Drawn every frame, but cheap: the field is separable, so the
+   trig/exp work is done once per row and once per column and
+   only one exp remains per grid point (inside the plume).
+   ============================================================ */
+(function () {
+  var cv = document.getElementById('thermal');
+  if (!cv || !cv.getContext) return;
+  var ctx = cv.getContext('2d');
+  var off = document.createElement('canvas'), octx = off.getContext('2d');
+
+  var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var small   = window.matchMedia('(max-width: 768px)').matches;
+  var CELL = small ? 16 : 14;
+
+  var W = 0, H = 0, GW = 0, GH = 0, CX = 0, CY = 0;
+  var T = null, img = null, lut = null, lutA = null, t = 0, raf = null, last = 0;
+  var src = { x: -9999, y: -9999, r: 120, k: 0 };
+  var amb = 0.3, first = true;
+  var ISO = [];
+  for (var q = 0.14; q < 0.95; q += 0.08) ISO.push(q);
+
+  /* per-column / per-row tables */
+  var cS1, cC1, cS2, cC2, cHx, cPa, cPm, cPw;   // columns
+  var rA, rB, rHy, rY;                           // rows
+
+  function isDark() {
+    return document.documentElement.getAttribute('data-theme') === 'dark';
+  }
+
+  /* colour map: cold blue -> cyan -> amber -> orange -> red, alpha rises with T */
+  function buildLut() {
+    var stops = isDark() ? [
+      [0.00,  30,  58, 138, 0.00],
+      [0.22,  37,  99, 235, 0.16],
+      [0.42,   8, 145, 178, 0.19],
+      [0.62, 245, 158,  11, 0.20],
+      [0.82, 234,  88,  12, 0.24],
+      [1.00, 220,  38,  38, 0.27]
+    ] : [
+      [0.00, 147, 197, 253, 0.00],
+      [0.22,  96, 165, 250, 0.13],
+      [0.42,  34, 211, 238, 0.14],
+      [0.62, 251, 191,  36, 0.18],
+      [0.82, 249, 115,  22, 0.22],
+      [1.00, 239,  68,  68, 0.22]
+    ];
+    lut = new Uint8ClampedArray(256 * 4);
+    lutA = [];
+    for (var i = 0; i < 256; i++) {
+      var v = i / 255, s = 0;
+      while (s < stops.length - 2 && v > stops[s + 1][0]) s++;
+      var A = stops[s], B = stops[s + 1], f = (v - A[0]) / (B[0] - A[0]);
+      var r = A[1] + (B[1] - A[1]) * f, g = A[2] + (B[2] - A[2]) * f,
+          b = A[3] + (B[3] - A[3]) * f, a = A[4] + (B[4] - A[4]) * f;
+      lut[i * 4] = r; lut[i * 4 + 1] = g; lut[i * 4 + 2] = b; lut[i * 4 + 3] = a * 255;
+      lutA.push([r | 0, g | 0, b | 0]);
+    }
+  }
+
+  function resize() {
+    W = cv.clientWidth || window.innerWidth;
+    H = cv.clientHeight || window.innerHeight;
+    cv.width = W; cv.height = H;               /* a soft field needs no retina pixels */
+    GW = Math.ceil(W / CELL) + 1; GH = Math.ceil(H / CELL) + 1;
+    CX = W / (GW - 1); CY = H / (GH - 1);
+    off.width = GW; off.height = GH;
+    img = octx.createImageData(GW, GH);
+    T = new Float32Array(GW * GH);
+    cS1 = new Float32Array(GW); cC1 = new Float32Array(GW);
+    cS2 = new Float32Array(GW); cC2 = new Float32Array(GW);
+    cHx = new Float32Array(GW); cPa = new Float32Array(GW);
+    cPm = new Float32Array(GW); cPw = new Float32Array(GW);
+    rA = new Float32Array(GH); rB = new Float32Array(GH);
+    rHy = new Float32Array(GH); rY = new Float32Array(GH);
+    for (var i = 0; i < GW; i++) {
+      var x = i * CX;
+      cS1[i] = Math.sin(x * 0.0031); cC1[i] = Math.cos(x * 0.0031);
+      cS2[i] = Math.sin(x * 0.0072); cC2[i] = Math.cos(x * 0.0072);
+    }
+  }
+
+  /* follow the portrait: in the hero, in flight, or landed in "Who am I?" */
+  function syncSource(dt) {
+    var fly = document.querySelector('.photo-flyer');
+    var onFly = !!(fly && fly.style.visibility === 'visible');
+    var el = onFly ? fly : document.querySelector('.hero-photo-ring');
+    var want = 0;
+    if (el) {
+      var r = el.getBoundingClientRect();
+      if (r.width) {
+        src.x = r.left + r.width / 2; src.y = r.top + r.height / 2;
+        src.r = Math.max(r.width, r.height) * 0.62;
+        want = Math.max(0, 1 - Math.min(1, Math.abs(src.y - H * 0.42) / (H * 0.95)));
+      }
+    }
+    var docH = document.documentElement.scrollHeight - H;
+    var f = docH > 0 ? Math.min(1, Math.max(0, window.scrollY / docH)) : 0;
+    var target = 0.16 + 0.24 * Math.pow(1 - f, 1.3);
+    /* frame-rate independent easing (~0.25 s) */
+    var e = (first || reduced) ? 1 : 1 - Math.exp(-dt / 0.25);
+    src.k += (want - src.k) * e;
+    amb += (target - amb) * e;
+    first = false;
+  }
+
+  function field() {
+    var i, j, k, R = src.r, on = src.k > 0.01;
+    for (j = 0; j < GH; j++) {
+      var y = j * CY, a1 = y * 0.0017 + t * 0.060, a2 = -y * 0.0051 - t * 0.080;
+      var cb = 0.14 * Math.cos(y * 0.0042 - t * 0.045);
+      rA[j] = Math.sin(a1) * cb; rB[j] = Math.cos(a1) * cb;           /* term 1 = cS1*rB + cC1*rA */
+      rHy[j] = Math.sin(a2); rY[j] = Math.cos(a2);                    /* term 2 = 0.08(cS2*rY + cC2*rHy) */
+    }
+    var hy = new Float32Array(GH), yy = new Float32Array(GH);
+    if (on) {
+      for (j = 0; j < GH; j++) {
+        var Y = (j * CY - src.y) / R;
+        yy[j] = Y; hy[j] = Math.exp(-Y * Y * 0.55);
+      }
+      for (i = 0; i < GW; i++) {
+        var X = (i * CX - src.x) / R, Xh = X < 0 ? X * 1.7 : X * 0.8;
+        cHx[i] = src.k * 0.66 * Math.exp(-Xh * Xh * 0.55);
+        if (X > 0) {
+          var w = 0.85 + 0.42 * X;
+          cPa[i] = src.k * 0.62 / Math.sqrt(1 + 0.30 * X) * (1 - Math.exp(-X * 1.3));
+          cPm[i] = 0.45 * Math.sin(X * 0.85 - t * 0.35) * Math.min(1, X * 0.45);
+          cPw[i] = 1 / (w * w);
+        } else cPa[i] = 0;
+      }
+    }
+    var data = img.data, p = 0;
+    for (j = 0, k = 0; j < GH; j++) {
+      var A1 = rA[j], B1 = rB[j], A2 = rHy[j], B2 = rY[j], HY = hy[j], YY = yy[j];
+      for (i = 0; i < GW; i++, k++, p += 4) {
+        var v = amb + cS1[i] * B1 + cC1[i] * A1 + 0.08 * (cS2[i] * B2 + cC2[i] * A2);
+        if (on) {
+          v += cHx[i] * HY;
+          var pa = cPa[i];
+          if (pa > 0.004) { var yb = YY - cPm[i]; v += pa * Math.exp(-yb * yb * cPw[i]); }
+        }
+        v = v < 0 ? 0 : (v > 1 ? 1 : v);
+        T[k] = v;
+        var li = ((v * 255) | 0) << 2;
+        data[p] = lut[li]; data[p + 1] = lut[li + 1]; data[p + 2] = lut[li + 2]; data[p + 3] = lut[li + 3];
+      }
+    }
+  }
+
+  function seg(x0, y0, x1, y1) { ctx.moveTo(x0, y0); ctx.lineTo(x1, y1); }
+
+  function isotherm(lv) {
+    for (var j = 0; j < GH - 1; j++) {
+      var r0 = j * GW, r1 = r0 + GW, y0 = j * CY, y1 = y0 + CY;
+      for (var i = 0; i < GW - 1; i++) {
+        var a = T[r0 + i], b = T[r0 + i + 1], c = T[r1 + i + 1], d = T[r1 + i];
+        var id = (a > lv ? 8 : 0) | (b > lv ? 4 : 0) | (c > lv ? 2 : 0) | (d > lv ? 1 : 0);
+        if (id === 0 || id === 15) continue;
+        var x0 = i * CX, x1 = x0 + CX;
+        var tx = x0 + CX * (lv - a) / (b - a), bx = x0 + CX * (lv - d) / (c - d);
+        var ly = y0 + CY * (lv - a) / (d - a), ry = y0 + CY * (lv - b) / (c - b);
+        switch (id) {
+          case 1: case 14: seg(x0, ly, bx, y1); break;
+          case 2: case 13: seg(bx, y1, x1, ry); break;
+          case 3: case 12: seg(x0, ly, x1, ry); break;
+          case 4: case 11: seg(tx, y0, x1, ry); break;
+          case 6: case 9:  seg(tx, y0, bx, y1); break;
+          case 7: case 8:  seg(x0, ly, tx, y0); break;
+          case 5:  seg(x0, ly, tx, y0); seg(bx, y1, x1, ry); break;
+          case 10: seg(tx, y0, x1, ry); seg(x0, ly, bx, y1); break;
+        }
+      }
+    }
+  }
+
+  function draw() {
+    field();
+    octx.putImageData(img, 0, 0);
+    ctx.clearRect(0, 0, W, H);
+    ctx.imageSmoothingEnabled = true;
+    ctx.imageSmoothingQuality = 'high';
+    ctx.drawImage(off, 0, 0, W, H);
+
+    ctx.lineWidth = small ? 0.7 : 0.8;
+    var dark = isDark();
+    for (var n = 0; n < ISO.length; n++) {
+      var lv = ISO[n], c2 = lutA[(lv * 255) | 0];
+      ctx.beginPath();
+      isotherm(lv);
+      ctx.strokeStyle = 'rgba(' + c2[0] + ',' + c2[1] + ',' + c2[2] + ',' +
+                        ((dark ? 0.20 : 0.24) + 0.30 * lv).toFixed(3) + ')';
+      ctx.stroke();
+    }
+  }
+
+  /* every frame, with real elapsed time, so motion never steps */
+  function frame(now) {
+    var dt = last ? Math.min(0.1, (now - last) / 1000) : 0.016;
+    last = now;
+    t += dt;
+    if (t > 1e5) t = 0;
+    syncSource(dt);
+    draw();
+    raf = requestAnimationFrame(frame);
+  }
+
+  function still() { syncSource(0); draw(); }
+
+  buildLut();
+  resize();
+  if (reduced) {
+    still();
+    window.addEventListener('scroll', function () { requestAnimationFrame(still); }, { passive: true });
+  } else {
+    raf = requestAnimationFrame(frame);
+    document.addEventListener('visibilitychange', function () {
+      if (document.hidden) { cancelAnimationFrame(raf); raf = null; }
+      else if (!raf) { last = 0; raf = requestAnimationFrame(frame); }
+    });
+  }
+  requestAnimationFrame(function () { cv.classList.add('on'); });
+
+  var rt;
+  window.addEventListener('resize', function () {
+    clearTimeout(rt);
+    rt = setTimeout(function () { resize(); if (reduced) still(); }, 160);
+  });
+  new MutationObserver(function () { buildLut(); if (reduced) still(); })
+    .observe(document.documentElement, { attributes: true, attributeFilter: ['data-theme'] });
+})();
 </script>
 
 <canvas id="flowfield" aria-hidden="true"></canvas>
