@@ -338,8 +338,8 @@
     --gr: clamp(260px, 48vh, 560px);
     --u: calc(var(--gr) / 100);
     position: absolute; pointer-events: none; color: var(--c1);
-    left: calc(var(--u) * (132.42 - 128));
-    top: calc(var(--gy, 44vh) + var(--u) * (-160 - 128));
+    left: calc(var(--cx, calc(var(--u) * 132.42)) - var(--u) * 128);
+    top: calc(var(--cy, calc(var(--gy, 44vh) - var(--u) * 160)) - var(--u) * 128);
     width: calc(var(--u) * 256); height: calc(var(--u) * 256);
     opacity: 0; transition: opacity 1.4s ease; will-change: transform;
   }
@@ -359,10 +359,12 @@
   .gear-flyer .g-line{ fill: none; stroke: currentColor; stroke-width: var(--swl, .42); stroke-linejoin: round; }
   .gear-flyer .g-main{ stroke-width: var(--swm, .6); }
   @media (max-width: 768px){
-    .hero-gear{ --gr: 46vw; }
-    .hero-gear.on, [data-theme="dark"] .hero-gear.on{ opacity: .2; }
-    .hero-gear2{ --gr: 46vw; }
-    .hero-gear2.on, [data-theme="dark"] .hero-gear2.on{ opacity: .2; }
+    /* phones: gear 2 rings the photo like a hub, gear 1 meshes at its top-left */
+    .hero-gear{ --gr: clamp(110px, 32vw, 130px); left: calc(var(--gx, 0px) - var(--gr) * 1.05); width: calc(var(--gr) * 2.1); }
+    .hero-gear .hero-gear-svg{ left: 0; }
+    .hero-gear.on, [data-theme="dark"] .hero-gear.on{ opacity: .38; }
+    .hero-gear2{ --gr: clamp(110px, 32vw, 130px); }
+    .hero-gear2.on, [data-theme="dark"] .hero-gear2.on{ opacity: .38; }
   }
   .hero-inner{ position:relative; z-index:1; }
 
@@ -1204,9 +1206,29 @@ function toggleAwards() {
   if (!box || !svg || !hero) return;
   var reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
+  /* Desktop: gear 1 on the screen's left edge at the hero's middle, gear 2
+     up and to the right. Phones (photo on top, text below): gear 2 is
+     centred on the photo, gear 1 meshes with it up at the top-left, so the
+     text stays clear. Centre distance = sum of pitch radii = 207.69 units. */
+  var phone = window.matchMedia('(max-width: 768px)');
+  var ring = document.querySelector('.hero-photo-ring');
+  var DIST = 207.69, PHONE_DIR = 25;
   function place() {
-    box.style.setProperty('--gy', (hero.offsetHeight / 2) + 'px');
-    if (gear2) gear2.style.setProperty('--gy', (hero.offsetHeight / 2) + 'px');
+    var u = box.offsetHeight / 210;                  /* box = 2.1 x tip radius */
+    var gx = 0, gy = hero.offsetHeight / 2, cx, cy;
+    if (phone.matches && ring) {
+      var rr = ring.getBoundingClientRect(), hr = hero.getBoundingClientRect();
+      cx = rr.left + rr.width / 2; cy = rr.top - hr.top + rr.height / 2;
+      var t = PHONE_DIR * Math.PI / 180;
+      gx = cx - DIST * u * Math.cos(t); gy = cy - DIST * u * Math.sin(t);
+      ALPHA = PHONE_DIR;
+    } else {
+      cx = 132.42 * u; cy = gy - 160 * u;
+      ALPHA = -50.387;
+    }
+    box.style.setProperty('--gx', gx + 'px');
+    box.style.setProperty('--gy', gy + 'px');
+    if (gear2) { gear2.style.setProperty('--cx', cx + 'px'); gear2.style.setProperty('--cy', cy + 'px'); }
   }
   place();
   window.addEventListener('resize', place);
@@ -1244,9 +1266,9 @@ function toggleAwards() {
     box.style.visibility = 'hidden'; fly.style.visibility = 'visible';
     var e = ease(Math.min(1, pSm));
     fly.style.zIndex = e < 0.9 ? '-1' : '';             /* behind the content in flight, on top once docked */
-    var S0 = box.offsetHeight, rb = box.getBoundingClientRect();   /* box height = svg size */
+    var S0 = box.offsetHeight, sr = svg.getBoundingClientRect();   /* box height = svg size */
     var W = document.documentElement.clientWidth, H = document.documentElement.clientHeight;
-    var x0 = 0, y0 = rb.top + rb.height / 2;           /* hero gear centre */
+    var x0 = sr.left + sr.width / 2, y0 = sr.top + sr.height / 2;   /* hero gear centre */
     var x1 = W - 44, y1 = H - 44;                      /* button centre */
     var cx = W * 0.18, cy = H - 70;                    /* swing low, then along the bottom */
     var u = 1 - e;
@@ -1283,6 +1305,7 @@ function toggleAwards() {
     ang += (target - ang) * (1 - Math.exp(-dt / 0.18));
     svg.style.transform = 'rotate(' + ang.toFixed(3) + 'deg)';
     turn2(ang);
+    if (phone.matches) place();
     flight(dt, ang);
     raf = requestAnimationFrame(frame);
   }
