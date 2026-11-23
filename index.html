@@ -352,9 +352,7 @@
   .gear-flyer{
     position: fixed; left: 0; top: 0; z-index: 199; pointer-events: none;
     color: var(--c1); visibility: hidden; will-change: transform;
-    transition: translate .3s;
   }
-  #toTop:hover + .gear-flyer{ translate: 0 -3px; }
   .gear-flyer .g-fill{ fill: currentColor; opacity: var(--gf, .09); }
   .gear-flyer .g-line{ fill: none; stroke: currentColor; stroke-width: var(--swl, .42); stroke-linejoin: round; }
   .gear-flyer .g-main{ stroke-width: var(--swm, .6); }
@@ -1269,8 +1267,12 @@ function toggleAwards() {
     var S0 = box.offsetHeight, sr = svg.getBoundingClientRect();   /* box height = svg size */
     var W = document.documentElement.clientWidth, H = document.documentElement.clientHeight;
     var x0 = sr.left + sr.width / 2, y0 = sr.top + sr.height / 2;   /* hero gear centre */
-    var x1 = W - 44, y1 = H - 44;                      /* button centre */
-    var cx = W * 0.18, cy = H - 70;                    /* swing low, then along the bottom */
+    /* aim at where the button really is: phone browsers (iOS Safari) move
+       fixed elements as their toolbars hide, so the window size can't be used.
+       This also follows the button's hover lift. */
+    var bt = toTop.getBoundingClientRect();
+    var x1 = bt.left + bt.width / 2, y1 = bt.top + bt.height / 2;   /* button centre */
+    var cx = W * 0.18, cy = y1 - 26;                   /* swing low, then along the bottom */
     var u = 1 - e;
     var x = u * u * x0 + 2 * u * e * cx + e * e * x1;
     var y = u * u * y0 + 2 * u * e * cy + e * e * y1;
