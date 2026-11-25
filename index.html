@@ -395,6 +395,9 @@
   .pub-tags .pub-type{margin-bottom:0}
   .pub-type.accepted{background:rgba(16,185,129,.13);color:#047857}
   [data-theme="dark"] .pub-type.accepted{color:#34d399}
+  a.pub-type{text-decoration:none;transition:background .2s}
+  a.pub-type i{font-size:.62rem;margin-left:.2rem}
+  a.pub-type.accepted:hover{background:rgba(16,185,129,.26)}
   .pub-type.submitted{background:rgba(100,116,139,.14);color:var(--muted)}
   .pub-type.ongoing{background:rgba(139,92,246,.14);color:#6d28d9}
   [data-theme="dark"] .pub-type.ongoing{color:#c4b5fd}
@@ -808,7 +811,7 @@
     <article class="pub-card">
       <div class="pub-year">2026</div>
       <div class="pub-body">
-        <div class="pub-tags"><span class="pub-type">Conference Paper</span><span class="pub-type accepted">Abstract Accepted</span><span class="pub-type accepted">Manuscript Accepted</span></div>
+        <div class="pub-tags"><span class="pub-type">Conference Paper</span><span class="pub-type accepted">Abstract Accepted</span><a class="pub-type accepted" href="https://drive.google.com/file/d/1OQTBwksdUGYUexIuEQpkgozBJYLGzBww/view?usp=drive_link" target="_blank" rel="noopener">Manuscript Accepted <i class="fas fa-arrow-up-right-from-square" aria-hidden="true"></i></a></div>
         <h3 class="pub-title">Design, Experimental Validation, and Numerical Coolant Comparison of a Compact Plate-Fin-and-Tube Rear Door Heat Exchanger with Al<sub>2</sub>O<sub>3</sub> Nanofluid for Data Center Cooling</h3>
         <p class="pub-authors"><strong>Parag Mollick</strong> et al.</p>
         <p class="pub-venue">ICMIME 2026, Thermal Engineering Track</p>
